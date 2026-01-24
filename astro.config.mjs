@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import react from '@astrojs/react';
+import starlightThemeRapide from 'starlight-theme-rapide';
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,6 +10,7 @@ export default defineConfig({
 		react(),
 		starlight({
 			title: 'HytaleDB',
+			plugins: [starlightThemeRapide()],
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/ginco-org/hytaledb' }],
 			tableOfContents: false,
 			sidebar: [
