@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hytaledb.ginco.gg/schemas/CustomConnectedBlockTemplateAsset.schema.json",
+  "title": "CustomConnectedBlockTemplateAsset",
+  "description": "Defines custom connection rules for blocks that connect to adjacent blocks",
+  "type": "object",
+  "allOf": [
+    { "$ref": "base.schema.json" }
+  ],
+  "properties": {
+    "ConnectsToOtherMaterials": {
+      "type": "boolean",
+      "description": "Whether this block connects to blocks of other materials"
+    },
+    "DontUpdateAfterInitialPlacement": {
+      "type": "boolean",
+      "description": "If true, the block shape won't update when neighboring blocks change"
+    },
+    "DefaultShape": {
+      "type": "string",
+      "description": "The default shape to use when no patterns match"
+    },
+    "Shapes": {
+      "type": "object",
+      "description": "Map of shape names to their pattern matching rules",
+      "additionalProperties": {
+        "$ref": "#/$defs/Shape"
+      }
+    }
+  },
+  "$defs": {
+    "Direction": {
+      "type": "string",
+      "enum": ["North", "East", "South", "West", "Up", "Down"]
+    },
+    "YawRotation": {
+      "type": "string",
+      "enum": ["Zero", "Ninety", "OneEighty", "TwoSeventy"]
+    },
+    "FaceTags": {
+      "type": "object",
+      "description": "Tags assigned to each face of the block",
+      "properties": {
+        "North": { "type": "array", "items": { "type": "string" } },
+        "East": { "type": "array", "items": { "type": "string" } },
+        "South": { "type": "array", "items": { "type": "string" } },
+        "West": { "type": "array", "items": { "type": "string" } },
+        "Up": { "type": "array", "items": { "type": "string" } },
+        "Down": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "Position": {
+      "type": "object",
+      "description": "Relative position offset",
+      "properties": {
+        "X": { "type": "integer" },
+        "Y": { "type": "integer" },
+        "Z": { "type": "integer" }
+      },
+      "required": ["X", "Y", "Z"],
+      "additionalProperties": false
+    },
+    "AllowedPatternTransformations": {
+      "type": "object",
+      "description": "Allowed transformations when matching this pattern",
+      "properties": {
+        "IsCardinallyRotatable": {
+          "type": "boolean",
+          "description": "Whether the pattern can be rotated in 90-degree increments"
+        },
+        "MirrorX": {
+          "type": "boolean",
+          "description": "Whether the pattern can be mirrored on the X axis"
+        },
+        "MirrorZ": {
+          "type": "boolean",
+          "description": "Whether the pattern can be mirrored on the Z axis"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RuleToMatch": {
+      "type": "object",
+      "description": "A rule for matching neighboring blocks",
+      "properties": {
+        "Position": {
+          "$ref": "#/$defs/Position",
+          "description": "Relative position of the neighbor to check"
+        },
+        "IncludeOrExclude": {
+          "type": "string",
+          "enum": ["Include", "Exclude"],
+          "description": "Whether matching blocks should be included or excluded"
+        },
+        "PlacementNormals": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Direction" },
+          "description": "Required placement normal directions"
+        },
+        "BlockTypeLists": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Block type lists to match against"
+        },
+        "BlockTypes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Specific block types to match"
+        },
+        "Shapes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Shape names to match"
+        },
+        "FaceTags": {
+          "$ref": "#/$defs/FaceTags",
+          "description": "Face tags the neighbor must have"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Pattern": {
+      "type": "object",
+      "description": "A pattern to match for selecting this shape",
+      "properties": {
+        "Type": {
+          "type": "string",
+          "description": "The pattern type"
+        },
+        "TransformRulesToOrientation": {
+          "type": "boolean",
+          "description": "Whether to transform rules based on block orientation"
+        },
+        "YawToApplyAddReplacedBlockType": {
+          "$ref": "#/$defs/YawRotation",
+          "description": "Yaw rotation to apply when replacing block type"
+        },
+        "RequireFaceTagsMatchingRoll": {
+          "type": "boolean",
+          "description": "Whether face tags must match the roll orientation"
+        },
+        "AllowedPatternTransformations": {
+          "$ref": "#/$defs/AllowedPatternTransformations"
+        },
+        "RulesToMatch": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/RuleToMatch" },
+          "description": "Rules that must be satisfied for this pattern to match"
+        },
+        "OnlyOnPlacement": {
+          "type": "boolean",
+          "description": "Only evaluate this pattern when the block is first placed"
+        },
+        "OnlyOnUpdate": {
+          "type": "boolean",
+          "description": "Only evaluate this pattern when neighboring blocks change"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Shape": {
+      "type": "object",
+      "description": "A shape definition with patterns and face tags",
+      "properties": {
+        "PatternsToMatchAnyOf": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Pattern" },
+          "description": "Patterns to match - shape is used if any pattern matches"
+        },
+        "FaceTags": {
+          "$ref": "#/$defs/FaceTags",
+          "description": "Tags for each face when this shape is active"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

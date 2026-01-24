@@ -1,0 +1,63 @@
+---
+import { getCollection } from "astro:content";
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+
+const blocks = await getCollection("blocks");
+---
+
+<StarlightPage
+  frontmatter={{
+    title: "Blocks",
+    description: "Browse all blocks in Hytale",
+  }}
+>
+  <p>A complete directory of all blocks available in Hytale.</p>
+
+  <p><strong>Total blocks:</strong> {blocks.length}</p>
+
+  <div class="block-grid">
+    {
+      blocks.map((block) => (
+        <a href={`/database/blocks/${block.data.id}`} class="block-card">
+          <div class="block-name">{block.data.name}</div>
+        </a>
+      ))
+    }
+  </div>
+</StarlightPage>
+
+<style>
+  .block-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0 2rem;
+  }
+
+  .block-card {
+    display: block;
+    padding: 1rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition:
+      border-color 0.2s,
+      background-color 0.2s;
+  }
+
+  .block-card:hover {
+    border-color: var(--sl-color-accent);
+    background-color: var(--sl-color-gray-6);
+  }
+
+  .block-name {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .block-desc {
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-2);
+  }
+</style>

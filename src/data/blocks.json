@@ -1,0 +1,22 @@
+[
+  {
+    "id": "dirt",
+    "name": "Dirt"
+  },
+  {
+    "id": "stone",
+    "name": "Stone"
+  },
+  {
+    "id": "oak-wood",
+    "name": "Oak Wood"
+  },
+  {
+    "id": "oak-planks",
+    "name": "Oak Planks"
+  },
+  {
+    "id": "cobblestone",
+    "name": "Cobblestone" 
+  }
+]

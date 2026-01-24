@@ -1,0 +1,117 @@
+---
+import { getCollection } from "astro:content";
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import SchemaViewer from "../../../components/SchemaViewer";
+
+// Load all asset schemas at build time
+const schemaFiles = import.meta.glob("../../../data/schemas/*.schema.json", {
+  eager: true,
+});
+
+export async function getStaticPaths() {
+  const assetTypes = await getCollection("assetTypes");
+  return assetTypes.map((asset) => ({
+    params: { id: asset.data.id },
+    props: { asset },
+  }));
+}
+
+const { asset } = Astro.props;
+
+// Find schema file for this asset type
+const schemaKey = Object.keys(schemaFiles).find((key) =>
+  key.endsWith(`/${asset.data.id}.schema.json`)
+);
+const assetSchema = schemaKey ? (schemaFiles[schemaKey] as any).default : null;
+const schemaUrl = `https://hytaledb.ginco.gg/schemas/${asset.data.id}.schema.json`;
+---
+
+<StarlightPage
+  frontmatter={{
+    title: asset.data.name,
+    description: `Documentation for ${asset.data.name} asset type.`,
+  }}
+>
+  <p>
+    <a href="/database/asset-types">&larr; Back to Asset Types</a>
+  </p>
+
+  <p>Documentation for the <code>{asset.data.name}</code> asset type.</p>
+
+  <h2>Location</h2>
+  <p><code>{asset.data.location}</code></p>
+
+  {assetSchema && (
+    <div class="schema-url-box">
+      <h2>Use in Your Files</h2>
+      <p>Add this to your JSON files for IDE autocompletion and validation:</p>
+      <div class="copy-box">
+        <code id="schema-url">"$schema": "{schemaUrl}"</code>
+        <button class="copy-btn" data-copy={`"$schema": "${schemaUrl}"`}>Copy</button>
+      </div>
+    </div>
+  )}
+
+  <h2>Schema</h2>
+
+  {assetSchema ? (
+    <SchemaViewer schema={assetSchema} name={asset.data.name} client:only="react" />
+  ) : (
+    <p><em>Schema not yet documented.</em></p>
+  )}
+</StarlightPage>
+
+<style>
+  .copy-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--sl-color-gray-6);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0 1.5rem;
+  }
+
+  .copy-box code {
+    flex: 1;
+    font-size: 0.875rem;
+  }
+
+  .copy-btn {
+    padding: 0.375rem 0.75rem;
+    background: var(--sl-color-accent);
+    color: var(--sl-color-black);
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .copy-btn:hover {
+    opacity: 0.9;
+  }
+
+  /* Schema viewer container styling */
+  :global(.schema-viewer-container) {
+    margin: 2rem 0;
+    background: var(--sl-color-bg-sidebar);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = btn.getAttribute('data-copy');
+      if (text) {
+        await navigator.clipboard.writeText(text);
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = original, 1500);
+      }
+    });
+  });
+</script>

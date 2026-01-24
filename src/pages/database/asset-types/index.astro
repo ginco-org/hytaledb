@@ -1,0 +1,53 @@
+---
+import { getCollection } from "astro:content";
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+
+const assetTypes = await getCollection("assetTypes");
+---
+
+<StarlightPage
+  frontmatter={{
+    title: "Asset Types",
+    description: "Documentation for Hytale Asset Types.",
+  }}
+>
+  <p>Browse all {assetTypes.length} asset types available in Hytale.</p>
+
+  <div class="asset-grid">
+    {
+      assetTypes.map((asset) => (
+        <a href={`/database/asset-types/${asset.data.id}`} class="asset-card">
+          {asset.data.name}
+        </a>
+      ))
+    }
+  </div>
+</StarlightPage>
+
+<style>
+  .asset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .asset-card {
+    display: block;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.375rem;
+    text-decoration: none;
+    color: inherit;
+    font-family: monospace;
+    font-size: 0.875rem;
+    transition:
+      border-color 0.2s,
+      background-color 0.2s;
+  }
+
+  .asset-card:hover {
+    border-color: var(--sl-color-accent);
+    background-color: var(--sl-color-gray-6);
+  }
+</style>

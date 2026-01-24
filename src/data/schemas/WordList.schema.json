@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hytaledb.ginco.gg/schemas/WordList.schema.json",
+  "title": "WordList",
+  "description": "Word list asset type for translations and localization",
+  "type": "object",
+  "allOf": [
+    { "$ref": "base.schema.json" }
+  ],
+  "properties": {
+    "TranslationKeys": {
+      "type": "array",
+      "description": "List of translation keys",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

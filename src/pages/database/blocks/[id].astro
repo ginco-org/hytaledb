@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+export async function getStaticPaths() {
+  const blocks = await getCollection('blocks');
+  return blocks.map((block) => ({
+    params: { id: block.data.id },
+    props: { block },
+  }));
+}
+
+const { block } = Astro.props;
+const { name } = block.data;
+---
+
+<StarlightPage
+  frontmatter={{
+    title: name,
+  }}
+>
+  <p><a href="/database/blocks">&larr; Back to all blocks</a></p>
+</StarlightPage>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+  }
+
+  th {
+    width: 40%;
+    color: var(--sl-color-gray-2);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    background: var(--sl-color-gray-6);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+  }
+</style>

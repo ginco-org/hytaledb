@@ -1,49 +1,24 @@
-# Starlight Starter Kit: Basics
+# HytaleDB
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+HytaleDB is a website dedicated to providing detailed information and resources for the game Hytale.
 
-```
-bun create astro@latest -- --template starlight
-```
+## Features
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- DB of default assets in Hytalets
+  - Blocks
+  - Items
+  - Mobs
+  - Crafting Recipes
 
-## 🚀 Project Structure
+- Hytale Server Source Code Browser
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+- Schemas for Asset Types
 
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
-```
+- API docs for internal Hytale HTTP services
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+- Hytale Modding Documentation and Guides
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+## Internal
 
-Static assets, like favicons, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+- Ideally we create content extractors that can pull data from Hytale's game files to auto-generate and update the database of assets.
+> But assets should also be able to have manually written additions and corrections.

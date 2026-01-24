@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "mcp__context7__resolve-library-id",
+      "WebFetch(domain:docs.astro.build)",
+      "WebFetch(domain:starlight.astro.build)"
+    ]
+  }
+}

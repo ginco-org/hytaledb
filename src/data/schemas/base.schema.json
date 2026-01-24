@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hytaledb.ginco.gg/schemas/base.schema.json",
+  "title": "Base Asset",
+  "description": "Common fields shared by all Hytale asset types",
+  "type": "object",
+  "properties": {
+    "Parent": {
+      "type": "string",
+      "description": "Parent asset to inherit from"
+    },
+    "$Comment": {
+      "type": "string",
+      "description": "Developer comment"
+    },
+    "Tags": {
+      "type": "object",
+      "description": "Key-value tag mappings",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
