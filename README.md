@@ -22,3 +22,7 @@ HytaleDB is a website dedicated to providing detailed information and resources 
 
 - Ideally we create content extractors that can pull data from Hytale's game files to auto-generate and update the database of assets.
 > But assets should also be able to have manually written additions and corrections.
+
+
+## Things i know about but need documentation for
+- https://maven.hytale.com (https://maven.hytale.com/release/com/hypixel/hytale/Server/maven-metadata.xml)
