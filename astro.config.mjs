@@ -10,6 +10,7 @@ export default defineConfig({
 		starlight({
 			title: 'HytaleDB',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/ginco-org/hytaledb' }],
+			tableOfContents: false,
 			sidebar: [
 				{
 					label: 'Database',
