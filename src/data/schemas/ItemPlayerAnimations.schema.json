@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ItemPlayerAnimations.json",
+  "title": "ItemPlayerAnimations",
+  "description": "ItemPlayerAnimations asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Animations": {
+      "type": "object",
+      "title": "Map",
+      "hytale": {
+        "type": "object",
+        "inheritsProperty": true
+      },
+      "additionalProperties": {
+        "$ref": "common.json#/definitions/ItemAnimation"
+      }
+    },
+    "WiggleWeights": {
+      "$ref": "common.json#/definitions/WiggleWeights",
+      "hytale": {
+        "inheritsProperty": true
+      }
+    },
+    "Camera": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/CameraSettings",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "PullbackConfig": {
+      "description": "Overrides the offset of first person arms when close to obstacles",
+      "markdownDescription": "Overrides the offset of first person arms when close to obstacles",
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/ItemPullbackConfig",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "UseFirstPersonOverrides": {
+      "type": "boolean",
+      "description": "Determines whether or not to use FirstPersonOverride animations within ItemAnimations",
+      "markdownDescription": "Determines whether or not to use FirstPersonOverride animations within ItemAnimations",
+      "hytale": {
+        "type": "boolean",
+        "inheritsProperty": true
+      },
+      "default": false
+    }
+  }
+}

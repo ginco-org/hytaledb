@@ -1,0 +1,350 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ModelAsset.json",
+  "title": "ModelAsset",
+  "description": "ModelAsset asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Model": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true
+      },
+      "hytaleCommonAsset": {
+        "requiredRoots": [
+          "Characters/",
+          "NPC/",
+          "Items/",
+          "VFX/"
+        ],
+        "requiredExtension": "blockymodel",
+        "isUIAsset": false
+      }
+    },
+    "Texture": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true
+      },
+      "hytaleCommonAsset": {
+        "requiredRoots": [
+          "Characters/",
+          "NPC/",
+          "Items/",
+          "VFX/"
+        ],
+        "requiredExtension": "png",
+        "isUIAsset": false
+      }
+    },
+    "GradientSet": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true,
+        "uiEditorComponent": {
+          "component": "Dropdown",
+          "dataSet": "GradientSets"
+        }
+      }
+    },
+    "GradientId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true,
+        "uiEditorComponent": {
+          "component": "Dropdown",
+          "dataSet": "GradientIds"
+        }
+      }
+    },
+    "Icon": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true,
+        "uiEditorComponent": {
+          "component": "Icon",
+          "defaultPathTemplate": "Icons/ModelsGenerated/{assetId}.png",
+          "width": 128,
+          "height": 128
+        },
+        "uiRebuildCaches": [
+          "ItemIcons"
+        ],
+        "uiRebuildCachesForChildProperties": true
+      },
+      "hytaleCommonAsset": {
+        "requiredRoots": [
+          "Icons/ModelsGenerated/",
+          "Icons/Models/"
+        ],
+        "requiredExtension": "png",
+        "isUIAsset": false
+      }
+    },
+    "IconProperties": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/AssetIconProperties",
+          "hytale": {
+            "inheritsProperty": true,
+            "uiDisplayMode": "Hidden"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "Light": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/ColorLight",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "PhysicsValues": {
+      "anyOf": [
+        {
+          "default": {
+            "Mass": 68,
+            "DragCoefficient": 0.5,
+            "InvertedGravity": false
+          },
+          "$ref": "common.json#/definitions/PhysicsValues",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "MinScale": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true,
+        "uiSectionStart": "Hitbox"
+      },
+      "default": 0.949999988079071
+    },
+    "MaxScale": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 1.0499999523162842
+    },
+    "EyeHeight": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "HitBox": {
+      "$ref": "common.json#/definitions/Box",
+      "hytale": {
+        "inheritsProperty": true
+      }
+    },
+    "DetailBoxes": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "Map",
+      "hytale": {
+        "type": "object",
+        "inheritsProperty": true
+      },
+      "additionalProperties": {
+        "type": "array",
+        "hytale": {
+          "type": "array"
+        },
+        "items": {
+          "$ref": "common.json#/definitions/DetailBox"
+        }
+      }
+    },
+    "CrouchOffset": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true,
+        "uiSectionStart": "Camera"
+      },
+      "default": 0
+    },
+    "Camera": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/CameraSettings",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "DefaultAttachments": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array",
+        "inheritsProperty": true,
+        "uiSectionStart": "Attachments",
+        "uiCollapsedByDefault": false
+      },
+      "items": {
+        "$ref": "common.json#/definitions/ModelAttachment"
+      }
+    },
+    "RandomAttachmentSets": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "Map",
+      "hytale": {
+        "type": "object",
+        "inheritsProperty": true,
+        "uiCollapsedByDefault": false
+      },
+      "additionalProperties": {
+        "type": "object",
+        "title": "Map",
+        "hytale": {
+          "type": "object"
+        },
+        "additionalProperties": {
+          "$ref": "common.json#/definitions/ModelAttachment"
+        }
+      }
+    },
+    "AnimationSets": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "Map",
+      "hytale": {
+        "type": "object",
+        "inheritsProperty": true,
+        "uiSectionStart": "Animations",
+        "uiCollapsedByDefault": false
+      },
+      "additionalProperties": {
+        "$ref": "common.json#/definitions/AnimationSet"
+      }
+    },
+    "Particles": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array",
+        "inheritsProperty": true,
+        "uiSectionStart": "Physics",
+        "uiCollapsedByDefault": false
+      },
+      "items": {
+        "$ref": "common.json#/definitions/ModelParticle"
+      }
+    },
+    "Trails": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array",
+        "inheritsProperty": true,
+        "uiSectionStart": "Trails",
+        "uiCollapsedByDefault": false
+      },
+      "items": {
+        "$ref": "common.json#/definitions/ModelTrail"
+      }
+    },
+    "Phobia": {
+      "type": "string",
+      "title": "Phobia",
+      "description": "Enum used to specify if the NPC is part of a phobia (e.g. spider for arachnophobia).",
+      "markdownDescription": "Enum used to specify if the NPC is part of a phobia (e.g. spider for arachnophobia).",
+      "enumDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum",
+        "inheritsProperty": true
+      },
+      "enum": [
+        "None",
+        "Arachnophobia",
+        "Ophidiophobia"
+      ],
+      "default": "None"
+    },
+    "PhobiaModelAssetId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The model to use if the player has the setting with the matching phobia toggled on.",
+      "markdownDescription": "The model to use if the player has the setting with the matching phobia toggled on.",
+      "hytaleAssetRef": "ModelAsset",
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true
+      }
+    }
+  }
+}

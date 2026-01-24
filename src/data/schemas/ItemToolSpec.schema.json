@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ItemToolSpec.json",
+  "title": "ItemToolSpec",
+  "description": "ItemToolSpec asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "GatherType": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      }
+    },
+    "Power": {
+      "type": "number",
+      "hytale": {
+        "type": "number"
+      },
+      "default": 0
+    },
+    "Quality": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer"
+      },
+      "default": 0
+    },
+    "IsIncorrect": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": false
+    },
+    "HitSoundLayer": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Sound to play in addition to the block breaking sound when hitting this block type.",
+      "markdownDescription": "Sound to play in addition to the block breaking sound when hitting this block type.",
+      "hytaleAssetRef": "SoundEvent",
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true
+      }
+    }
+  }
+}

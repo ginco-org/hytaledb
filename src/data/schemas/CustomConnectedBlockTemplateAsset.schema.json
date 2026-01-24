@@ -1,205 +1,54 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://hytaledb.ginco.gg/schemas/CustomConnectedBlockTemplateAsset.schema.json",
+  "$id": "CustomConnectedBlockTemplateAsset.json",
   "title": "CustomConnectedBlockTemplateAsset",
-  "description": "Defines custom connection rules for blocks that connect to adjacent blocks. This asset type allows blocks to change their visual appearance or shape based on neighboring blocks.",
+  "description": "CustomConnectedBlockTemplateAsset asset type",
   "type": "object",
   "allOf": [
-    { "$ref": "base.schema.json" }
+    {
+      "$ref": "base.schema.json"
+    }
   ],
   "properties": {
     "DontUpdateAfterInitialPlacement": {
       "type": "boolean",
-      "default": false,
-      "description": "Default to false. When true, will not update the connected block after initial placement. Neighboring block updates won't affect this block when true."
+      "description": "Default to false. When true, will not update the connected block after initial placement. Neighboring block updates won't affect this block when true.",
+      "markdownDescription": "Default to false. When true, will not update the connected block after initial placement. Neighboring block updates won't affect this block when true.",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": false
     },
     "ConnectsToOtherMaterials": {
       "type": "boolean",
-      "default": true,
-      "description": "Defaults to true. If true, the material will connect to other materials of different block type sets, if false, the material will only connect to its own block types within the material"
+      "description": "Defaults to true. If true, the material will connect to other materials of different block type sets, if false, the material will only connect to its own block types within the material",
+      "markdownDescription": "Defaults to true. If true, the material will connect to other materials of different block type sets, if false, the material will only connect to its own block types within the material",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": true
     },
     "DefaultShape": {
-      "type": "string",
-      "description": "The default shape to use when no patterns match"
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      }
     },
     "Shapes": {
-      "type": "object",
-      "description": "Map of shape names to their pattern matching rules. Each shape defines patterns that determine when it should be used and face tags for the shape.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "Map",
+      "hytale": {
+        "type": "object"
+      },
       "additionalProperties": {
-        "$ref": "#/$defs/ConnectedBlockShape"
+        "$ref": "common.json#/definitions/ConnectedBlockShape"
       }
-    }
-  },
-  "$defs": {
-    "Direction": {
-      "type": "string",
-      "enum": ["North", "East", "South", "West", "Up", "Down"]
-    },
-    "YawRotation": {
-      "type": "string",
-      "enum": ["Zero", "Ninety", "OneEighty", "TwoSeventy"]
-    },
-    "ConnectedBlockFaceTags": {
-      "type": "object",
-      "description": "Tags assigned to each face of the block. Used for pattern matching between connected blocks.",
-      "properties": {
-        "North": { 
-          "type": "array", 
-          "items": { "type": "string" },
-          "description": "Tags for the north-facing side"
-        },
-        "East": { 
-          "type": "array", 
-          "items": { "type": "string" },
-          "description": "Tags for the east-facing side"
-        },
-        "South": { 
-          "type": "array", 
-          "items": { "type": "string" },
-          "description": "Tags for the south-facing side"
-        },
-        "West": { 
-          "type": "array", 
-          "items": { "type": "string" },
-          "description": "Tags for the west-facing side"
-        },
-        "Up": { 
-          "type": "array", 
-          "items": { "type": "string" },
-          "description": "Tags for the upward-facing side"
-        },
-        "Down": { 
-          "type": "array", 
-          "items": { "type": "string" },
-          "description": "Tags for the downward-facing side"
-        }
-      },
-      "additionalProperties": false
-    },
-    "Position": {
-      "type": "object",
-      "description": "Relative position offset",
-      "properties": {
-        "X": { "type": "integer" },
-        "Y": { "type": "integer" },
-        "Z": { "type": "integer" }
-      },
-      "required": ["X", "Y", "Z"],
-      "additionalProperties": false
-    },
-    "AllowedPatternTransformations": {
-      "type": "object",
-      "description": "Allowed transformations when matching this pattern",
-      "properties": {
-        "IsCardinallyRotatable": {
-          "type": "boolean",
-          "description": "Whether the pattern can be rotated in 90-degree increments"
-        },
-        "MirrorX": {
-          "type": "boolean",
-          "description": "Whether the pattern can be mirrored on the X axis"
-        },
-        "MirrorZ": {
-          "type": "boolean",
-          "description": "Whether the pattern can be mirrored on the Z axis"
-        }
-      },
-      "additionalProperties": false
-    },
-    "RuleToMatch": {
-      "type": "object",
-      "description": "A rule for matching neighboring blocks",
-      "properties": {
-        "Position": {
-          "$ref": "#/$defs/Position",
-          "description": "Relative position of the neighbor to check"
-        },
-        "IncludeOrExclude": {
-          "type": "string",
-          "enum": ["Include", "Exclude"],
-          "description": "Whether matching blocks should be included or excluded"
-        },
-        "PlacementNormals": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/Direction" },
-          "description": "Required placement normal directions"
-        },
-        "BlockTypeLists": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "Block type lists to match against"
-        },
-        "BlockTypes": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "Specific block types to match"
-        },
-        "Shapes": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "Shape names to match"
-        },
-        "FaceTags": {
-          "$ref": "#/$defs/ConnectedBlockFaceTags",
-          "description": "Face tags the neighbor must have"
-        }
-      },
-      "additionalProperties": false
-    },
-    "CustomTemplateConnectedBlockPattern": {
-      "type": "object",
-      "description": "A pattern to match for selecting this shape. Must have a Type field that identifies the pattern implementation.",
-      "properties": {
-        "Type": {
-          "type": "string",
-          "description": "The pattern type"
-        },
-        "TransformRulesToOrientation": {
-          "type": "boolean",
-          "description": "Whether to transform rules based on block orientation"
-        },
-        "YawToApplyAddReplacedBlockType": {
-          "$ref": "#/$defs/YawRotation",
-          "description": "Yaw rotation to apply when replacing block type"
-        },
-        "RequireFaceTagsMatchingRoll": {
-          "type": "boolean",
-          "description": "Whether face tags must match the roll orientation"
-        },
-        "AllowedPatternTransformations": {
-          "$ref": "#/$defs/AllowedPatternTransformations"
-        },
-        "RulesToMatch": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/RuleToMatch" },
-          "description": "Rules that must be satisfied for this pattern to match"
-        },
-        "OnlyOnPlacement": {
-          "type": "boolean",
-          "description": "Only evaluate this pattern when the block is first placed"
-        },
-        "OnlyOnUpdate": {
-          "type": "boolean",
-          "description": "Only evaluate this pattern when neighboring blocks change"
-        }
-      },
-      "additionalProperties": false
-    },
-    "ConnectedBlockShape": {
-      "type": "object",
-      "description": "A shape definition with patterns and face tags. Defines when a particular block shape should be used based on neighboring blocks.",
-      "properties": {
-        "PatternsToMatchAnyOf": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/CustomTemplateConnectedBlockPattern" },
-          "description": "Patterns to match - shape is used if any pattern matches"
-        },
-        "FaceTags": {
-          "$ref": "#/$defs/ConnectedBlockFaceTags",
-          "description": "Tags for each face when this shape is active"
-        }
-      },
-      "additionalProperties": false
     }
   }
 }

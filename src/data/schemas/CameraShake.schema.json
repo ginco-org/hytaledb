@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "CameraShake.json",
+  "title": "CameraShake",
+  "description": "CameraShake asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "FirstPerson": {
+      "description": "The camera shake to apply to the first-person camera",
+      "markdownDescription": "The camera shake to apply to the first-person camera",
+      "$ref": "common.json#/definitions/CameraShakeConfig",
+      "hytale": {
+        "inheritsProperty": true
+      }
+    },
+    "ThirdPerson": {
+      "description": "The camera shake to apply to the third-person camera",
+      "markdownDescription": "The camera shake to apply to the third-person camera",
+      "$ref": "common.json#/definitions/CameraShakeConfig",
+      "hytale": {
+        "inheritsProperty": true
+      }
+    }
+  }
+}

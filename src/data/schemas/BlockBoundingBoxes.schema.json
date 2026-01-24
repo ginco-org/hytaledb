@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "BlockBoundingBoxes.json",
+  "title": "BlockBoundingBoxes",
+  "description": "BlockBoundingBoxes asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Boxes": {
+      "type": "array",
+      "hytale": {
+        "type": "array",
+        "inheritsProperty": true
+      },
+      "items": {
+        "$ref": "common.json#/definitions/Box"
+      },
+      "minItems": 1
+    }
+  }
+}

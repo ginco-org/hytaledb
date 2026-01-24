@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "BlockMigration.json",
+  "title": "BlockMigration",
+  "description": "BlockMigration asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "DirectMigrations": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "Map",
+      "hytale": {
+        "type": "object"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    },
+    "NameMigrations": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "Map",
+      "hytale": {
+        "type": "object"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

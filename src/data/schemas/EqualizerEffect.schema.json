@@ -1,0 +1,360 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "EqualizerEffect.json",
+  "title": "EqualizerEffect",
+  "description": "An asset used to define a 4-band equalizer audio effect.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "LowGain": {
+      "description": "Low band gain in decibels.",
+      "markdownDescription": "Low band gain in decibels.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "minimum": -18,
+              "maximum": 18,
+              "default": 0
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number",
+            "inheritsProperty": true,
+            "uiEditorComponent": {
+              "component": "Number",
+              "suffix": " dB"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "LowCutOff": {
+      "description": "Low band cutoff frequency in Hz.",
+      "markdownDescription": "Low band cutoff frequency in Hz.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "minimum": 50,
+              "maximum": 800,
+              "default": 200
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number",
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "LowMidGain": {
+      "description": "Low-mid band gain in decibels.",
+      "markdownDescription": "Low-mid band gain in decibels.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "minimum": -18,
+              "maximum": 18,
+              "default": 0
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number",
+            "inheritsProperty": true,
+            "uiEditorComponent": {
+              "component": "Number",
+              "suffix": " dB"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "LowMidCenter": {
+      "description": "Low-mid band center frequency in Hz.",
+      "markdownDescription": "Low-mid band center frequency in Hz.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "minimum": 200,
+              "maximum": 3000,
+              "default": 500
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number",
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "LowMidWidth": {
+      "description": "Low-mid band width.",
+      "markdownDescription": "Low-mid band width.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "minimum": 0.009999999776482582,
+              "maximum": 1,
+              "default": 1
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number",
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "HighMidGain": {
+      "description": "High-mid band gain in decibels.",
+      "markdownDescription": "High-mid band gain in decibels.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "minimum": -18,
+              "maximum": 18,
+              "default": 0
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number",
+            "inheritsProperty": true,
+            "uiEditorComponent": {
+              "component": "Number",
+              "suffix": " dB"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "HighMidCenter": {
+      "description": "High-mid band center frequency in Hz.",
+      "markdownDescription": "High-mid band center frequency in Hz.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "minimum": 1000,
+              "maximum": 8000,
+              "default": 3000
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number",
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "HighMidWidth": {
+      "description": "High-mid band width.",
+      "markdownDescription": "High-mid band width.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "minimum": 0.009999999776482582,
+              "maximum": 1,
+              "default": 1
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number",
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "HighGain": {
+      "description": "High band gain in decibels.",
+      "markdownDescription": "High band gain in decibels.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "minimum": -18,
+              "maximum": 18,
+              "default": 0
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number",
+            "inheritsProperty": true,
+            "uiEditorComponent": {
+              "component": "Number",
+              "suffix": " dB"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "HighCutOff": {
+      "description": "High band cutoff frequency in Hz.",
+      "markdownDescription": "High band cutoff frequency in Hz.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "minimum": 4000,
+              "maximum": 16000,
+              "default": 6000
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number",
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

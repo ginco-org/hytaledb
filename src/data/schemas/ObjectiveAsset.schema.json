@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ObjectiveAsset.json",
+  "title": "ObjectiveAsset",
+  "description": "ObjectiveAsset asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Category": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true
+      }
+    },
+    "TaskSets": {
+      "type": "array",
+      "hytale": {
+        "type": "array",
+        "inheritsProperty": true
+      },
+      "items": {
+        "$ref": "common.json#/definitions/TaskSet"
+      },
+      "minItems": 1
+    },
+    "Completions": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array",
+        "inheritsProperty": true
+      },
+      "items": {
+        "title": "Type Selector",
+        "anyOf": [
+          {
+            "$ref": "common.json#/definitions/ClearObjectiveItemsCompletionAsset"
+          },
+          {
+            "$ref": "common.json#/definitions/GiveItemsCompletionAsset"
+          },
+          {
+            "$ref": "common.json#/definitions/ReputationCompletionAsset"
+          }
+        ],
+        "hytaleSchemaTypeField": {
+          "property": "Type",
+          "values": [
+            "ClearObjectiveItems",
+            "GiveItems",
+            "Reputation"
+          ]
+        },
+        "hytale": {
+          "mergesProperties": true
+        }
+      }
+    },
+    "TitleId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true,
+        "uiEditorComponent": {
+          "component": "LocalizationKey",
+          "keyTemplate": "server.objectives.{assetId}.title",
+          "generateDefaultKey": true
+        }
+      }
+    },
+    "DescriptionId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true,
+        "uiEditorComponent": {
+          "component": "LocalizationKey",
+          "keyTemplate": "server.objectives.{assetId}.desc",
+          "generateDefaultKey": false
+        }
+      }
+    },
+    "RemoveOnItemDrop": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean",
+        "inheritsProperty": true
+      },
+      "default": false
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ItemAttitudeGroup.json",
+  "title": "ItemAttitudeGroup",
+  "description": "Defines attitudes towards specific items by tag.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Attitudes": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "Map of Sentiment",
+      "description": "A map of attitudes to item tags.",
+      "markdownDescription": "A map of attitudes to item tags.",
+      "hytale": {
+        "type": "EnumMap"
+      },
+      "properties": {
+        "Ignore": {
+          "type": "array",
+          "hytale": {
+            "type": "array"
+          },
+          "items": {
+            "type": "string",
+            "hytale": {
+              "type": "string"
+            }
+          }
+        },
+        "Dislike": {
+          "type": "array",
+          "hytale": {
+            "type": "array"
+          },
+          "items": {
+            "type": "string",
+            "hytale": {
+              "type": "string"
+            }
+          }
+        },
+        "Neutral": {
+          "type": "array",
+          "hytale": {
+            "type": "array"
+          },
+          "items": {
+            "type": "string",
+            "hytale": {
+              "type": "string"
+            }
+          }
+        },
+        "Like": {
+          "type": "array",
+          "hytale": {
+            "type": "array"
+          },
+          "items": {
+            "type": "string",
+            "hytale": {
+              "type": "string"
+            }
+          }
+        },
+        "Love": {
+          "type": "array",
+          "hytale": {
+            "type": "array"
+          },
+          "items": {
+            "type": "string",
+            "hytale": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "additionalProperties": {
+        "type": "array",
+        "hytale": {
+          "type": "array"
+        },
+        "items": {
+          "type": "string",
+          "hytale": {
+            "type": "string"
+          }
+        }
+      },
+      "propertyNames": {
+        "hytale": {
+          "type": "string"
+        },
+        "enum": [
+          "Ignore",
+          "Dislike",
+          "Neutral",
+          "Like",
+          "Love"
+        ]
+      }
+    }
+  }
+}

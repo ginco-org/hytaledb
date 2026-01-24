@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "BiomeAsset.json",
+  "title": "BiomeAsset",
+  "description": "BiomeAsset asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Terrain": {
+      "anyOf": [
+        {
+          "title": "Type Selector",
+          "anyOf": [
+            {
+              "$ref": "common.json#/definitions/DensityTerrainAsset"
+            }
+          ],
+          "hytaleSchemaTypeField": {
+            "property": "Type",
+            "values": [
+              "DAOTerrain"
+            ],
+            "parentPropertyKey": "Parent"
+          },
+          "hytale": {
+            "mergesProperties": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "FloatingFunctionNodes": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "$ref": "DensityAsset.json#"
+      }
+    },
+    "Name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      },
+      "default": "DefaultName"
+    },
+    "MaterialProvider": {
+      "anyOf": [
+        {
+          "title": "Type Selector",
+          "anyOf": [
+            {
+              "$ref": "common.json#/definitions/ConstantMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/DownwardDepthMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/DownwardSpaceMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/FieldFunctionMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/ImportedMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/QueueMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/SimpleHorizontalMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/SolidityMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/SpaceAndDepthMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/StripedMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/TerrainDensityMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/UpwardDepthMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/UpwardSpaceMaterialProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/WeightedMaterialProviderAsset"
+            }
+          ],
+          "hytaleSchemaTypeField": {
+            "property": "Type",
+            "values": [
+              "Constant",
+              "DownwardDepth",
+              "DownwardSpace",
+              "FieldFunction",
+              "Imported",
+              "Queue",
+              "SimpleHorizontal",
+              "Solidity",
+              "SpaceAndDepth",
+              "Striped",
+              "TerrainDensity",
+              "UpwardDepth",
+              "UpwardSpace",
+              "Weighted"
+            ],
+            "parentPropertyKey": "Parent"
+          },
+          "hytale": {
+            "mergesProperties": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "Props": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "$ref": "common.json#/definitions/PropRuntimeAsset"
+      }
+    },
+    "EnvironmentProvider": {
+      "anyOf": [
+        {
+          "title": "Type Selector",
+          "anyOf": [
+            {
+              "$ref": "common.json#/definitions/ConstantEnvironmentProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/DensityDelimitedEnvironmentProviderAsset"
+            }
+          ],
+          "hytaleSchemaTypeField": {
+            "property": "Type",
+            "values": [
+              "Constant",
+              "DensityDelimited"
+            ],
+            "parentPropertyKey": "Parent"
+          },
+          "hytale": {
+            "mergesProperties": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "TintProvider": {
+      "anyOf": [
+        {
+          "title": "Type Selector",
+          "anyOf": [
+            {
+              "$ref": "common.json#/definitions/ConstantTintProviderAsset"
+            },
+            {
+              "$ref": "common.json#/definitions/DensityDelimitedTintProviderAsset"
+            }
+          ],
+          "hytaleSchemaTypeField": {
+            "property": "Type",
+            "values": [
+              "Constant",
+              "DensityDelimited"
+            ],
+            "parentPropertyKey": "Parent"
+          },
+          "hytale": {
+            "mergesProperties": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

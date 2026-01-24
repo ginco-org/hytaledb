@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ItemCategory.json",
+  "title": "ItemCategory",
+  "description": "ItemCategory asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      }
+    },
+    "Name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      }
+    },
+    "Icon": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      },
+      "hytaleCommonAsset": {
+        "requiredRoots": [
+          "Icons/ItemCategories/"
+        ],
+        "requiredExtension": "png",
+        "isUIAsset": false
+      }
+    },
+    "InfoDisplayMode": {
+      "type": "string",
+      "title": "ItemGridInfoDisplayMode",
+      "enumDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum"
+      },
+      "enum": [
+        "Tooltip",
+        "Adjacent",
+        "None"
+      ],
+      "default": "Tooltip"
+    },
+    "Order": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer"
+      },
+      "default": 0
+    },
+    "Children": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "$ref": "ItemCategory.json#"
+      }
+    }
+  }
+}

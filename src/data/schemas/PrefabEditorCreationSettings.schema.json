@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "PrefabEditorCreationSettings.json",
+  "title": "PrefabEditorCreationSettings",
+  "description": "PrefabEditorCreationSettings asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "RootDirectory": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "PrefabRootDirectory",
+      "enumDescriptions": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum"
+      },
+      "enum": [
+        "Server",
+        "Asset",
+        "Worldgen",
+        "AssetRoot"
+      ],
+      "default": "Asset"
+    },
+    "UnprocessedPrefabPaths": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    },
+    "PasteYLevelGoal": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer"
+      },
+      "default": 55
+    },
+    "BlocksBetweenEachPrefab": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer"
+      },
+      "default": 15
+    },
+    "WorldGenType": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "WorldGenType",
+      "enumDescriptions": [
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum"
+      },
+      "enum": [
+        "Flat",
+        "Void"
+      ],
+      "default": "Flat"
+    },
+    "BlocksAboveSurface": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer"
+      },
+      "default": 0
+    },
+    "PrefabStackingAxis": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "PrefabStackingAxis",
+      "enumDescriptions": [
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum"
+      },
+      "enum": [
+        "X",
+        "Z"
+      ],
+      "default": "X"
+    },
+    "PrefabAlignment": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "PrefabAlignment",
+      "enumDescriptions": [
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum"
+      },
+      "enum": [
+        "Anchor",
+        "Zero"
+      ],
+      "default": "Anchor"
+    },
+    "RecursiveSearch": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": false
+    },
+    "LoadChildren": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": false
+    },
+    "LoadEntities": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": false
+    },
+    "EnableWorldTicking": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": false
+    },
+    "RowSplitMode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "PrefabRowSplitMode",
+      "enumDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum"
+      },
+      "enum": [
+        "ByAllSubfolders",
+        "BySpecifiedFolder",
+        "None"
+      ],
+      "default": "ByAllSubfolders"
+    },
+    "Environment": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytaleAssetRef": "Environment",
+      "hytale": {
+        "type": "string"
+      },
+      "default": "Env_Zone1_Plains"
+    },
+    "GrassTint": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      },
+      "default": "#5B9E28"
+    }
+  }
+}

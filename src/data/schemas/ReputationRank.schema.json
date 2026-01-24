@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ReputationRank.json",
+  "title": "ReputationRank",
+  "description": "ReputationRank asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "MinValue": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer"
+      },
+      "default": 0
+    },
+    "MaxValue": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer"
+      },
+      "default": 0
+    },
+    "Attitude": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "Attitude",
+      "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum"
+      },
+      "enum": [
+        "Ignore",
+        "Hostile",
+        "Neutral",
+        "Friendly",
+        "Revered"
+      ]
+    }
+  }
+}

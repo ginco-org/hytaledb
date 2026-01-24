@@ -1,18 +1,31 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://hytaledb.ginco.gg/schemas/WordList.schema.json",
+  "$id": "WordList.json",
   "title": "WordList",
-  "description": "Word list asset type for translations and localization. Word lists allow you to define collections of translatable text strings.",
+  "description": "WordList asset type",
   "type": "object",
   "allOf": [
-    { "$ref": "base.schema.json" }
+    {
+      "$ref": "base.schema.json"
+    }
   ],
   "properties": {
     "TranslationKeys": {
-      "type": "array",
+      "type": [
+        "array",
+        "null"
+      ],
       "description": "The list of word message keys. Need to be added in Assets/Server/Languages/wordlists.lang. For example if the WordList asset file is 'animals' and you write 'cow' here, it will refer to 'animals.cow' (full path is 'wordlists.animals.cow')",
+      "markdownDescription": "The list of word message keys. Need to be added in Assets/Server/Languages/wordlists.lang. For example if the WordList asset file is 'animals' and you write 'cow' here, it will refer to 'animals.cow' (full path is 'wordlists.animals.cow')",
+      "hytale": {
+        "type": "array",
+        "inheritsProperty": true
+      },
       "items": {
-        "type": "string"
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
       }
     }
   }

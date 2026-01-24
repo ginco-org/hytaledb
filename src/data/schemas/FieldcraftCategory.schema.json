@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "FieldcraftCategory.json",
+  "title": "FieldcraftCategory",
+  "description": "FieldcraftCategory asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      }
+    },
+    "Icon": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      },
+      "hytaleCommonAsset": {
+        "requiredRoots": [
+          "Icons/CraftingCategories/"
+        ],
+        "requiredExtension": "png",
+        "isUIAsset": false
+      }
+    },
+    "Order": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer"
+      },
+      "default": 0
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "BlockMaskAsset.json",
+  "title": "BlockMaskAsset",
+  "description": "BlockMaskAsset asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "DontPlace": {
+      "anyOf": [
+        {
+          "default": {
+            "Inclusive": true,
+            "Materials": []
+          },
+          "$ref": "common.json#/definitions/MaterialSetAsset"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "DontReplace": {
+      "anyOf": [
+        {
+          "default": {
+            "Inclusive": true,
+            "Materials": []
+          },
+          "$ref": "common.json#/definitions/MaterialSetAsset"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "Advanced": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "$ref": "common.json#/definitions/BlockMaskEntryAsset"
+      }
+    },
+    "ExportAs": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      },
+      "default": ""
+    },
+    "Import": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      },
+      "default": ""
+    }
+  }
+}

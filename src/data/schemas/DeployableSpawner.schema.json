@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "DeployableSpawner.json",
+  "title": "DeployableSpawner",
+  "description": "DeployableSpawner asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Config": {
+      "title": "Type Selector",
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/DeployableAoeConfig"
+        },
+        {
+          "$ref": "common.json#/definitions/DeployableTrapConfig"
+        },
+        {
+          "$ref": "common.json#/definitions/DeployableTrapSpawnerConfig"
+        },
+        {
+          "$ref": "common.json#/definitions/DeployableTurretConfig"
+        }
+      ],
+      "hytaleSchemaTypeField": {
+        "property": "Type",
+        "values": [
+          "Aoe",
+          "Trap",
+          "TrapSpawner",
+          "Turret"
+        ]
+      },
+      "hytale": {
+        "mergesProperties": true
+      }
+    },
+    "PositionOffsets": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "$ref": "common.json#/definitions/Vector3d"
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "MacroCommandBuilder.json",
+  "title": "MacroCommandBuilder",
+  "description": "MacroCommandBuilder asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      }
+    },
+    "Aliases": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    },
+    "Description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      }
+    },
+    "Parameters": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "$ref": "common.json#/definitions/MacroCommandParameter"
+      }
+    },
+    "Commands": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

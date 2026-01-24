@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "RootInteraction.json",
+  "title": "RootInteraction",
+  "description": "A RootInteraction serves as an entry point into a set of Interactions.\n\nIn order to start an interaction chain a RootInteraction is required.\nA basic RootInteraction can simply contain a reference to single interaction within Interactions field which will be the entire chain. More complex cases can configure the other fields.\n\nMost fields configured here apply to all Interactions contained the root and any Interactions they contain as well. Systems that look at tags for interactions may also check the root interaction as well reducing the need to duplicate them on all nested interactions.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Interactions": {
+      "type": "array",
+      "description": "The list of interactions that will be run when starting a chain with this root interaction. Interactions in this list will be run in sequence.",
+      "markdownDescription": "The list of interactions that will be run when starting a chain with this root interaction. Interactions in this list will be run in sequence.",
+      "hytale": {
+        "type": "array",
+        "inheritsProperty": true
+      },
+      "items": {
+        "anyOf": [
+          {
+            "type": "string",
+            "title": "Reference to Interaction",
+            "hytale": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "Interaction.json#"
+          }
+        ],
+        "hytaleAssetRef": "Interaction"
+      },
+      "minItems": 1
+    },
+    "Cooldown": {
+      "description": "Cooldowns are used to prevent an interaction from running repeatedly too quickly.\n\nDuring a cooldown attempting to run an interaction with the same cooldown id will fail.",
+      "markdownDescription": "Cooldowns are used to prevent an interaction from running repeatedly too quickly.\n\nDuring a cooldown attempting to run an interaction with the same cooldown id will fail.",
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/InteractionCooldown",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "Rules": {
+      "description": "A set of rules that control when this root interaction can run or what interactions this root being active prevents.",
+      "markdownDescription": "A set of rules that control when this root interaction can run or what interactions this root being active prevents.",
+      "default": {
+        "Blocking": []
+      },
+      "$ref": "common.json#/definitions/InteractionRules",
+      "hytale": {
+        "inheritsProperty": true
+      }
+    },
+    "Settings": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "title": "Map of GameMode",
+      "description": "Per a gamemode settings.",
+      "markdownDescription": "Per a gamemode settings.",
+      "hytale": {
+        "type": "EnumMap",
+        "inheritsProperty": true
+      },
+      "properties": {
+        "Adventure": {
+          "$ref": "common.json#/definitions/RootInteractionSettings"
+        },
+        "Creative": {
+          "$ref": "common.json#/definitions/RootInteractionSettings"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "common.json#/definitions/RootInteractionSettings"
+      },
+      "propertyNames": {
+        "hytale": {
+          "type": "string"
+        },
+        "enum": [
+          "Adventure",
+          "Creative"
+        ]
+      }
+    },
+    "ClickQueuingTimeout": {
+      "description": "Controls the amount of time this root interaction can remain in the click queue before being discarded.",
+      "markdownDescription": "Controls the amount of time this root interaction can remain in the click queue before being discarded.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "default": 0
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number",
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "RequireNewClick": {
+      "type": "boolean",
+      "description": "Requires the user to click again before running another root interaction of the same type.",
+      "markdownDescription": "Requires the user to click again before running another root interaction of the same type.",
+      "hytale": {
+        "type": "boolean",
+        "inheritsProperty": true
+      },
+      "default": false
+    }
+  }
+}

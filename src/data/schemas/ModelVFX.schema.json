@@ -1,0 +1,314 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ModelVFX.json",
+  "title": "ModelVFX",
+  "description": "ModelVFX asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "SwitchTo": {
+      "type": "string",
+      "title": "SwitchTo",
+      "enumDescriptions": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum"
+      },
+      "enum": [
+        "Disappear",
+        "PostColor",
+        "Distortion",
+        "Transparency"
+      ],
+      "default": "Disappear"
+    },
+    "EffectDirection": {
+      "type": "string",
+      "title": "EffectDirection",
+      "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum"
+      },
+      "enum": [
+        "None",
+        "BottomUp",
+        "TopDown",
+        "ToCenter",
+        "FromCenter"
+      ],
+      "default": "None"
+    },
+    "AnimationDuration": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "default": 0
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "AnimationRange": {
+      "anyOf": [
+        {
+          "default": {
+            "X": 0,
+            "Y": 1
+          },
+          "$ref": "common.json#/definitions/Vector2f"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "LoopOption": {
+      "type": "string",
+      "title": "LoopOption",
+      "enumDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum"
+      },
+      "enum": [
+        "PlayOnce",
+        "Loop",
+        "LoopMirror"
+      ],
+      "default": "PlayOnce"
+    },
+    "CurveType": {
+      "type": "string",
+      "title": "CurveType",
+      "enumDescriptions": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum"
+      },
+      "enum": [
+        "Linear",
+        "QuartIn",
+        "QuartOut",
+        "QuartInOut"
+      ],
+      "default": "Linear"
+    },
+    "HighlightColor": {
+      "anyOf": [
+        {
+          "title": "Color RGB",
+          "anyOf": [
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^\\s*#([0-9a-fA-F]{3}){1,2}\\s*$"
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^\\s*rgb\\((\\s*[0-9]{1,3}\\s*,){2}\\s*[0-9]{1,3}\\s*\\)\\s*$"
+            }
+          ],
+          "hytale": {
+            "type": "Color"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "HighlightThickness": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "default": 0
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "UseBloomOnHighlight": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": false
+    },
+    "UseProgessiveHighlight": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": false
+    },
+    "NoiseScale": {
+      "anyOf": [
+        {
+          "default": {
+            "X": 50,
+            "Y": 50
+          },
+          "$ref": "common.json#/definitions/Vector2f"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "NoiseScrollSpeed": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/Vector2f"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "PostColor": {
+      "anyOf": [
+        {
+          "title": "Color RGB",
+          "anyOf": [
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^\\s*#([0-9a-fA-F]{3}){1,2}\\s*$"
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^\\s*rgb\\((\\s*[0-9]{1,3}\\s*,){2}\\s*[0-9]{1,3}\\s*\\)\\s*$"
+            }
+          ],
+          "hytale": {
+            "type": "Color"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "PostColorOpacity": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "minimum": 0,
+              "maximum": 1,
+              "default": 1
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

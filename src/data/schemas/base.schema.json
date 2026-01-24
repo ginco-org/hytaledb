@@ -9,10 +9,6 @@
       "type": "string",
       "description": "Parent asset to inherit from"
     },
-    "$Comment": {
-      "type": "string",
-      "description": "Developer comment"
-    },
     "Tags": {
       "type": "object",
       "description": "Key-value tag mappings",

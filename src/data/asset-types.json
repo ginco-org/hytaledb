@@ -1,94 +1,472 @@
 [
-  { "id": "AmbienceFX", "name": "AmbienceFX", "location": "Server/Audio/AmbienceFX" },
-  { "id": "AssignmentsAsset", "name": "AssignmentsAsset", "location": "todo" },
-  { "id": "AttitudeGroup", "name": "AttitudeGroup", "location": "todo" },
-  { "id": "AudioCategory", "name": "AudioCategory", "location": "Server/Audio/AudioCategories" },
-  { "id": "BalanceAsset", "name": "BalanceAsset", "location": "todo" },
-  { "id": "BarterShopAsset", "name": "BarterShopAsset", "location": "todo" },
-  { "id": "BeaconNPCSpawn", "name": "BeaconNPCSpawn", "location": "todo" },
-  { "id": "BiomeAsset", "name": "BiomeAsset", "location": "todo" },
-  { "id": "BlockBoundingBoxes", "name": "BlockBoundingBoxes", "location": "Server/Item/Block/Hitboxes" },
-  { "id": "BlockBreakingDecal", "name": "BlockBreakingDecal", "location": "Server/Item/Block/BreakingDecals" },
-  { "id": "BlockGroup", "name": "BlockGroup", "location": "Server/Item/Groups" },
-  { "id": "BlockMaskAsset", "name": "BlockMaskAsset", "location": "todo" },
-  { "id": "BlockMigration", "name": "BlockMigration", "location": "Server/Item/Block/Migrations" },
-  { "id": "BlockParticleSet", "name": "BlockParticleSet", "location": "Server/Item/Block/Particles" },
-  { "id": "BlockSet", "name": "BlockSet", "location": "Server/Item/Block/Sets" },
-  { "id": "BlockSoundSet", "name": "BlockSoundSet", "location": "Server/Item/Block/Sounds" },
-  { "id": "BlockSpawnerTable", "name": "BlockSpawnerTable", "location": "todo" },
-  { "id": "BlockType", "name": "BlockType", "location": "Server/Item/Block/Blocks" },
-  { "id": "BlockTypeListAsset", "name": "BlockTypeListAsset", "location": "Server/BlockTypeList" },
-  { "id": "BuilderToolItemReferenceAsset", "name": "BuilderToolItemReferenceAsset", "location": "Server/Item/PlayerToolsMenuConfig" },
-  { "id": "CameraEffect", "name": "CameraEffect", "location": "Server/Camera/CameraEffect" },
-  { "id": "CameraShake", "name": "CameraShake", "location": "todo" },
-  { "id": "CombatActionOption", "name": "CombatActionOption", "location": "todo" },
-  { "id": "Condition", "name": "Condition", "location": "todo" },
-  { "id": "CraftingRecipe", "name": "CraftingRecipe", "location": "Server/Item/Recipes" },
-  { "id": "CustomConnectedBlockTemplateAsset", "name": "CustomConnectedBlockTemplateAsset", "location": "Server/Item/CustomConnectedBlockTemplates" },
-  { "id": "DamageCause", "name": "DamageCause", "location": "Server/Entity/Damage" },
-  { "id": "DensityAsset", "name": "DensityAsset", "location": "todo" },
-  { "id": "DeployableSpawner", "name": "DeployableSpawner", "location": "todo" },
-  { "id": "EntityEffect", "name": "EntityEffect", "location": "Server/Entity/Effects" },
-  { "id": "EntityStatType", "name": "EntityStatType", "location": "todo" },
-  { "id": "EntityUIComponent", "name": "EntityUIComponent", "location": "todo" },
-  { "id": "Environment", "name": "Environment", "location": "Server/Environments" },
-  { "id": "EqualizerEffect", "name": "EqualizerEffect", "location": "Server/Audio/EQ" },
-  { "id": "FarmingCoopAsset", "name": "FarmingCoopAsset", "location": "todo" },
-  { "id": "FieldcraftCategory", "name": "FieldcraftCategory", "location": "Server/Item/Category/Fieldcraft" },
-  { "id": "FlockAsset", "name": "FlockAsset", "location": "todo" },
-  { "id": "Fluid", "name": "Fluid", "location": "Server/Item/Block/Fluids" },
-  { "id": "FluidFX", "name": "FluidFX", "location": "Server/Item/Block/FluidFX" },
-  { "id": "GameModeType", "name": "GameModeType", "location": "Server/Entity/GameMode" },
-  { "id": "GameplayConfig", "name": "GameplayConfig", "location": "Server/GameplayConfigs" },
-  { "id": "GrowthModifierAsset", "name": "GrowthModifierAsset", "location": "todo" },
-  { "id": "HitboxCollisionConfig", "name": "HitboxCollisionConfig", "location": "todo" },
-  { "id": "Interaction", "name": "Interaction", "location": "todo" },
-  { "id": "Item", "name": "Item", "location": "Server/Item/Items" },
-  { "id": "ItemAttitudeGroup", "name": "ItemAttitudeGroup", "location": "todo" },
-  { "id": "ItemCategory", "name": "ItemCategory", "location": "Server/Item/Category/CreativeLibrary" },
-  { "id": "ItemDropList", "name": "ItemDropList", "location": "Server/Drops" },
-  { "id": "ItemPlayerAnimations", "name": "ItemPlayerAnimations", "location": "Server/Item/Animations" },
-  { "id": "ItemQuality", "name": "ItemQuality", "location": "Server/Item/Qualities" },
-  { "id": "ItemReticleConfig", "name": "ItemReticleConfig", "location": "Server/Item/Reticles" },
-  { "id": "ItemSoundSet", "name": "ItemSoundSet", "location": "Server/Audio/ItemSounds" },
-  { "id": "ItemToolSpec", "name": "ItemToolSpec", "location": "Server/Item/Unarmed/Gathering" },
-  { "id": "MacroCommandBuilder", "name": "MacroCommandBuilder", "location": "todo" },
-  { "id": "ModelAsset", "name": "ModelAsset", "location": "Server/Models" },
-  { "id": "ModelVFX", "name": "ModelVFX", "location": "Server/Entity/ModelVFX" },
-  { "id": "MovementConfig", "name": "MovementConfig", "location": "todo" },
-  { "id": "NPCGroup", "name": "NPCGroup", "location": "todo" },
-  { "id": "NPCRole", "name": "NPCRole", "location": "todo" },
-  { "id": "ObjectiveAsset", "name": "ObjectiveAsset", "location": "todo" },
-  { "id": "ObjectiveLineAsset", "name": "ObjectiveLineAsset", "location": "todo" },
-  { "id": "ObjectiveLocationMarkerAsset", "name": "ObjectiveLocationMarkerAsset", "location": "todo" },
-  { "id": "ParticleSpawner", "name": "ParticleSpawner", "location": "Server/Particles" },
-  { "id": "ParticleSystem", "name": "ParticleSystem", "location": "Server/Particles" },
-  { "id": "PortalType", "name": "PortalType", "location": "Server/PortalTypes" },
-  { "id": "PrefabEditorCreationSettings", "name": "PrefabEditorCreationSettings", "location": "todo" },
-  { "id": "PrefabListAsset", "name": "PrefabListAsset", "location": "Server/PrefabList" },
-  { "id": "Projectile", "name": "Projectile", "location": "Server/Projectiles" },
-  { "id": "ProjectileConfig", "name": "ProjectileConfig", "location": "Server/ProjectileConfigs" },
-  { "id": "ReachLocationMarkerAsset", "name": "ReachLocationMarkerAsset", "location": "todo" },
-  { "id": "RepulstionConfig", "name": "RepulstionConfig", "location": "todo" },
-  { "id": "ReputationGroup", "name": "ReputationGroup", "location": "todo" },
-  { "id": "ReputationRank", "name": "ReputationRank", "location": "todo" },
-  { "id": "ResourceType", "name": "ResourceType", "location": "Server/Item/ResourceTypes" },
-  { "id": "ResponseCurve", "name": "ResponseCurve", "location": "Server/ResponseCurves" },
-  { "id": "ReverbEffect", "name": "ReverbEffect", "location": "Server/Audio/Reverb" },
-  { "id": "RootInteraction", "name": "RootInteraction", "location": "todo" },
-  { "id": "ScriptedBrushAsset", "name": "ScriptedBrushAsset", "location": "todo" },
-  { "id": "SettingsAsset", "name": "SettingsAsset", "location": "todo" },
-  { "id": "ShopAsset", "name": "ShopAsset", "location": "todo" },
-  { "id": "SoundEvent", "name": "SoundEvent", "location": "Server/Audio/SoundEvents" },
-  { "id": "SoundSet", "name": "SoundSet", "location": "Server/Audio/SoundSets" },
-  { "id": "SpawnMarker", "name": "SpawnMarker", "location": "todo" },
-  { "id": "SpawnSuppression", "name": "SpawnSuppression", "location": "todo" },
-  { "id": "TagPattern", "name": "TagPattern", "location": "Server/TagPatterns" },
-  { "id": "Trail", "name": "Trail", "location": "Server/Entity/Trails" },
-  { "id": "UnarmedInteractions", "name": "UnarmedInteractions", "location": "todo" },
-  { "id": "ViewBobbing", "name": "ViewBobbing", "location": "todo" },
-  { "id": "Weather", "name": "Weather", "location": "Server/Weathers" },
-  { "id": "WordList", "name": "WordList", "location": "Server/WordLists" },
-  { "id": "WorldNPCSpawn", "name": "WorldNPCSpawn", "location": "todo" },
-  { "id": "WorldStructureAsset", "name": "WorldStructureAsset", "location": "todo" }
+  {
+    "id": "AmbienceFX",
+    "name": "AmbienceFX",
+    "location": "Audio/AmbienceFX"
+  },
+  {
+    "id": "AssignmentsAsset",
+    "name": "AssignmentsAsset",
+    "location": "HytaleGenerator/Assignments"
+  },
+  {
+    "id": "AttitudeGroup",
+    "name": "AttitudeGroup",
+    "location": "NPC/Attitude/Roles"
+  },
+  {
+    "id": "AudioCategory",
+    "name": "AudioCategory",
+    "location": "Audio/AudioCategories"
+  },
+  {
+    "id": "BalanceAsset",
+    "name": "BalanceAsset",
+    "location": "NPC/Balancing"
+  },
+  {
+    "id": "BarterShopAsset",
+    "name": "BarterShopAsset",
+    "location": "BarterShops"
+  },
+  {
+    "id": "BeaconNPCSpawn",
+    "name": "BeaconNPCSpawn",
+    "location": "NPC/Spawn/Beacons"
+  },
+  {
+    "id": "BiomeAsset",
+    "name": "BiomeAsset",
+    "location": "HytaleGenerator/Biomes"
+  },
+  {
+    "id": "BlockBoundingBoxes",
+    "name": "BlockBoundingBoxes",
+    "location": "Item/Block/Hitboxes"
+  },
+  {
+    "id": "BlockBreakingDecal",
+    "name": "BlockBreakingDecal",
+    "location": "Item/Block/BreakingDecals"
+  },
+  {
+    "id": "BlockGroup",
+    "name": "BlockGroup",
+    "location": "Item/Groups"
+  },
+  {
+    "id": "BlockMaskAsset",
+    "name": "BlockMaskAsset",
+    "location": "HytaleGenerator/MaterialMasks"
+  },
+  {
+    "id": "BlockMigration",
+    "name": "BlockMigration",
+    "location": "Item/Block/Migrations"
+  },
+  {
+    "id": "BlockParticleSet",
+    "name": "BlockParticleSet",
+    "location": "Item/Block/Particles"
+  },
+  {
+    "id": "BlockSet",
+    "name": "BlockSet",
+    "location": "Item/Block/Sets"
+  },
+  {
+    "id": "BlockSoundSet",
+    "name": "BlockSoundSet",
+    "location": "Item/Block/Sounds"
+  },
+  {
+    "id": "BlockSpawnerTable",
+    "name": "BlockSpawnerTable",
+    "location": "Item/Block/Spawners"
+  },
+  {
+    "id": "BlockType",
+    "name": "BlockType",
+    "location": "Item/Block/Blocks"
+  },
+  {
+    "id": "BlockTypeListAsset",
+    "name": "BlockTypeListAsset",
+    "location": "BlockTypeList"
+  },
+  {
+    "id": "BuilderToolItemReferenceAsset",
+    "name": "BuilderToolItemReferenceAsset",
+    "location": "Item/PlayerToolsMenuConfig"
+  },
+  {
+    "id": "CameraEffect",
+    "name": "CameraEffect",
+    "location": "Camera/CameraEffect"
+  },
+  {
+    "id": "CameraShake",
+    "name": "CameraShake",
+    "location": "Camera/CameraShake"
+  },
+  {
+    "id": "CombatActionOption",
+    "name": "CombatActionOption",
+    "location": "NPC/DecisionMaking/CombatActions"
+  },
+  {
+    "id": "Condition",
+    "name": "Condition",
+    "location": "NPC/DecisionMaking/Conditions"
+  },
+  {
+    "id": "CraftingRecipe",
+    "name": "CraftingRecipe",
+    "location": "Item/Recipes"
+  },
+  {
+    "id": "CustomConnectedBlockTemplateAsset",
+    "name": "CustomConnectedBlockTemplateAsset",
+    "location": "Item/CustomConnectedBlockTemplates"
+  },
+  {
+    "id": "DamageCause",
+    "name": "DamageCause",
+    "location": "Entity/Damage"
+  },
+  {
+    "id": "DensityAsset",
+    "name": "DensityAsset",
+    "location": "HytaleGenerator/Density"
+  },
+  {
+    "id": "DeployableSpawner",
+    "name": "DeployableSpawner",
+    "location": "DeployableSpawners"
+  },
+  {
+    "id": "EntityEffect",
+    "name": "EntityEffect",
+    "location": "Entity/Effects"
+  },
+  {
+    "id": "EntityStatType",
+    "name": "EntityStatType",
+    "location": "Entity/Stats"
+  },
+  {
+    "id": "EntityUIComponent",
+    "name": "EntityUIComponent",
+    "location": "Entity/UI"
+  },
+  {
+    "id": "Environment",
+    "name": "Environment",
+    "location": "Environments"
+  },
+  {
+    "id": "EqualizerEffect",
+    "name": "EqualizerEffect",
+    "location": "Audio/EQ"
+  },
+  {
+    "id": "FarmingCoopAsset",
+    "name": "FarmingCoopAsset",
+    "location": "Farming/Coops"
+  },
+  {
+    "id": "FieldcraftCategory",
+    "name": "FieldcraftCategory",
+    "location": "Item/Category/Fieldcraft"
+  },
+  {
+    "id": "FlockAsset",
+    "name": "FlockAsset",
+    "location": "NPC/Flocks"
+  },
+  {
+    "id": "Fluid",
+    "name": "Fluid",
+    "location": "Item/Block/Fluids"
+  },
+  {
+    "id": "FluidFX",
+    "name": "FluidFX",
+    "location": "Item/Block/FluidFX"
+  },
+  {
+    "id": "GameModeType",
+    "name": "GameModeType",
+    "location": "Entity/GameMode"
+  },
+  {
+    "id": "GameplayConfig",
+    "name": "GameplayConfig",
+    "location": "GameplayConfigs"
+  },
+  {
+    "id": "GrowthModifierAsset",
+    "name": "GrowthModifierAsset",
+    "location": "Farming/Modifiers"
+  },
+  {
+    "id": "HitboxCollisionConfig",
+    "name": "HitboxCollisionConfig",
+    "location": "Entity/HitboxCollision"
+  },
+  {
+    "id": "Instance Configuration",
+    "name": "Instance Configuration",
+    "location": "Instances"
+  },
+  {
+    "id": "Interaction",
+    "name": "Interaction",
+    "location": "Item/Interactions"
+  },
+  {
+    "id": "Item",
+    "name": "Item",
+    "location": "Item/Items"
+  },
+  {
+    "id": "ItemAttitudeGroup",
+    "name": "ItemAttitudeGroup",
+    "location": "NPC/Attitude/Items"
+  },
+  {
+    "id": "ItemCategory",
+    "name": "ItemCategory",
+    "location": "Item/Category/CreativeLibrary"
+  },
+  {
+    "id": "ItemDropList",
+    "name": "ItemDropList",
+    "location": "Drops"
+  },
+  {
+    "id": "ItemPlayerAnimations",
+    "name": "ItemPlayerAnimations",
+    "location": "Item/Animations"
+  },
+  {
+    "id": "ItemQuality",
+    "name": "ItemQuality",
+    "location": "Item/Qualities"
+  },
+  {
+    "id": "ItemReticleConfig",
+    "name": "ItemReticleConfig",
+    "location": "Item/Reticles"
+  },
+  {
+    "id": "ItemSoundSet",
+    "name": "ItemSoundSet",
+    "location": "Audio/ItemSounds"
+  },
+  {
+    "id": "ItemToolSpec",
+    "name": "ItemToolSpec",
+    "location": "Item/Unarmed/Gathering"
+  },
+  {
+    "id": "MacroCommandBuilder",
+    "name": "MacroCommandBuilder",
+    "location": "MacroCommands"
+  },
+  {
+    "id": "ModelAsset",
+    "name": "ModelAsset",
+    "location": "Models"
+  },
+  {
+    "id": "ModelVFX",
+    "name": "ModelVFX",
+    "location": "Entity/ModelVFX"
+  },
+  {
+    "id": "MovementConfig",
+    "name": "MovementConfig",
+    "location": "Entity/MovementConfig"
+  },
+  {
+    "id": "NPCGroup",
+    "name": "NPCGroup",
+    "location": "NPC/Groups"
+  },
+  {
+    "id": "NPCRole",
+    "name": "NPCRole",
+    "location": "NPC/Roles"
+  },
+  {
+    "id": "ObjectiveAsset",
+    "name": "ObjectiveAsset",
+    "location": "Objective/Objectives"
+  },
+  {
+    "id": "ObjectiveLineAsset",
+    "name": "ObjectiveLineAsset",
+    "location": "Objective/ObjectiveLines"
+  },
+  {
+    "id": "ObjectiveLocationMarkerAsset",
+    "name": "ObjectiveLocationMarkerAsset",
+    "location": "Objective/ObjectiveLocationMarkers"
+  },
+  {
+    "id": "ParticleSpawner",
+    "name": "ParticleSpawner",
+    "location": "Particles"
+  },
+  {
+    "id": "ParticleSystem",
+    "name": "ParticleSystem",
+    "location": "Particles"
+  },
+  {
+    "id": "PortalType",
+    "name": "PortalType",
+    "location": "PortalTypes"
+  },
+  {
+    "id": "PrefabEditorCreationSettings",
+    "name": "PrefabEditorCreationSettings",
+    "location": "PrefabEditorCreationSettings"
+  },
+  {
+    "id": "PrefabListAsset",
+    "name": "PrefabListAsset",
+    "location": "PrefabList"
+  },
+  {
+    "id": "Projectile",
+    "name": "Projectile",
+    "location": "Projectiles"
+  },
+  {
+    "id": "ProjectileConfig",
+    "name": "ProjectileConfig",
+    "location": "ProjectileConfigs"
+  },
+  {
+    "id": "ReachLocationMarkerAsset",
+    "name": "ReachLocationMarkerAsset",
+    "location": "Objective/ReachLocationMarkers"
+  },
+  {
+    "id": "RepulsionConfig",
+    "name": "RepulsionConfig",
+    "location": "Entity/Repulsion"
+  },
+  {
+    "id": "RepulstionConfig",
+    "name": "RepulstionConfig",
+    "location": "todo"
+  },
+  {
+    "id": "ReputationGroup",
+    "name": "ReputationGroup",
+    "location": "NPC/Reputation/Groups"
+  },
+  {
+    "id": "ReputationRank",
+    "name": "ReputationRank",
+    "location": "NPC/Reputation/Ranks"
+  },
+  {
+    "id": "ResourceType",
+    "name": "ResourceType",
+    "location": "Item/ResourceTypes"
+  },
+  {
+    "id": "ResponseCurve",
+    "name": "ResponseCurve",
+    "location": "ResponseCurves"
+  },
+  {
+    "id": "ReverbEffect",
+    "name": "ReverbEffect",
+    "location": "Audio/Reverb"
+  },
+  {
+    "id": "RootInteraction",
+    "name": "RootInteraction",
+    "location": "Item/RootInteractions"
+  },
+  {
+    "id": "ScriptedBrushAsset",
+    "name": "ScriptedBrushAsset",
+    "location": "ScriptedBrushes"
+  },
+  {
+    "id": "SettingsAsset",
+    "name": "SettingsAsset",
+    "location": "HytaleGenerator/Settings"
+  },
+  {
+    "id": "ShopAsset",
+    "name": "ShopAsset",
+    "location": "Shops"
+  },
+  {
+    "id": "SoundEvent",
+    "name": "SoundEvent",
+    "location": "Audio/SoundEvents"
+  },
+  {
+    "id": "SoundSet",
+    "name": "SoundSet",
+    "location": "Audio/SoundSets"
+  },
+  {
+    "id": "SpawnMarker",
+    "name": "SpawnMarker",
+    "location": "NPC/Spawn/Markers"
+  },
+  {
+    "id": "SpawnSuppression",
+    "name": "SpawnSuppression",
+    "location": "NPC/Spawn/Suppression"
+  },
+  {
+    "id": "TagPattern",
+    "name": "TagPattern",
+    "location": "TagPatterns"
+  },
+  {
+    "id": "Trail",
+    "name": "Trail",
+    "location": "Entity/Trails"
+  },
+  {
+    "id": "UnarmedInteractions",
+    "name": "UnarmedInteractions",
+    "location": "Item/Unarmed/Interactions"
+  },
+  {
+    "id": "ViewBobbing",
+    "name": "ViewBobbing",
+    "location": "Camera/ViewBobbing"
+  },
+  {
+    "id": "Weather",
+    "name": "Weather",
+    "location": "Weathers"
+  },
+  {
+    "id": "WordList",
+    "name": "WordList",
+    "location": "WordLists"
+  },
+  {
+    "id": "WorldNPCSpawn",
+    "name": "WorldNPCSpawn",
+    "location": "NPC/Spawn/World"
+  },
+  {
+    "id": "WorldStructureAsset",
+    "name": "WorldStructureAsset",
+    "location": "HytaleGenerator/WorldStructures"
+  }
 ]

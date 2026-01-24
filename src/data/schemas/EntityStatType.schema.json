@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "EntityStatType.json",
+  "title": "EntityStatType",
+  "description": "EntityStatType asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "InitialValue": {
+      "anyOf": [
+        {
+          "type": "number",
+          "hytale": {
+            "type": "number"
+          },
+          "default": 0
+        },
+        {
+          "type": "string",
+          "hytale": {
+            "type": "string"
+          },
+          "pattern": "^(-?Infinity|NaN)$"
+        }
+      ],
+      "hytale": {
+        "type": "Number",
+        "inheritsProperty": true
+      }
+    },
+    "Min": {
+      "anyOf": [
+        {
+          "type": "number",
+          "hytale": {
+            "type": "number"
+          },
+          "default": 0
+        },
+        {
+          "type": "string",
+          "hytale": {
+            "type": "string"
+          },
+          "pattern": "^(-?Infinity|NaN)$"
+        }
+      ],
+      "hytale": {
+        "type": "Number",
+        "inheritsProperty": true
+      }
+    },
+    "Max": {
+      "anyOf": [
+        {
+          "type": "number",
+          "hytale": {
+            "type": "number"
+          },
+          "default": 0
+        },
+        {
+          "type": "string",
+          "hytale": {
+            "type": "string"
+          },
+          "pattern": "^(-?Infinity|NaN)$"
+        }
+      ],
+      "hytale": {
+        "type": "Number",
+        "inheritsProperty": true
+      }
+    },
+    "Shared": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean",
+        "inheritsProperty": true
+      },
+      "default": false
+    },
+    "Regenerating": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array",
+        "inheritsProperty": true
+      },
+      "items": {
+        "$ref": "common.json#/definitions/Regenerating"
+      }
+    },
+    "MinValueEffects": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/EntityStatEffects",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "MaxValueEffects": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/EntityStatEffects",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "ResetType": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "EntityStatResetBehavior",
+      "enumDescriptions": [
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum",
+        "inheritsProperty": true
+      },
+      "enum": [
+        "InitialValue",
+        "MaxValue"
+      ],
+      "default": "InitialValue"
+    },
+    "IgnoreInvulnerability": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean",
+        "inheritsProperty": true
+      },
+      "default": false
+    }
+  }
+}

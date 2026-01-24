@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "BuilderToolItemReferenceAsset.json",
+  "title": "BuilderToolItemReferenceAsset",
+  "description": "BuilderToolItemReferenceAsset asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "BuilderToolItems": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

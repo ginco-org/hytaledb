@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "NPCGroup.json",
+  "title": "NPCGroup",
+  "description": "Defines a group or collection of NPC types.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "IncludeRoles": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "description": "A list of individual types to include.",
+      "markdownDescription": "A list of individual types to include.",
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    },
+    "ExcludeRoles": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "description": "A list of individual types to exclude.",
+      "markdownDescription": "A list of individual types to exclude.",
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    },
+    "IncludeGroups": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "description": "A list of other groups to include.",
+      "markdownDescription": "A list of other groups to include.",
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    },
+    "ExcludeGroups": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "description": "A list of other groups to exclude.",
+      "markdownDescription": "A list of other groups to exclude.",
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

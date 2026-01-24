@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ItemDropList.json",
+  "title": "ItemDropList",
+  "description": "ItemDropList asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Container": {
+      "anyOf": [
+        {
+          "title": "Type Selector",
+          "anyOf": [
+            {
+              "$ref": "common.json#/definitions/ChoiceItemDropContainer"
+            },
+            {
+              "$ref": "common.json#/definitions/DroplistItemDropContainer"
+            },
+            {
+              "$ref": "common.json#/definitions/EmptyItemDropContainer"
+            },
+            {
+              "$ref": "common.json#/definitions/MultipleItemDropContainer"
+            },
+            {
+              "$ref": "common.json#/definitions/SingleItemDropContainer"
+            }
+          ],
+          "hytaleSchemaTypeField": {
+            "property": "Type",
+            "values": [
+              "Choice",
+              "Droplist",
+              "Empty",
+              "Multiple",
+              "Single"
+            ]
+          },
+          "hytale": {
+            "inheritsProperty": true,
+            "mergesProperties": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

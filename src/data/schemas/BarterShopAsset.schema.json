@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "BarterShopAsset.json",
+  "title": "BarterShopAsset",
+  "description": "BarterShopAsset asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "DisplayNameKey": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      }
+    },
+    "RefreshInterval": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/RefreshInterval"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "Trades": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "$ref": "common.json#/definitions/BarterTrade"
+      }
+    },
+    "TradeSlots": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "title": "Type Selector",
+        "anyOf": [
+          {
+            "$ref": "common.json#/definitions/FixedTradeSlot"
+          },
+          {
+            "$ref": "common.json#/definitions/PoolTradeSlot"
+          }
+        ],
+        "hytaleSchemaTypeField": {
+          "property": "Type",
+          "values": [
+            "Fixed",
+            "Pool"
+          ]
+        },
+        "hytale": {
+          "mergesProperties": true
+        }
+      }
+    },
+    "RestockHour": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer"
+      }
+    }
+  }
+}

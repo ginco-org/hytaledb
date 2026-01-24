@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ObjectiveLineAsset.json",
+  "title": "ObjectiveLineAsset",
+  "description": "ObjectiveLineAsset asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Category": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true
+      }
+    },
+    "ObjectiveIds": {
+      "type": "array",
+      "hytale": {
+        "type": "array",
+        "inheritsProperty": true
+      },
+      "items": {
+        "type": "string",
+        "hytaleAssetRef": "ObjectiveAsset",
+        "hytale": {
+          "type": "string"
+        }
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "NextObjectiveLineIds": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array",
+        "inheritsProperty": true
+      },
+      "items": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
+      },
+      "uniqueItems": true
+    },
+    "TitleId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true,
+        "uiEditorComponent": {
+          "component": "LocalizationKey",
+          "keyTemplate": "objectivelines.{assetId}.title",
+          "generateDefaultKey": true
+        }
+      }
+    },
+    "DescriptionId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true,
+        "uiEditorComponent": {
+          "component": "LocalizationKey",
+          "keyTemplate": "objectivelines.{assetId}.desc",
+          "generateDefaultKey": true
+        }
+      }
+    }
+  }
+}

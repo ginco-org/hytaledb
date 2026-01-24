@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "WorldStructureAsset.json",
+  "title": "WorldStructureAsset",
+  "description": "WorldStructureAsset asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ]
+}

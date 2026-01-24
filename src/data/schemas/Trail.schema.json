@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Trail.json",
+  "title": "Trail",
+  "description": "Trail asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "TexturePath": {
+      "type": "string",
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true
+      },
+      "hytaleCommonAsset": {
+        "requiredRoots": [
+          "Trails/"
+        ],
+        "requiredExtension": "png",
+        "isUIAsset": false
+      }
+    },
+    "LifeSpan": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "Roll": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "Start": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/Edge",
+          "hytale": {
+            "inheritsProperty": true,
+            "uiCollapsedByDefault": false
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "End": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/Edge",
+          "hytale": {
+            "inheritsProperty": true,
+            "uiCollapsedByDefault": false
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "LightInfluence": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0
+    },
+    "RenderMode": {
+      "type": "string",
+      "title": "FXRenderMode",
+      "enumDescriptions": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum",
+        "inheritsProperty": true
+      },
+      "enum": [
+        "BlendLinear",
+        "BlendAdd",
+        "Erosion",
+        "Distortion"
+      ],
+      "default": "BlendLinear"
+    },
+    "IntersectionHighlight": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/IntersectionHighlight",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "Smooth": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean",
+        "inheritsProperty": true
+      },
+      "default": false
+    },
+    "Animation": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/Animation@1",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

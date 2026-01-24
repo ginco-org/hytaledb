@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "SettingsAsset.json",
+  "title": "SettingsAsset",
+  "description": "SettingsAsset asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "StatsCheckpoints": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "type": "integer",
+        "hytale": {
+          "type": "integer"
+        }
+      }
+    },
+    "CustomConcurrency": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer"
+      },
+      "exclusiveMinimum": -2,
+      "default": -1
+    },
+    "BufferCapacityFactor": {
+      "type": "number",
+      "hytale": {
+        "type": "number"
+      },
+      "minimum": 0,
+      "default": 0.3
+    },
+    "TargetViewDistance": {
+      "type": "number",
+      "hytale": {
+        "type": "number"
+      },
+      "minimum": 0,
+      "default": 512
+    },
+    "TargetPlayerCount": {
+      "type": "number",
+      "hytale": {
+        "type": "number"
+      },
+      "minimum": 0,
+      "default": 3
+    }
+  }
+}

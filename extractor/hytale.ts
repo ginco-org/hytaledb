@@ -1,8 +1,10 @@
 // Script to download a Hytale server release
 
-import { existsSync, readFileSync, writeFileSync, mkdirSync } from "fs";
+import { existsSync, readFileSync, writeFileSync, mkdirSync, rmSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { createWriteStream } from "fs";
+import { pipeline } from "stream/promises";
 
 declare global {
   interface ImportMeta {
@@ -284,6 +286,70 @@ export async function getTokens(): Promise<TokenResponse> {
   );
   saveCachedToken(tokens.refresh_token);
   return tokens;
+}
+
+/**
+ * Downloads a Hytale server release ZIP or returns cached path.
+ * @param patchline - The patchline to download ("release", "pre-release", etc)
+ * @param version - Optional specific version to download. If not specified, uses latest for patchline
+ * @returns Path to the downloaded/cached server ZIP file
+ */
+export async function getServer(patchline: string, version?: string): Promise<string> {
+  const cacheDir = join(__dirname, "downloads");
+  
+  // Create cache directory if it doesn't exist
+  if (!existsSync(cacheDir)) {
+    mkdirSync(cacheDir, { recursive: true });
+  }
+
+  // Get tokens
+  const tokens = await getTokens();
+
+  // Get version info for the patchline
+  const versionInfo = await getVersionInfo(patchline, tokens.access_token);
+  const selectedVersion = version || versionInfo.version;
+
+  // Cache path for this version's zip
+  const serverZipPath = join(cacheDir, `${patchline}-${selectedVersion}.zip`);
+
+  // Check if already cached
+  if (existsSync(serverZipPath)) {
+    console.log(`✓ Using cached server ZIP: ${serverZipPath}`);
+    return serverZipPath;
+  }
+
+  // Download the server
+  console.log(`\n⬇ Downloading HytaleServer ${patchline}@${selectedVersion}...`);
+  const downloadUrl = await getDownloadUrl(versionInfo.download_url, tokens.access_token);
+
+  try {
+    // Download the zip file
+    const response = await fetch(downloadUrl);
+    if (!response.ok) {
+      throw new Error(`Download failed: ${response.status}`);
+    }
+
+    // Stream download to file
+    const fileStream = createWriteStream(serverZipPath);
+    
+    if (!response.body) {
+      throw new Error("No response body");
+    }
+
+    await pipeline(
+      response.body,
+      fileStream
+    );
+
+    console.log(`✓ Downloaded to: ${serverZipPath}\n`);
+    return serverZipPath;
+  } catch (error) {
+    // Clean up on error
+    if (existsSync(serverZipPath)) {
+      rmSync(serverZipPath, { force: true });
+    }
+    throw error;
+  }
 }
 
 export {

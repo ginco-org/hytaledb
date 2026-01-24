@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ReachLocationMarkerAsset.json",
+  "title": "ReachLocationMarkerAsset",
+  "description": "ReachLocationMarkerAsset asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Radius": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "exclusiveMinimum": 0,
+              "default": 1
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "Name": {
+      "type": "string",
+      "hytale": {
+        "type": "string"
+      },
+      "pattern": "[^\\s]",
+      "minLength": 1
+    }
+  }
+}

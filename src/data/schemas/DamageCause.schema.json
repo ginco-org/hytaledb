@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "DamageCause.json",
+  "title": "DamageCause",
+  "description": "DamageCause asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Inherits": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      }
+    },
+    "DurabilityLoss": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": false
+    },
+    "StaminaLoss": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": false
+    },
+    "BypassResistances": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": false
+    },
+    "DamageTextColor": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      }
+    },
+    "AnimationId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      },
+      "default": "Hurt"
+    },
+    "DeathAnimationId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytale": {
+        "type": "string"
+      },
+      "default": "Death"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "SoundSet.json",
+  "title": "SoundSet",
+  "description": "SoundSet asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "SoundEvents": {
+      "type": "object",
+      "title": "Map",
+      "hytale": {
+        "type": "object",
+        "inheritsProperty": true,
+        "uiCollapsedByDefault": false
+      },
+      "additionalProperties": {
+        "type": "string",
+        "hytaleAssetRef": "SoundEvent",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    },
+    "Category": {
+      "type": "string",
+      "title": "SoundCategory",
+      "enumDescriptions": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum",
+        "inheritsProperty": true
+      },
+      "enum": [
+        "Music",
+        "Ambient",
+        "SFX",
+        "UI"
+      ],
+      "default": "SFX"
+    }
+  }
+}

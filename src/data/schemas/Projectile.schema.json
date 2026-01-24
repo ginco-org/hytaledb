@@ -1,0 +1,371 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Projectile.json",
+  "title": "Projectile",
+  "description": "Projectile asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Appearance": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytaleAssetRef": "ModelAsset",
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true
+      }
+    },
+    "Radius": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "Height": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "VerticalCenterShot": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "HorizontalCenterShot": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "DepthShot": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "PitchAdjustShot": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean",
+        "inheritsProperty": true
+      },
+      "default": false
+    },
+    "MuzzleVelocity": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "TerminalVelocity": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "Gravity": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "Bounciness": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "ImpactSlowdown": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "SticksVertically": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean",
+        "inheritsProperty": true
+      },
+      "default": false
+    },
+    "ComputeYaw": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean",
+        "inheritsProperty": true
+      },
+      "default": true
+    },
+    "ComputePitch": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean",
+        "inheritsProperty": true
+      },
+      "default": true
+    },
+    "ComputeRoll": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean",
+        "inheritsProperty": true
+      },
+      "default": true
+    },
+    "TimeToLive": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "BounceSoundEventId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytaleAssetRef": "SoundEvent",
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true
+      }
+    },
+    "BounceParticles": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/WorldParticle",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "HitSoundEventId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytaleAssetRef": "SoundEvent",
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true
+      }
+    },
+    "HitParticles": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/WorldParticle",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "Damage": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "DeadTime": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "MissSoundEventId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytaleAssetRef": "SoundEvent",
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true
+      }
+    },
+    "MissParticles": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/WorldParticle",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "DeadTimeMiss": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 10
+    },
+    "DeathSoundEventId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "hytaleAssetRef": "SoundEvent",
+      "hytale": {
+        "type": "string",
+        "inheritsProperty": true
+      }
+    },
+    "DeathParticles": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/WorldParticle",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "DeathEffectsOnHit": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean",
+        "inheritsProperty": true
+      },
+      "default": false
+    },
+    "ExplosionConfig": {
+      "description": "The explosion config associated with this projectile",
+      "markdownDescription": "The explosion config associated with this projectile",
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/ExplosionConfig",
+          "hytale": {
+            "inheritsProperty": true
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "Density": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 2000
+    },
+    "WaterTerminalVelocityMultiplier": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 1
+    },
+    "WaterHitImpulseLoss": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "DampingRotation": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 0
+    },
+    "RotationSpeedVelocityRatio": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 2
+    },
+    "SwimmingDampingFactor": {
+      "type": "number",
+      "hytale": {
+        "type": "number",
+        "inheritsProperty": true
+      },
+      "default": 1
+    },
+    "RotationMode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "title": "ROTATION_MODE",
+      "enumDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "markdownEnumDescriptions": [
+        "",
+        "",
+        ""
+      ],
+      "hytale": {
+        "type": "Enum",
+        "inheritsProperty": true
+      },
+      "enum": [
+        "None",
+        "Velocity",
+        "VelocityDamped"
+      ],
+      "default": "Velocity"
+    }
+  }
+}

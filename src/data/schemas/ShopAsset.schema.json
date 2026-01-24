@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ShopAsset.json",
+  "title": "ShopAsset",
+  "description": "ShopAsset asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Content": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "title": "Type Selector",
+        "anyOf": [
+          {
+            "$ref": "common.json#/definitions/ShopElement"
+          }
+        ],
+        "hytaleSchemaTypeField": {
+          "property": "Type",
+          "values": [
+            "ShopElement"
+          ]
+        },
+        "hytale": {
+          "mergesProperties": true
+        }
+      }
+    }
+  }
+}

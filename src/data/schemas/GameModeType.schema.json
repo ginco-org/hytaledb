@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "GameModeType.json",
+  "title": "GameModeType",
+  "description": "GameModeType asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "PermissionGroups": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    },
+    "InteractionsOnEnter": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "string",
+              "title": "Reference to RootInteraction",
+              "hytale": {
+                "type": "string"
+              }
+            },
+            {
+              "$ref": "RootInteraction.json#"
+            }
+          ],
+          "hytaleAssetRef": "RootInteraction"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

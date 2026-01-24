@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ObjectiveLocationMarkerAsset.json",
+  "title": "ObjectiveLocationMarkerAsset",
+  "description": "ObjectiveLocationMarkerAsset asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Setup": {
+      "title": "Type Selector",
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/SetupObjective"
+        },
+        {
+          "$ref": "common.json#/definitions/SetupObjectiveLine"
+        }
+      ],
+      "hytaleSchemaTypeField": {
+        "property": "Type",
+        "values": [
+          "Objective",
+          "ObjectiveLine"
+        ]
+      },
+      "hytale": {
+        "mergesProperties": true
+      }
+    },
+    "Area": {
+      "title": "Type Selector",
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/ObjectiveLocationAreaBox"
+        },
+        {
+          "$ref": "common.json#/definitions/ObjectiveLocationAreaRadius"
+        }
+      ],
+      "hytaleSchemaTypeField": {
+        "property": "Type",
+        "values": [
+          "Box",
+          "Radius"
+        ]
+      },
+      "hytale": {
+        "mergesProperties": true
+      }
+    },
+    "EnvironmentIds": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "type": "string",
+        "hytaleAssetRef": "Environment",
+        "hytale": {
+          "type": "string"
+        }
+      }
+    },
+    "TriggerConditions": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "title": "Type Selector",
+        "anyOf": [
+          {
+            "$ref": "common.json#/definitions/HourRangeTriggerCondition"
+          },
+          {
+            "$ref": "common.json#/definitions/WeatherTriggerCondition"
+          }
+        ],
+        "hytaleSchemaTypeField": {
+          "property": "Type",
+          "values": [
+            "HourRange",
+            "Weather"
+          ]
+        },
+        "hytale": {
+          "mergesProperties": true
+        }
+      }
+    }
+  }
+}

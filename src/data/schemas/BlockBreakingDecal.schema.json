@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "BlockBreakingDecal.json",
+  "title": "BlockBreakingDecal",
+  "description": "BlockBreakingDecal asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "StageTextures": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "type": "string",
+        "hytale": {
+          "type": "string"
+        },
+        "hytaleCommonAsset": {
+          "requiredRoots": [
+            "Blocks/",
+            "BlockTextures/",
+            "Items/",
+            "NPC/",
+            "Resources/",
+            "VFX/"
+          ],
+          "requiredExtension": "png",
+          "isUIAsset": false
+        }
+      }
+    }
+  }
+}

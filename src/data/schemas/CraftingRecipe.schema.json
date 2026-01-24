@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "CraftingRecipe.json",
+  "title": "CraftingRecipe",
+  "description": "CraftingRecipe asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Input": {
+      "type": "array",
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "$ref": "common.json#/definitions/MaterialQuantity"
+      }
+    },
+    "Output": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "$ref": "common.json#/definitions/MaterialQuantity"
+      }
+    },
+    "PrimaryOutput": {
+      "anyOf": [
+        {
+          "$ref": "common.json#/definitions/MaterialQuantity"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "OutputQuantity": {
+      "type": "integer",
+      "hytale": {
+        "type": "integer"
+      },
+      "default": 1
+    },
+    "BenchRequirement": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "hytale": {
+        "type": "array"
+      },
+      "items": {
+        "$ref": "common.json#/definitions/BenchRequirement"
+      }
+    },
+    "TimeSeconds": {
+      "type": "number",
+      "hytale": {
+        "type": "number"
+      },
+      "minimum": 0,
+      "default": 0
+    },
+    "KnowledgeRequired": {
+      "type": "boolean",
+      "hytale": {
+        "type": "boolean"
+      },
+      "default": false
+    },
+    "RequiredMemoriesLevel": {
+      "type": "integer",
+      "description": "The level of Memories starts from 1, meaning a recipe with a RequiredMemoriesLevel set at 1 will always be available to players.",
+      "markdownDescription": "The level of Memories starts from 1, meaning a recipe with a RequiredMemoriesLevel set at 1 will always be available to players.",
+      "hytale": {
+        "type": "integer"
+      },
+      "minimum": 1,
+      "default": 1
+    }
+  }
+}

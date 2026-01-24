@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "BlockSoundSet.json",
+  "title": "BlockSoundSet",
+  "description": "BlockSoundSet asset type",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "SoundEvents": {
+      "type": "object",
+      "title": "Map of BlockSoundEvent",
+      "hytale": {
+        "type": "EnumMap",
+        "inheritsProperty": true,
+        "uiCollapsedByDefault": false
+      },
+      "properties": {
+        "Walk": {
+          "type": "string",
+          "hytaleAssetRef": "SoundEvent",
+          "hytale": {
+            "type": "string"
+          }
+        },
+        "Land": {
+          "type": "string",
+          "hytaleAssetRef": "SoundEvent",
+          "hytale": {
+            "type": "string"
+          }
+        },
+        "MoveIn": {
+          "type": "string",
+          "hytaleAssetRef": "SoundEvent",
+          "hytale": {
+            "type": "string"
+          }
+        },
+        "MoveOut": {
+          "type": "string",
+          "hytaleAssetRef": "SoundEvent",
+          "hytale": {
+            "type": "string"
+          }
+        },
+        "Hit": {
+          "type": "string",
+          "hytaleAssetRef": "SoundEvent",
+          "hytale": {
+            "type": "string"
+          }
+        },
+        "Break": {
+          "type": "string",
+          "hytaleAssetRef": "SoundEvent",
+          "hytale": {
+            "type": "string"
+          }
+        },
+        "Build": {
+          "type": "string",
+          "hytaleAssetRef": "SoundEvent",
+          "hytale": {
+            "type": "string"
+          }
+        },
+        "Clone": {
+          "type": "string",
+          "hytaleAssetRef": "SoundEvent",
+          "hytale": {
+            "type": "string"
+          }
+        },
+        "Harvest": {
+          "type": "string",
+          "hytaleAssetRef": "SoundEvent",
+          "hytale": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": {
+        "type": "string",
+        "hytaleAssetRef": "SoundEvent",
+        "hytale": {
+          "type": "string"
+        }
+      },
+      "propertyNames": {
+        "hytale": {
+          "type": "string"
+        },
+        "enum": [
+          "Walk",
+          "Land",
+          "MoveIn",
+          "MoveOut",
+          "Hit",
+          "Break",
+          "Build",
+          "Clone",
+          "Harvest"
+        ]
+      }
+    },
+    "MoveInRepeatRange": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "title": "FloatRange",
+      "hytale": {
+        "type": "array",
+        "inheritsProperty": true
+      },
+      "items": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              }
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number"
+          }
+        },
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              }
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number"
+          }
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "AudioCategory.json",
+  "title": "AudioCategory",
+  "description": "An asset used to define an audio category. Can be used to adjust the volume of all sound events that reference a given category. Note: When using an inheritance structure, these categories act a bit like an audio bus where the category's volume is combined with the volumes further up in the hierarchy. e.g. if the category's volume is 4dB and the parent is -2dB, the final volume will be 2dB.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "base.schema.json"
+    }
+  ],
+  "properties": {
+    "Volume": {
+      "description": "Volume adjustment for the audio category in decibels.",
+      "markdownDescription": "Volume adjustment for the audio category in decibels.",
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "type": "number",
+              "hytale": {
+                "type": "number"
+              },
+              "minimum": -100,
+              "maximum": 10,
+              "default": 0
+            },
+            {
+              "type": "string",
+              "hytale": {
+                "type": "string"
+              },
+              "pattern": "^(-?Infinity|NaN)$"
+            }
+          ],
+          "hytale": {
+            "type": "Number",
+            "inheritsProperty": true,
+            "uiEditorComponent": {
+              "component": "Number",
+              "suffix": " dB"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}
