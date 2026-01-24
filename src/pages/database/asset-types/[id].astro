@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
-import SchemaViewer from "../../../components/SchemaViewer";
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import SchemaViewer from "../../../components/SchemaViewer.astro";
 
 // Load all asset schemas at build time
 const schemaFiles = import.meta.glob("../../../data/schemas/*.schema.json", {
@@ -55,7 +56,14 @@ const schemaUrl = `https://hytaledb.ginco.gg/schemas/${asset.data.id}.schema.jso
   <h2>Schema</h2>
 
   {assetSchema ? (
-    <SchemaViewer schema={assetSchema} name={asset.data.name} client:only="react" />
+    <Tabs>
+      <TabItem label="Tree View">
+        <SchemaViewer schema={assetSchema} name={asset.data.name} />
+      </TabItem>
+      <TabItem label="JSON">
+        <pre><code>{JSON.stringify(assetSchema, null, 2)}</code></pre>
+      </TabItem>
+    </Tabs>
   ) : (
     <p><em>Schema not yet documented.</em></p>
   )}
@@ -90,15 +98,6 @@ const schemaUrl = `https://hytaledb.ginco.gg/schemas/${asset.data.id}.schema.jso
 
   .copy-btn:hover {
     opacity: 0.9;
-  }
-
-  /* Schema viewer container styling */
-  :global(.schema-viewer-container) {
-    margin: 2rem 0;
-    background: var(--sl-color-bg-sidebar);
-    border: 1px solid var(--sl-color-gray-5);
-    border-radius: 0.5rem;
-    padding: 1rem;
   }
 </style>
 

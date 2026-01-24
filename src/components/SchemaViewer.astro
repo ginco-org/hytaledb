@@ -1,0 +1,118 @@
+---
+import { FileTree } from "@astrojs/starlight/components";
+
+interface Props {
+  schema: any;
+  name?: string;
+}
+
+interface PropertyInfo {
+  name: string;
+  type: string;
+  description?: string;
+  required: boolean;
+  properties?: PropertyInfo[];
+}
+
+function getTypeString(schema: any): string {
+  if (schema.type === "array") {
+    if (schema.items) {
+      const itemType = getTypeString(schema.items);
+      return `array<${itemType}>`;
+    }
+    return "array";
+  }
+  if (schema.enum) {
+    return `enum[${schema.enum.join("|")}]`;
+  }
+  if (schema.$ref) {
+    const refName = schema.$ref.split("/").pop();
+    return `ref(${refName})`;
+  }
+  return schema.type || "object";
+}
+
+function extractProperties(schema: any, required: string[] = []): PropertyInfo[] {
+  if (!schema.properties) return [];
+
+  return Object.entries(schema.properties).map(([name, propSchema]: [string, any]) => {
+    const isRequired = required.includes(name);
+    const typeStr = getTypeString(propSchema);
+    const description = propSchema.description;
+
+    const prop: PropertyInfo = {
+      name,
+      type: typeStr,
+      description,
+      required: isRequired,
+    };
+
+    // For nested objects, extract their properties
+    if (propSchema.type === "object" && propSchema.properties) {
+      prop.properties = extractProperties(propSchema, propSchema.required || []);
+    }
+
+    return prop;
+  });
+}
+
+function generateMarkdownHTML(props: PropertyInfo[], indent = ""): string[] {
+  const lines: string[] = [];
+
+  for (const prop of props) {
+    const hasChildren = prop.properties && prop.properties.length > 0;
+    const highlightClass = prop.required ? 'highlight' : '';
+    
+    if (hasChildren) {
+      // Directory structure matching FileTree output
+      lines.push(`${indent}<li class="directory">`);
+      lines.push(`${indent}  <details open="">`);
+      lines.push(`${indent}    <summary><span class="tree-entry"><span class="${highlightClass}">${prop.name}</span> <span style="font-style: italic; color: var(--sl-color-gray-3);">${prop.type}</span>${prop.description ? ` <span class="comment">${prop.description}</span>` : ''}</span></summary>`);
+      lines.push(`${indent}    <ul>`);
+      
+      // Add nested properties
+      const nestedLines = generateMarkdownHTML(prop.properties, indent + "      ");
+      lines.push(...nestedLines);
+      
+      lines.push(`${indent}    </ul>`);
+      lines.push(`${indent}  </details>`);
+      lines.push(`${indent}</li>`);
+    } else {
+      // File structure matching FileTree output
+      lines.push(`${indent}<li class="file"><span class="tree-entry"><span class="${highlightClass}">${prop.name}</span> <span style="font-style: italic; color: var(--sl-color-gray-3);">${prop.type}</span>${prop.description ? ` <span class="comment">${prop.description}</span>` : ''}</span></li>`);
+    }
+  }
+
+  return lines;
+}
+
+const { schema, name } = Astro.props;
+
+// Extract base properties
+const requiredFields = schema.required || [];
+const properties = extractProperties(schema, requiredFields);
+
+// Generate HTML or fallback message
+let output: string;
+
+if (properties.length === 0) {
+  // If no properties found, show schema structure info
+  if (schema.allOf) {
+    output = `<p style="color: var(--sl-color-gray-2);">This schema extends a base schema. Check the JSON view for inheritance details.</p>`;
+  } else if (schema.$ref) {
+    output = `<p style="color: var(--sl-color-gray-2);">This schema is a reference to another schema. Check the JSON view for details.</p>`;
+  } else {
+    output = `<p style="color: var(--sl-color-gray-2);">No properties defined in this schema.</p>`;
+  }
+} else {
+  const htmlLines = generateMarkdownHTML(properties);
+  output = `<ul>\n${htmlLines.join("\n")}\n</ul>`;
+}
+---
+
+{output.startsWith('<ul>') ? (
+  <FileTree class="not-content" data-pagefind-ignore="true" set:html={output} />
+) : (
+  <div set:html={output} />
+)}
+
