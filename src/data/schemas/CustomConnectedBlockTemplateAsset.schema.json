@@ -2,19 +2,21 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://hytaledb.ginco.gg/schemas/CustomConnectedBlockTemplateAsset.schema.json",
   "title": "CustomConnectedBlockTemplateAsset",
-  "description": "Defines custom connection rules for blocks that connect to adjacent blocks",
+  "description": "Defines custom connection rules for blocks that connect to adjacent blocks. This asset type allows blocks to change their visual appearance or shape based on neighboring blocks.",
   "type": "object",
   "allOf": [
     { "$ref": "base.schema.json" }
   ],
   "properties": {
-    "ConnectsToOtherMaterials": {
-      "type": "boolean",
-      "description": "Whether this block connects to blocks of other materials"
-    },
     "DontUpdateAfterInitialPlacement": {
       "type": "boolean",
-      "description": "If true, the block shape won't update when neighboring blocks change"
+      "default": false,
+      "description": "Default to false. When true, will not update the connected block after initial placement. Neighboring block updates won't affect this block when true."
+    },
+    "ConnectsToOtherMaterials": {
+      "type": "boolean",
+      "default": true,
+      "description": "Defaults to true. If true, the material will connect to other materials of different block type sets, if false, the material will only connect to its own block types within the material"
     },
     "DefaultShape": {
       "type": "string",
@@ -22,9 +24,9 @@
     },
     "Shapes": {
       "type": "object",
-      "description": "Map of shape names to their pattern matching rules",
+      "description": "Map of shape names to their pattern matching rules. Each shape defines patterns that determine when it should be used and face tags for the shape.",
       "additionalProperties": {
-        "$ref": "#/$defs/Shape"
+        "$ref": "#/$defs/ConnectedBlockShape"
       }
     }
   },
@@ -37,16 +39,40 @@
       "type": "string",
       "enum": ["Zero", "Ninety", "OneEighty", "TwoSeventy"]
     },
-    "FaceTags": {
+    "ConnectedBlockFaceTags": {
       "type": "object",
-      "description": "Tags assigned to each face of the block",
+      "description": "Tags assigned to each face of the block. Used for pattern matching between connected blocks.",
       "properties": {
-        "North": { "type": "array", "items": { "type": "string" } },
-        "East": { "type": "array", "items": { "type": "string" } },
-        "South": { "type": "array", "items": { "type": "string" } },
-        "West": { "type": "array", "items": { "type": "string" } },
-        "Up": { "type": "array", "items": { "type": "string" } },
-        "Down": { "type": "array", "items": { "type": "string" } }
+        "North": { 
+          "type": "array", 
+          "items": { "type": "string" },
+          "description": "Tags for the north-facing side"
+        },
+        "East": { 
+          "type": "array", 
+          "items": { "type": "string" },
+          "description": "Tags for the east-facing side"
+        },
+        "South": { 
+          "type": "array", 
+          "items": { "type": "string" },
+          "description": "Tags for the south-facing side"
+        },
+        "West": { 
+          "type": "array", 
+          "items": { "type": "string" },
+          "description": "Tags for the west-facing side"
+        },
+        "Up": { 
+          "type": "array", 
+          "items": { "type": "string" },
+          "description": "Tags for the upward-facing side"
+        },
+        "Down": { 
+          "type": "array", 
+          "items": { "type": "string" },
+          "description": "Tags for the downward-facing side"
+        }
       },
       "additionalProperties": false
     },
@@ -114,15 +140,15 @@
           "description": "Shape names to match"
         },
         "FaceTags": {
-          "$ref": "#/$defs/FaceTags",
+          "$ref": "#/$defs/ConnectedBlockFaceTags",
           "description": "Face tags the neighbor must have"
         }
       },
       "additionalProperties": false
     },
-    "Pattern": {
+    "CustomTemplateConnectedBlockPattern": {
       "type": "object",
-      "description": "A pattern to match for selecting this shape",
+      "description": "A pattern to match for selecting this shape. Must have a Type field that identifies the pattern implementation.",
       "properties": {
         "Type": {
           "type": "string",
@@ -159,17 +185,17 @@
       },
       "additionalProperties": false
     },
-    "Shape": {
+    "ConnectedBlockShape": {
       "type": "object",
-      "description": "A shape definition with patterns and face tags",
+      "description": "A shape definition with patterns and face tags. Defines when a particular block shape should be used based on neighboring blocks.",
       "properties": {
         "PatternsToMatchAnyOf": {
           "type": "array",
-          "items": { "$ref": "#/$defs/Pattern" },
+          "items": { "$ref": "#/$defs/CustomTemplateConnectedBlockPattern" },
           "description": "Patterns to match - shape is used if any pattern matches"
         },
         "FaceTags": {
-          "$ref": "#/$defs/FaceTags",
+          "$ref": "#/$defs/ConnectedBlockFaceTags",
           "description": "Tags for each face when this shape is active"
         }
       },
