@@ -50,7 +50,7 @@ function formatSize(bytes: number): string {
             <td class="mono">{v.data.version}</td>
             <td class="mono commit">{v.data.commit}</td>
             <td>{formatSize(v.data.size)}</td>
-            <td class="mono hash" title={v.data.sha256}>{v.data.sha256.slice(0, 12)}...</td>
+            <td class="mono hash" title={v.data.sha256}>{v.data.sha256}</td>
           </tr>
         ))}
       </tbody>
@@ -78,7 +78,7 @@ function formatSize(bytes: number): string {
             <td class="mono">{v.data.version}</td>
             <td class="mono commit">{v.data.commit}</td>
             <td>{formatSize(v.data.size)}</td>
-            <td class="mono hash" title={v.data.sha256}>{v.data.sha256.slice(0, 12)}...</td>
+            <td class="mono hash" title={v.data.sha256}>{v.data.sha256}</td>
           </tr>
         ))}
       </tbody>
