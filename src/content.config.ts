@@ -17,6 +17,17 @@ const assetTypeSchema = z.object({
 	location: z.string(),
 });
 
+// Schema for server versions
+const versionSchema = z.object({
+	id: z.string(),
+	patchline: z.enum(['release', 'pre-release']),
+	version: z.string(),
+	date: z.string(),
+	commit: z.string(),
+	size: z.number(),
+	sha256: z.string(),
+});
+
 export const collections = {
 	docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
 	blocks: defineCollection({
@@ -26,5 +37,9 @@ export const collections = {
 	assetTypes: defineCollection({
 		loader: file('src/data/asset-types.json'),
 		schema: assetTypeSchema,
+	}),
+	versions: defineCollection({
+		loader: file('src/data/versions.json'),
+		schema: versionSchema,
 	}),
 };

@@ -1,0 +1,143 @@
+---
+import { getCollection } from "astro:content";
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+
+const versions = await getCollection("versions");
+
+// Sort by date descending
+const sortedVersions = versions.sort((a, b) =>
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+// Group by patchline
+const releaseVersions = sortedVersions.filter(v => v.data.patchline === "release");
+const preReleaseVersions = sortedVersions.filter(v => v.data.patchline === "pre-release");
+
+function formatSize(bytes: number): string {
+  return (bytes / 1024 / 1024).toFixed(2) + " MB";
+}
+---
+
+<StarlightPage
+  frontmatter={{
+    title: "Server Versions",
+    description: "Known Hytale server versions available for download.",
+  }}
+>
+  <p>
+    This page tracks known Hytale server versions. There is no official API to list versions,
+    so this list is maintained manually. Total: {versions.length} versions tracked.
+  </p>
+
+  <h2>Release ({releaseVersions.length})</h2>
+  <p class="patchline-desc">Stable release builds.</p>
+
+  <div class="version-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Version</th>
+          <th>Commit</th>
+          <th>Size</th>
+          <th>SHA256</th>
+        </tr>
+      </thead>
+      <tbody>
+        {releaseVersions.map((v) => (
+          <tr>
+            <td>{v.data.date}</td>
+            <td class="mono">{v.data.version}</td>
+            <td class="mono commit">{v.data.commit}</td>
+            <td>{formatSize(v.data.size)}</td>
+            <td class="mono hash" title={v.data.sha256}>{v.data.sha256.slice(0, 12)}...</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Pre-release ({preReleaseVersions.length})</h2>
+  <p class="patchline-desc">Pre-release/beta builds. Updated more frequently.</p>
+
+  <div class="version-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Version</th>
+          <th>Commit</th>
+          <th>Size</th>
+          <th>SHA256</th>
+        </tr>
+      </thead>
+      <tbody>
+        {preReleaseVersions.map((v) => (
+          <tr>
+            <td>{v.data.date}</td>
+            <td class="mono">{v.data.version}</td>
+            <td class="mono commit">{v.data.commit}</td>
+            <td>{formatSize(v.data.size)}</td>
+            <td class="mono hash" title={v.data.sha256}>{v.data.sha256.slice(0, 12)}...</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Notes</h2>
+  <ul>
+    <li>Multiple versions can exist for the same date (different commits)</li>
+    <li>Version format: <code>YYYY.MM.DD-commitHash</code></li>
+    <li>Commit hashes are 9-character git short hashes</li>
+    <li>Historical versions remain accessible if you know the exact version string</li>
+  </ul>
+</StarlightPage>
+
+<style>
+  .patchline-desc {
+    color: var(--sl-color-gray-3);
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .version-table {
+    overflow-x: auto;
+    margin: 1rem 0 2rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  th, td {
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+  }
+
+  th {
+    background: var(--sl-color-gray-6);
+    font-weight: 600;
+  }
+
+  tr:hover {
+    background: var(--sl-color-gray-6);
+  }
+
+  .mono {
+    font-family: monospace;
+  }
+
+  .commit {
+    color: var(--sl-color-gray-3);
+  }
+
+  .hash {
+    color: var(--sl-color-gray-3);
+    cursor: help;
+    font-size: 0.8rem;
+  }
+</style>

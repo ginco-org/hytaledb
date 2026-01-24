@@ -17,6 +17,7 @@ export default defineConfig({
 					items: [
 						{ label: 'Asset Types', link: '/database/asset-types' },
 						{ label: 'Blocks', link: '/database/blocks' },
+						{ label: 'Server Versions', link: '/database/versions' },
 					],
 				},
 				{

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "release-2026.01.24-6e2d4fc36",
+    "patchline": "release",
+    "version": "2026.01.24-6e2d4fc36",
+    "date": "2026-01-24",
+    "commit": "6e2d4fc36",
+    "size": 1495112372,
+    "sha256": "77e8b08465819dc46a03af1377126c3202fae3cd11bbd11afd9b8b2386436b16"
+  },
+  {
+    "id": "release-2026.01.17-4b0f30090",
+    "patchline": "release",
+    "version": "2026.01.17-4b0f30090",
+    "date": "2026-01-17",
+    "commit": "4b0f30090",
+    "size": 1494567950,
+    "sha256": "1b3889f5890c80201ed7c3a9b4b7ee571d0dd21024a56f2c01fe2e7e66ee316f"
+  },
+  {
+    "id": "release-2026.01.15-c04fdfe10",
+    "patchline": "release",
+    "version": "2026.01.15-c04fdfe10",
+    "date": "2026-01-15",
+    "commit": "c04fdfe10",
+    "size": 1494638191,
+    "sha256": "6594f42f06f1f8157d0d1cde0a5b64c0e9b9526ad986dbf03c6fac46db67720e"
+  },
+  {
+    "id": "release-2026.01.13-50e69c385",
+    "patchline": "release",
+    "version": "2026.01.13-50e69c385",
+    "date": "2026-01-13",
+    "commit": "50e69c385",
+    "size": 1494640483,
+    "sha256": "bf32f635771ec3839d0bbaa2582ffcfacf689ab49ede48020a8bba8d9f9a3db0"
+  },
+  {
+    "id": "release-2026.01.13-dcad8778f",
+    "patchline": "release",
+    "version": "2026.01.13-dcad8778f",
+    "date": "2026-01-13",
+    "commit": "dcad8778f",
+    "size": 1494614574,
+    "sha256": "1032096974243a14d722ee835e3367283e293a396db2086e517a3fce8bc85a95"
+  },
+  {
+    "id": "pre-release-2026.01.23-6e2d4fc36",
+    "patchline": "pre-release",
+    "version": "2026.01.23-6e2d4fc36",
+    "date": "2026-01-23",
+    "commit": "6e2d4fc36",
+    "size": 1495111131,
+    "sha256": "9f111237cebbe0c0d88d9afd46e2e215e7c8d15b9ce4ed42e214162b4fb9155b"
+  },
+  {
+    "id": "pre-release-2026.01.22-6f8bdbdc4",
+    "patchline": "pre-release",
+    "version": "2026.01.22-6f8bdbdc4",
+    "date": "2026-01-22",
+    "commit": "6f8bdbdc4",
+    "size": 1495075944,
+    "sha256": "c1f49bf619a0349b61da2fd42b60bc1f23b8c88fd9aaadee618fc02588e698b2"
+  },
+  {
+    "id": "pre-release-2026.01.17-a4cc0e7dd",
+    "patchline": "pre-release",
+    "version": "2026.01.17-a4cc0e7dd",
+    "date": "2026-01-17",
+    "commit": "a4cc0e7dd",
+    "size": 1494581567,
+    "sha256": "b595ce281ded80f8f91422672574004a5555c83a4d6933b05a19ca48eb109056"
+  },
+  {
+    "id": "pre-release-2026.01.17-4b0f30090",
+    "patchline": "pre-release",
+    "version": "2026.01.17-4b0f30090",
+    "date": "2026-01-17",
+    "commit": "4b0f30090",
+    "size": 1494545998,
+    "sha256": "145bb570cf0e49c0f160c4449479f9efb1de762bed4c9b3950719d9f0f262c5d"
+  },
+  {
+    "id": "pre-release-2026.01.16-c508b9acd",
+    "patchline": "pre-release",
+    "version": "2026.01.16-c508b9acd",
+    "date": "2026-01-16",
+    "commit": "c508b9acd",
+    "size": 1494564901,
+    "sha256": "ede594fd8480046fe9c619f98d716d98a05febd25bd096af6b25d46a589f6819"
+  },
+  {
+    "id": "pre-release-2026.01.15-c04fdfe10",
+    "patchline": "pre-release",
+    "version": "2026.01.15-c04fdfe10",
+    "date": "2026-01-15",
+    "commit": "c04fdfe10",
+    "size": 1494601292,
+    "sha256": "039ed2d3028eceed7287fc1f1e845aa2a16de90501f99cd24a099266d315b681"
+  },
+  {
+    "id": "pre-release-2026.01.14-3e7a0ba6c",
+    "patchline": "pre-release",
+    "version": "2026.01.14-3e7a0ba6c",
+    "date": "2026-01-14",
+    "commit": "3e7a0ba6c",
+    "size": 1494623378,
+    "sha256": "21b08b425bf8253722466457469dea3dcb4380268c8ba4785fb7a85bd08c993c"
+  }
+]
