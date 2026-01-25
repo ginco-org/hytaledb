@@ -12,109 +12,22 @@
   "properties": {
     "Spawners": {
       "type": "array",
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true,
-        "uiCollapsedByDefault": false
-      },
       "items": {
-        "$ref": "common.json#/definitions/ParticleSpawnerGroup"
+        "$ref": "common.schema.json#/$defs/ParticleSpawnerGroup"
       },
       "minItems": 1
     },
     "LifeSpan": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number",
-            "inheritsProperty": true
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "CullDistance": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number",
-            "inheritsProperty": true
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "BoundingRadius": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number",
-            "inheritsProperty": true
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "IsImportant": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     }
   }

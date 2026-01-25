@@ -17,88 +17,45 @@
       ],
       "title": "Map of Attitude",
       "description": "A map of attitudes to NPC groups.",
-      "markdownDescription": "A map of attitudes to NPC groups.",
-      "hytale": {
-        "type": "EnumMap"
-      },
       "properties": {
         "Ignore": {
           "type": "array",
-          "hytale": {
-            "type": "array"
-          },
           "items": {
-            "type": "string",
-            "hytale": {
-              "type": "string"
-            }
+            "type": "string"
           }
         },
         "Hostile": {
           "type": "array",
-          "hytale": {
-            "type": "array"
-          },
           "items": {
-            "type": "string",
-            "hytale": {
-              "type": "string"
-            }
+            "type": "string"
           }
         },
         "Neutral": {
           "type": "array",
-          "hytale": {
-            "type": "array"
-          },
           "items": {
-            "type": "string",
-            "hytale": {
-              "type": "string"
-            }
+            "type": "string"
           }
         },
         "Friendly": {
           "type": "array",
-          "hytale": {
-            "type": "array"
-          },
           "items": {
-            "type": "string",
-            "hytale": {
-              "type": "string"
-            }
+            "type": "string"
           }
         },
         "Revered": {
           "type": "array",
-          "hytale": {
-            "type": "array"
-          },
           "items": {
-            "type": "string",
-            "hytale": {
-              "type": "string"
-            }
+            "type": "string"
           }
         }
       },
       "additionalProperties": {
         "type": "array",
-        "hytale": {
-          "type": "array"
-        },
         "items": {
-          "type": "string",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         }
       },
       "propertyNames": {
-        "hytale": {
-          "type": "string"
-        },
         "enum": [
           "Ignore",
           "Hostile",

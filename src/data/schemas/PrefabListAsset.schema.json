@@ -15,11 +15,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "$ref": "common.json#/definitions/PrefabReference"
+        "$ref": "common.schema.json#/$defs/PrefabReference"
       }
     }
   }

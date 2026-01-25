@@ -12,11 +12,8 @@
   "properties": {
     "Input": {
       "type": "array",
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "$ref": "common.json#/definitions/MaterialQuantity"
+        "$ref": "common.schema.json#/$defs/MaterialQuantity"
       }
     },
     "Output": {
@@ -24,17 +21,14 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "$ref": "common.json#/definitions/MaterialQuantity"
+        "$ref": "common.schema.json#/$defs/MaterialQuantity"
       }
     },
     "PrimaryOutput": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/MaterialQuantity"
+          "$ref": "common.schema.json#/$defs/MaterialQuantity"
         },
         {
           "type": "null"
@@ -43,9 +37,6 @@
     },
     "OutputQuantity": {
       "type": "integer",
-      "hytale": {
-        "type": "integer"
-      },
       "default": 1
     },
     "BenchRequirement": {
@@ -53,35 +44,22 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "$ref": "common.json#/definitions/BenchRequirement"
+        "$ref": "common.schema.json#/$defs/BenchRequirement"
       }
     },
     "TimeSeconds": {
       "type": "number",
-      "hytale": {
-        "type": "number"
-      },
       "minimum": 0,
       "default": 0
     },
     "KnowledgeRequired": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean"
-      },
       "default": false
     },
     "RequiredMemoriesLevel": {
       "type": "integer",
       "description": "The level of Memories starts from 1, meaning a recipe with a RequiredMemoriesLevel set at 1 will always be available to players.",
-      "markdownDescription": "The level of Memories starts from 1, meaning a recipe with a RequiredMemoriesLevel set at 1 will always be available to players.",
-      "hytale": {
-        "type": "integer"
-      },
       "minimum": 1,
       "default": 1
     }

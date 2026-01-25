@@ -16,230 +16,166 @@
         "null"
       ],
       "description": "The list of brush operations to execute sequentially",
-      "markdownDescription": "The list of brush operations to execute sequentially",
-      "hytale": {
-        "type": "array"
-      },
       "items": {
         "title": "Type Selector",
         "anyOf": [
           {
-            "$ref": "common.json#/definitions/AppendMaskOperation"
+            "$ref": "common.schema.json#/$defs/AppendMaskOperation"
           },
           {
-            "$ref": "common.json#/definitions/AppendMaskFromToolArgOperation"
+            "$ref": "common.schema.json#/$defs/AppendMaskFromToolArgOperation"
           },
           {
-            "$ref": "common.json#/definitions/BreakpointOperation"
+            "$ref": "common.schema.json#/$defs/BreakpointOperation"
           },
           {
-            "$ref": "common.json#/definitions/ClearOperationMaskOperation"
+            "$ref": "common.schema.json#/$defs/ClearOperationMaskOperation"
           },
           {
-            "$ref": "common.json#/definitions/DebugBrushOperation"
+            "$ref": "common.schema.json#/$defs/DebugBrushOperation"
           },
           {
-            "$ref": "common.json#/definitions/DeleteOperation"
+            "$ref": "common.schema.json#/$defs/DeleteOperation"
           },
           {
-            "$ref": "common.json#/definitions/SetDensity"
+            "$ref": "common.schema.json#/$defs/SetDensity"
           },
           {
-            "$ref": "common.json#/definitions/DimensionsOperation"
+            "$ref": "common.schema.json#/$defs/DimensionsOperation"
           },
           {
-            "$ref": "common.json#/definitions/DisableHoldInteractionOperation"
+            "$ref": "common.schema.json#/$defs/DisableHoldInteractionOperation"
           },
           {
-            "$ref": "common.json#/definitions/EchoOperation"
+            "$ref": "common.schema.json#/$defs/EchoOperation"
           },
           {
-            "$ref": "common.json#/definitions/EchoOnceOperation"
+            "$ref": "common.schema.json#/$defs/EchoOnceOperation"
           },
           {
-            "$ref": "common.json#/definitions/ErodeOperation"
+            "$ref": "common.schema.json#/$defs/ErodeOperation"
           },
           {
-            "$ref": "common.json#/definitions/ExitOperation"
+            "$ref": "common.schema.json#/$defs/ExitOperation"
           },
           {
-            "$ref": "common.json#/definitions/HeightmapLayerOperation"
+            "$ref": "common.schema.json#/$defs/HeightmapLayerOperation"
           },
           {
-            "$ref": "common.json#/definitions/HistoryMaskOperation"
+            "$ref": "common.schema.json#/$defs/HistoryMaskOperation"
           },
           {
-            "$ref": "common.json#/definitions/IgnoreExistingBrushDataOperation"
+            "$ref": "common.schema.json#/$defs/IgnoreExistingBrushDataOperation"
           },
           {
-            "$ref": "common.json#/definitions/JumpToIndexOperation"
+            "$ref": "common.schema.json#/$defs/JumpToIndexOperation"
           },
           {
-            "$ref": "common.json#/definitions/JumpIfBlockTypeOperation"
+            "$ref": "common.schema.json#/$defs/JumpIfBlockTypeOperation"
           },
           {
-            "$ref": "common.json#/definitions/JumpIfClickType"
+            "$ref": "common.schema.json#/$defs/JumpIfClickType"
           },
           {
-            "$ref": "common.json#/definitions/JumpIfCompareOperation"
+            "$ref": "common.schema.json#/$defs/JumpIfCompareOperation"
           },
           {
-            "$ref": "common.json#/definitions/JumpIfStringMatchOperation"
+            "$ref": "common.schema.json#/$defs/JumpIfStringMatchOperation"
           },
           {
-            "$ref": "common.json#/definitions/JumpIfToolArgOperation"
+            "$ref": "common.schema.json#/$defs/JumpIfToolArgOperation"
           },
           {
-            "$ref": "common.json#/definitions/JumpToRandomIndex"
+            "$ref": "common.schema.json#/$defs/JumpToRandomIndex"
           },
           {
-            "$ref": "common.json#/definitions/LayerOperation"
+            "$ref": "common.schema.json#/$defs/LayerOperation"
           },
           {
-            "$ref": "common.json#/definitions/LiftOperation"
+            "$ref": "common.schema.json#/$defs/LiftOperation"
           },
           {
-            "$ref": "common.json#/definitions/LoadBrushConfigOperation"
+            "$ref": "common.schema.json#/$defs/LoadBrushConfigOperation"
           },
           {
-            "$ref": "common.json#/definitions/LoadIntFromToolArgOperation"
+            "$ref": "common.schema.json#/$defs/LoadIntFromToolArgOperation"
           },
           {
-            "$ref": "common.json#/definitions/LoadLoopFromToolArgOperation"
+            "$ref": "common.schema.json#/$defs/LoadLoopFromToolArgOperation"
           },
           {
-            "$ref": "common.json#/definitions/LoadMaterialFromToolArgOperation"
+            "$ref": "common.schema.json#/$defs/LoadMaterialFromToolArgOperation"
           },
           {
-            "$ref": "common.json#/definitions/LoadOperationsFromAssetOperation"
+            "$ref": "common.schema.json#/$defs/LoadOperationsFromAssetOperation"
           },
           {
-            "$ref": "common.json#/definitions/LoopOperation"
+            "$ref": "common.schema.json#/$defs/LoopOperation"
           },
           {
-            "$ref": "common.json#/definitions/CircleOffsetAndLoopOperation"
+            "$ref": "common.schema.json#/$defs/CircleOffsetAndLoopOperation"
           },
           {
-            "$ref": "common.json#/definitions/CircleOffsetFromArgOperation"
+            "$ref": "common.schema.json#/$defs/CircleOffsetFromArgOperation"
           },
           {
-            "$ref": "common.json#/definitions/LoopRandomOperation"
+            "$ref": "common.schema.json#/$defs/LoopRandomOperation"
           },
           {
-            "$ref": "common.json#/definitions/MaskOperation"
+            "$ref": "common.schema.json#/$defs/MaskOperation"
           },
           {
-            "$ref": "common.json#/definitions/MaterialOperation"
+            "$ref": "common.schema.json#/$defs/MaterialOperation"
           },
           {
-            "$ref": "common.json#/definitions/MeltOperation"
+            "$ref": "common.schema.json#/$defs/MeltOperation"
           },
           {
-            "$ref": "common.json#/definitions/OffsetOperation"
+            "$ref": "common.schema.json#/$defs/OffsetOperation"
           },
           {
-            "$ref": "common.json#/definitions/PastePrefabOperation"
+            "$ref": "common.schema.json#/$defs/PastePrefabOperation"
           },
           {
-            "$ref": "common.json#/definitions/BlockPatternOperation"
+            "$ref": "common.schema.json#/$defs/BlockPatternOperation"
           },
           {
-            "$ref": "common.json#/definitions/PersistentDataOperation"
+            "$ref": "common.schema.json#/$defs/PersistentDataOperation"
           },
           {
-            "$ref": "common.json#/definitions/RandomizeDimensionsOperation"
+            "$ref": "common.schema.json#/$defs/RandomizeDimensionsOperation"
           },
           {
-            "$ref": "common.json#/definitions/RandomOffsetOperation"
+            "$ref": "common.schema.json#/$defs/RandomOffsetOperation"
           },
           {
-            "$ref": "common.json#/definitions/ReplaceOperation"
+            "$ref": "common.schema.json#/$defs/ReplaceOperation"
           },
           {
-            "$ref": "common.json#/definitions/RunCommandOperation"
+            "$ref": "common.schema.json#/$defs/RunCommandOperation"
           },
           {
-            "$ref": "common.json#/definitions/SaveBrushConfigOperation"
+            "$ref": "common.schema.json#/$defs/SaveBrushConfigOperation"
           },
           {
-            "$ref": "common.json#/definitions/SaveIndexOperation"
+            "$ref": "common.schema.json#/$defs/SaveIndexOperation"
           },
           {
-            "$ref": "common.json#/definitions/SetOperation"
+            "$ref": "common.schema.json#/$defs/SetOperation"
           },
           {
-            "$ref": "common.json#/definitions/ShapeOperation"
+            "$ref": "common.schema.json#/$defs/ShapeOperation"
           },
           {
-            "$ref": "common.json#/definitions/SmoothOperation"
+            "$ref": "common.schema.json#/$defs/SmoothOperation"
           },
           {
-            "$ref": "common.json#/definitions/UseBrushMaskOperation"
+            "$ref": "common.schema.json#/$defs/UseBrushMaskOperation"
           },
           {
-            "$ref": "common.json#/definitions/UseOperationMaskOperation"
+            "$ref": "common.schema.json#/$defs/UseOperationMaskOperation"
           }
-        ],
-        "hytaleSchemaTypeField": {
-          "property": "Id",
-          "values": [
-            "appendmask",
-            "appendmaskfromtoolarg",
-            "breakpoint",
-            "clearoperationmask",
-            "debug",
-            "delete",
-            "density",
-            "dimensions",
-            "disableonhold",
-            "echo",
-            "echoonce",
-            "erode",
-            "exit",
-            "heightmaplayer",
-            "historymask",
-            "ignorebrushsettings",
-            "jump",
-            "jumpifblocktype",
-            "jumpifclicktype",
-            "jumpifcompare",
-            "jumpifequal",
-            "jumpiftoolarg",
-            "jumprandom",
-            "layer",
-            "lift",
-            "loadbrushconfig",
-            "loadint",
-            "loadloop",
-            "loadmaterial",
-            "loadoperationsfromasset",
-            "loop",
-            "loopcircle",
-            "loopcirclefromarg",
-            "looprandom",
-            "mask",
-            "material",
-            "melt",
-            "offset",
-            "pasteprefab",
-            "pattern",
-            "persistentdata",
-            "randomdimensions",
-            "randomoffset",
-            "replace",
-            "runcommand",
-            "savebrushconfig",
-            "saveindex",
-            "set",
-            "shape",
-            "smooth",
-            "usebrushmask",
-            "useoperationmask"
-          ]
-        },
-        "hytale": {
-          "mergesProperties": true
-        }
+        ]
       }
     }
   }

@@ -14,29 +14,7 @@
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true,
-        "uiEditorComponent": {
-          "component": "Icon",
-          "defaultPathTemplate": "Icons/ItemsGenerated/{assetId}.png",
-          "width": 64,
-          "height": 64
-        },
-        "uiRebuildCaches": [
-          "ItemIcons"
-        ],
-        "uiRebuildCachesForChildProperties": true
-      },
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "Icons/ItemsGenerated/",
-          "Icons/Items/"
-        ],
-        "requiredExtension": "png",
-        "isUIAsset": false
-      }
+      ]
     },
     "Categories": {
       "type": [
@@ -44,31 +22,14 @@
         "null"
       ],
       "description": "A list of categories this item will be shown in on the creative library menu.",
-      "markdownDescription": "A list of categories this item will be shown in on the creative library menu.",
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true
-      },
       "items": {
-        "type": "string",
-        "hytaleAssetRef": "ItemCategory",
-        "hytale": {
-          "type": "string",
-          "uiEditorComponent": {
-            "component": "Dropdown",
-            "dataSet": "ItemCategories"
-          }
-        }
+        "type": "string"
       }
     },
     "IconProperties": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/AssetIconProperties",
-          "hytale": {
-            "inheritsProperty": true,
-            "uiDisplayMode": "Hidden"
-          }
+          "$ref": "common.schema.json#/$defs/AssetIconProperties"
         },
         {
           "type": "null"
@@ -77,13 +38,9 @@
     },
     "TranslationProperties": {
       "description": "The translation properties for this item asset.",
-      "markdownDescription": "The translation properties for this item asset.",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ItemTranslationProperties",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/ItemTranslationProperties"
         },
         {
           "type": "null"
@@ -92,31 +49,16 @@
     },
     "ItemLevel": {
       "type": "integer",
-      "hytale": {
-        "type": "integer",
-        "inheritsProperty": true
-      },
       "default": 0
     },
     "Reticle": {
       "anyOf": [
         {
-          "anyOf": [
-            {
-              "type": "string",
-              "title": "Reference to ItemReticleConfig",
-              "hytale": {
-                "type": "string"
-              }
-            },
-            {
-              "$ref": "ItemReticleConfig.json#"
-            }
-          ],
-          "hytaleAssetRef": "ItemReticleConfig",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "type": "string",
+          "title": "Reference to ItemReticleConfig"
+        },
+        {
+          "$ref": "ItemReticleConfig.json#"
         },
         {
           "type": "null"
@@ -126,12 +68,6 @@
     "MaxStack": {
       "type": "integer",
       "description": "The maximum amount this item can be stacked in the inventory",
-      "markdownDescription": "The maximum amount this item can be stacked in the inventory",
-      "hytale": {
-        "type": "integer",
-        "inheritsProperty": true,
-        "uiPropertyTitle": "Max Stack Size"
-      },
       "exclusiveMinimum": 0,
       "default": -1
     },
@@ -139,85 +75,36 @@
       "type": [
         "string",
         "null"
-      ],
-      "hytaleAssetRef": "ItemQuality",
-      "hytale": {
-        "type": "string"
-      }
+      ]
     },
     "ItemEntity": {
-      "$ref": "common.json#/definitions/ItemEntityConfig",
-      "hytale": {
-        "inheritsProperty": true
-      }
+      "$ref": "common.schema.json#/$defs/ItemEntityConfig"
     },
     "SoundEventId": {
       "type": [
         "string",
         "null"
-      ],
-      "hytaleAssetRef": "SoundEvent",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      }
+      ]
     },
     "ItemSoundSetId": {
       "type": "string",
-      "hytaleAssetRef": "ItemSoundSet",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      },
       "default": "ISS_Default"
     },
     "Set": {
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      }
+      ]
     },
     "Model": {
       "type": [
         "string",
         "null"
       ],
-      "description": "The model used for rendering this item. If this is a block, BlockType.Model should be used instead.",
-      "markdownDescription": "The model used for rendering this item. If this is a block, BlockType.Model should be used instead.",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true,
-        "uiPropertyTitle": "Item Model",
-        "uiSectionStart": "Rendering",
-        "uiRebuildCaches": [
-          "Models"
-        ],
-        "uiRebuildCachesForChildProperties": false
-      },
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "Blocks/",
-          "Items/",
-          "Resources/",
-          "NPC/",
-          "VFX/",
-          "Consumable/"
-        ],
-        "requiredExtension": "blockymodel",
-        "isUIAsset": false
-      }
+      "description": "The model used for rendering this item. If this is a block, BlockType.Model should be used instead."
     },
     "Scale": {
       "type": "number",
-      "hytale": {
-        "type": "number",
-        "inheritsProperty": true,
-        "uiPropertyTitle": "Item Scale"
-      },
       "default": 1
     },
     "Texture": {
@@ -226,106 +113,35 @@
         "null"
       ],
       "description": "The texture used for rendering this item. If this is a block, block specific properties should be used instead.",
-      "markdownDescription": "The texture used for rendering this item. If this is a block, block specific properties should be used instead.",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true,
-        "uiPropertyTitle": "Item Texture",
-        "uiRebuildCaches": [
-          "Models"
-        ],
-        "uiRebuildCachesForChildProperties": true
-      },
-      "default": "Items/Unknown.png",
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "Blocks/",
-          "BlockTextures/",
-          "Items/",
-          "NPC/",
-          "Resources/",
-          "VFX/"
-        ],
-        "requiredExtension": "png",
-        "isUIAsset": false
-      }
+      "default": "Items/Unknown.png"
     },
     "Animation": {
       "type": [
         "string",
         "null"
       ],
-      "description": "The animation used for rendering this item. If this is a block, block specific properties should be used instead.",
-      "markdownDescription": "The animation used for rendering this item. If this is a block, block specific properties should be used instead.",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true,
-        "uiPropertyTitle": "Item Animation",
-        "uiRebuildCaches": [
-          "Models"
-        ],
-        "uiRebuildCachesForChildProperties": true
-      },
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "Blocks/",
-          "Items/",
-          "Resources/",
-          "NPC/",
-          "VFX/",
-          "Consumable/"
-        ],
-        "requiredExtension": "blockyanim",
-        "isUIAsset": false
-      }
+      "description": "The animation used for rendering this item. If this is a block, block specific properties should be used instead."
     },
     "UsePlayerAnimations": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "PlayerAnimationsId": {
       "anyOf": [
         {
           "type": "string",
-          "title": "Reference to ItemPlayerAnimations",
-          "hytale": {
-            "type": "string"
-          }
+          "title": "Reference to ItemPlayerAnimations"
         },
         {
           "$ref": "ItemPlayerAnimations.json#"
         }
-      ],
-      "hytaleAssetRef": "ItemPlayerAnimations",
-      "hytale": {
-        "inheritsProperty": true
-      }
+      ]
     },
     "DroppedItemAnimation": {
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      },
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "Blocks/",
-          "Items/",
-          "Resources/",
-          "NPC/",
-          "VFX/",
-          "Consumable/"
-        ],
-        "requiredExtension": "blockyanim",
-        "isUIAsset": false
-      }
+      ]
     },
     "Particles": {
       "type": [
@@ -333,18 +149,8 @@
         "null"
       ],
       "description": "The particles played for this item. If this is a block, block specific properties should be used instead.",
-      "markdownDescription": "The particles played for this item. If this is a block, block specific properties should be used instead.",
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true,
-        "uiPropertyTitle": "Item Particles",
-        "uiRebuildCaches": [
-          "Models"
-        ],
-        "uiRebuildCachesForChildProperties": true
-      },
       "items": {
-        "$ref": "common.json#/definitions/ModelParticle"
+        "$ref": "common.schema.json#/$defs/ModelParticle"
       }
     },
     "FirstPersonParticles": {
@@ -353,18 +159,8 @@
         "null"
       ],
       "description": "The particles played for this item when in first person. If this is a block, block specific properties should be used instead.",
-      "markdownDescription": "The particles played for this item when in first person. If this is a block, block specific properties should be used instead.",
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true,
-        "uiPropertyTitle": "Item First Person Particles",
-        "uiRebuildCaches": [
-          "Models"
-        ],
-        "uiRebuildCachesForChildProperties": true
-      },
       "items": {
-        "$ref": "common.json#/definitions/ModelParticle"
+        "$ref": "common.schema.json#/$defs/ModelParticle"
       }
     },
     "Trails": {
@@ -373,30 +169,15 @@
         "null"
       ],
       "description": "The trail attached to this item",
-      "markdownDescription": "The trail attached to this item",
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true,
-        "uiPropertyTitle": "Item Trails"
-      },
       "items": {
-        "$ref": "common.json#/definitions/ModelTrail"
+        "$ref": "common.schema.json#/$defs/ModelTrail"
       }
     },
     "Light": {
       "description": "The light this item is emitting when being held or dropped. For block light, see Block properties",
-      "markdownDescription": "The light this item is emitting when being held or dropped. For block light, see Block properties",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ColorLight",
-          "hytale": {
-            "inheritsProperty": true,
-            "uiPropertyTitle": "Item Light",
-            "uiRebuildCaches": [
-              "Models"
-            ],
-            "uiRebuildCachesForChildProperties": true
-          }
+          "$ref": "common.schema.json#/$defs/ColorLight"
         },
         {
           "type": "null"
@@ -406,10 +187,7 @@
     "Recipe": {
       "anyOf": [
         {
-          "$ref": "CraftingRecipe.json#",
-          "hytale": {
-            "uiSectionStart": "Crafting"
-          }
+          "$ref": "CraftingRecipe.json#"
         },
         {
           "type": "null"
@@ -421,22 +199,14 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true
-      },
       "items": {
-        "$ref": "common.json#/definitions/ItemResourceType"
+        "$ref": "common.schema.json#/$defs/ItemResourceType"
       }
     },
     "Tool": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ItemTool",
-          "hytale": {
-            "inheritsProperty": true,
-            "uiSectionStart": "Functionality"
-          }
+          "$ref": "common.schema.json#/$defs/ItemTool"
         },
         {
           "type": "null"
@@ -446,10 +216,7 @@
     "BlockSelectorTool": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/BlockSelectorToolData",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/BlockSelectorToolData"
         },
         {
           "type": "null"
@@ -459,10 +226,7 @@
     "BuilderTool": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/BuilderToolData",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/BuilderToolData"
         },
         {
           "type": "null"
@@ -472,11 +236,7 @@
     "Weapon": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ItemWeapon",
-          "hytale": {
-            "inheritsProperty": true,
-            "allowEmptyObject": true
-          }
+          "$ref": "common.schema.json#/$defs/ItemWeapon"
         },
         {
           "type": "null"
@@ -486,10 +246,7 @@
     "Armor": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ItemArmor",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/ItemArmor"
         },
         {
           "type": "null"
@@ -499,10 +256,7 @@
     "Glider": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ItemGlider",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/ItemGlider"
         },
         {
           "type": "null"
@@ -514,18 +268,12 @@
         "Usable": false,
         "Compatible": false
       },
-      "$ref": "common.json#/definitions/ItemUtility",
-      "hytale": {
-        "inheritsProperty": true
-      }
+      "$ref": "common.schema.json#/$defs/ItemUtility"
     },
     "PortalKey": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/PortalKey",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/PortalKey"
         },
         {
           "type": "null"
@@ -537,80 +285,37 @@
         "Capacity": 0,
         "GlobalFilter": "AllowAll"
       },
-      "$ref": "common.json#/definitions/ItemStackContainerConfig",
-      "hytale": {
-        "inheritsProperty": true
-      }
+      "$ref": "common.schema.json#/$defs/ItemStackContainerConfig"
     },
     "Consumable": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "Variant": {
       "type": "boolean",
       "description": "Whether this item is a variant of another. Typically this is only the case for connected blocks. If this item is marked as a variant, then we filter it out of the item library menu by default, unless the player chooses to display variants.",
-      "markdownDescription": "Whether this item is a variant of another. Typically this is only the case for connected blocks. If this item is marked as a variant, then we filter it out of the item library menu by default, unless the player chooses to display variants.",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "MaxDurability": {
       "type": "number",
-      "hytale": {
-        "type": "number",
-        "inheritsProperty": true
-      },
       "default": 0
     },
     "FuelQuality": {
       "type": "number",
-      "hytale": {
-        "type": "number",
-        "inheritsProperty": true
-      },
       "default": 1
     },
     "DurabilityLossOnHit": {
       "type": "number",
-      "hytale": {
-        "type": "number",
-        "inheritsProperty": true
-      },
       "default": 0
     },
     "BlockType": {
       "anyOf": [
         {
-          "anyOf": [
-            {
-              "type": "string",
-              "title": "Reference to BlockType",
-              "hytale": {
-                "type": "string"
-              }
-            },
-            {
-              "$ref": "BlockType.json#"
-            }
-          ],
-          "hytaleAssetRef": "BlockType",
-          "hytale": {
-            "inheritsProperty": true,
-            "uiSectionStart": "Block",
-            "uiRebuildCaches": [
-              "Models",
-              "BlockTextures",
-              "ModelTextures"
-            ],
-            "uiRebuildCachesForChildProperties": false,
-            "uiCollapsedByDefault": false
-          }
+          "type": "string",
+          "title": "Reference to BlockType"
+        },
+        {
+          "$ref": "BlockType.json#"
         },
         {
           "type": "null"
@@ -623,407 +328,295 @@
         "null"
       ],
       "title": "Map of InteractionType",
-      "hytale": {
-        "type": "EnumMap",
-        "inheritsProperty": true,
-        "uiSectionStart": "Interactions"
-      },
       "properties": {
         "Primary": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Secondary": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Ability1": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Ability2": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Ability3": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Use": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Pick": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Pickup": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "CollisionEnter": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "CollisionLeave": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Collision": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "EntityStatEffect": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "SwapTo": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "SwapFrom": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Death": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Wielding": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "ProjectileSpawn": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "ProjectileHit": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "ProjectileMiss": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "ProjectileBounce": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Held": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "HeldOffhand": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Equipped": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "Dodge": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         },
         "GameModeSwap": {
           "anyOf": [
             {
               "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
+              "title": "Reference to RootInteraction"
             },
             {
               "$ref": "RootInteraction.json#"
             }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          ]
         }
       },
       "additionalProperties": {
         "anyOf": [
           {
             "type": "string",
-            "title": "Reference to RootInteraction",
-            "hytale": {
-              "type": "string"
-            }
+            "title": "Reference to RootInteraction"
           },
           {
             "$ref": "RootInteraction.json#"
           }
-        ],
-        "hytaleAssetRef": "RootInteraction"
+        ]
       },
       "propertyNames": {
-        "hytale": {
-          "type": "string"
-        },
         "enum": [
           "Primary",
           "Secondary",
@@ -1054,10 +647,7 @@
       }
     },
     "InteractionConfig": {
-      "$ref": "common.json#/definitions/InteractionConfiguration",
-      "hytale": {
-        "inheritsProperty": true
-      }
+      "$ref": "common.schema.json#/$defs/InteractionConfiguration"
     },
     "InteractionVars": {
       "type": [
@@ -1065,24 +655,16 @@
         "null"
       ],
       "title": "Map",
-      "hytale": {
-        "type": "object",
-        "inheritsProperty": true
-      },
       "additionalProperties": {
         "anyOf": [
           {
             "type": "string",
-            "title": "Reference to RootInteraction",
-            "hytale": {
-              "type": "string"
-            }
+            "title": "Reference to RootInteraction"
           },
           {
             "$ref": "RootInteraction.json#"
           }
-        ],
-        "hytaleAssetRef": "RootInteraction"
+        ]
       }
     },
     "ItemAppearanceConditions": {
@@ -1092,26 +674,13 @@
       ],
       "title": "Map",
       "description": "Define per EntityStat an array of ItemAppearanceCondition. Only a single condition will be applied to the item at the same time.",
-      "markdownDescription": "Define per EntityStat an array of ItemAppearanceCondition. Only a single condition will be applied to the item at the same time.",
-      "hytale": {
-        "type": "object",
-        "inheritsProperty": true
-      },
       "additionalProperties": {
         "type": "array",
-        "hytale": {
-          "type": "array"
-        },
         "items": {
-          "$ref": "common.json#/definitions/ItemAppearanceCondition"
+          "$ref": "common.schema.json#/$defs/ItemAppearanceCondition"
         }
       },
-      "propertyNames": {
-        "hytaleAssetRef": "EntityStatType",
-        "hytale": {
-          "type": "string"
-        }
-      }
+      "propertyNames": {}
     },
     "DisplayEntityStatsHUD": {
       "type": [
@@ -1119,27 +688,15 @@
         "null"
       ],
       "description": "Used to indicate to the client whether an EntityStat HUD UI needs to be displayed",
-      "markdownDescription": "Used to indicate to the client whether an EntityStat HUD UI needs to be displayed",
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "PullbackConfig": {
       "description": "Overrides the offset of first person arms when close to obstacles",
-      "markdownDescription": "Overrides the offset of first person arms when close to obstacles",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ItemPullbackConfig",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/ItemPullbackConfig"
         },
         {
           "type": "null"
@@ -1148,26 +705,14 @@
     },
     "ClipsGeometry": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "RenderDeployablePreview": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "DropOnDeath": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "State": {
@@ -1176,25 +721,16 @@
         "null"
       ],
       "title": "Map",
-      "hytale": {
-        "type": "object",
-        "inheritsProperty": true,
-        "uiSectionStart": "State"
-      },
       "additionalProperties": {
         "anyOf": [
           {
             "type": "string",
-            "title": "Reference to Item",
-            "hytale": {
-              "type": "string"
-            }
+            "title": "Reference to Item"
           },
           {
             "$ref": "Item.json#"
           }
-        ],
-        "hytaleAssetRef": "Item"
+        ]
       }
     }
   }

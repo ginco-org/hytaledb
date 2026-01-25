@@ -15,25 +15,13 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
         "title": "Type Selector",
         "anyOf": [
           {
-            "$ref": "common.json#/definitions/ShopElement"
+            "$ref": "common.schema.json#/$defs/ShopElement"
           }
-        ],
-        "hytaleSchemaTypeField": {
-          "property": "Type",
-          "values": [
-            "ShopElement"
-          ]
-        },
-        "hytale": {
-          "mergesProperties": true
-        }
+        ]
       }
     }
   }

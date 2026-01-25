@@ -13,38 +13,19 @@
     "Container": {
       "anyOf": [
         {
-          "title": "Type Selector",
-          "anyOf": [
-            {
-              "$ref": "common.json#/definitions/ChoiceItemDropContainer"
-            },
-            {
-              "$ref": "common.json#/definitions/DroplistItemDropContainer"
-            },
-            {
-              "$ref": "common.json#/definitions/EmptyItemDropContainer"
-            },
-            {
-              "$ref": "common.json#/definitions/MultipleItemDropContainer"
-            },
-            {
-              "$ref": "common.json#/definitions/SingleItemDropContainer"
-            }
-          ],
-          "hytaleSchemaTypeField": {
-            "property": "Type",
-            "values": [
-              "Choice",
-              "Droplist",
-              "Empty",
-              "Multiple",
-              "Single"
-            ]
-          },
-          "hytale": {
-            "inheritsProperty": true,
-            "mergesProperties": true
-          }
+          "$ref": "common.schema.json#/$defs/ChoiceItemDropContainer"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/DroplistItemDropContainer"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/EmptyItemDropContainer"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/MultipleItemDropContainer"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/SingleItemDropContainer"
         },
         {
           "type": "null"

@@ -13,38 +13,13 @@
     "SoundEvents": {
       "type": "object",
       "title": "Map",
-      "hytale": {
-        "type": "object",
-        "inheritsProperty": true,
-        "uiCollapsedByDefault": false
-      },
       "additionalProperties": {
-        "type": "string",
-        "hytaleAssetRef": "SoundEvent",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "Category": {
       "type": "string",
       "title": "SoundCategory",
-      "enumDescriptions": [
-        "",
-        "",
-        "",
-        ""
-      ],
-      "markdownEnumDescriptions": [
-        "",
-        "",
-        "",
-        ""
-      ],
-      "hytale": {
-        "type": "Enum",
-        "inheritsProperty": true
-      },
       "enum": [
         "Music",
         "Ambient",

@@ -12,12 +12,8 @@
   "properties": {
     "Boxes": {
       "type": "array",
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true
-      },
       "items": {
-        "$ref": "common.json#/definitions/Box"
+        "$ref": "common.schema.json#/$defs/Box"
       },
       "minItems": 1
     }

@@ -14,38 +14,19 @@
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      }
+      ]
     },
     "Description": {
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      }
+      ]
     },
     "Icon": {
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      },
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "Icons/ResourceTypes/"
-        ],
-        "requiredExtension": "png",
-        "isUIAsset": false
-      }
+      ]
     }
   }
 }

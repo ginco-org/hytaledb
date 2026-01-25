@@ -11,39 +11,10 @@
   ],
   "properties": {
     "Radius": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "exclusiveMinimum": 0,
-              "default": 1
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number"
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "Name": {
       "type": "string",
-      "hytale": {
-        "type": "string"
-      },
       "pattern": "[^\\s]",
       "minLength": 1
     }

@@ -14,32 +14,16 @@
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string"
-      }
+      ]
     },
     "Icon": {
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string"
-      },
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "Icons/CraftingCategories/"
-        ],
-        "requiredExtension": "png",
-        "isUIAsset": false
-      }
+      ]
     },
     "Order": {
       "type": "integer",
-      "hytale": {
-        "type": "integer"
-      },
       "default": 0
     }
   }

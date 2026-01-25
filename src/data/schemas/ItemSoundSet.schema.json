@@ -13,38 +13,18 @@
     "SoundEvents": {
       "type": "object",
       "title": "Map of ItemSoundEvent",
-      "hytale": {
-        "type": "EnumMap",
-        "inheritsProperty": true,
-        "uiCollapsedByDefault": false
-      },
       "properties": {
         "Drag": {
-          "type": "string",
-          "hytaleAssetRef": "SoundEvent",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         },
         "Drop": {
-          "type": "string",
-          "hytaleAssetRef": "SoundEvent",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         }
       },
       "additionalProperties": {
-        "type": "string",
-        "hytaleAssetRef": "SoundEvent",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       },
       "propertyNames": {
-        "hytale": {
-          "type": "string"
-        },
         "enum": [
           "Drag",
           "Drop"

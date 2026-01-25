@@ -13,11 +13,6 @@
     "SuppressionRadius": {
       "type": "number",
       "description": "The radius this spawn suppression should cover. Any chunk which falls even partially within this radius will be affected by the suppression on the x and z axes, but will use exact distance for the y axis. This allows NPCs to continue to spawn in caves below the position or in the skies above, but is slightly more efficient and provides no noticeable differences in world spawns.",
-      "markdownDescription": "The radius this spawn suppression should cover. Any chunk which falls even partially within this radius will be affected by the suppression on the x and z axes, but will use exact distance for the y axis. This allows NPCs to continue to spawn in caves below the position or in the skies above, but is slightly more efficient and provides no noticeable differences in world spawns.",
-      "hytale": {
-        "type": "number",
-        "inheritsProperty": true
-      },
       "exclusiveMinimum": 0,
       "default": 10
     },
@@ -27,27 +22,13 @@
         "null"
       ],
       "description": "An array of NPCGroup ids that will be suppressed.",
-      "markdownDescription": "An array of NPCGroup ids that will be suppressed.",
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true
-      },
       "items": {
-        "type": "string",
-        "hytaleAssetRef": "NPCGroup",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "SuppressSpawnMarkers": {
       "type": "boolean",
       "description": "Whether or not to suppress any spawn markers within the range of this suppression. If set to true, any spawn marker within this range will cease to function while the suppression exists",
-      "markdownDescription": "Whether or not to suppress any spawn markers within the range of this suppression. If set to true, any spawn marker within this range will cease to function while the suppression exists",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     }
   }

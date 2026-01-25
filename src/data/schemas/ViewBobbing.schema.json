@@ -12,11 +12,7 @@
   "properties": {
     "FirstPerson": {
       "description": "The camera shake profile to be applied",
-      "markdownDescription": "The camera shake profile to be applied",
-      "$ref": "common.json#/definitions/CameraShakeConfig",
-      "hytale": {
-        "inheritsProperty": true
-      }
+      "$ref": "common.schema.json#/$defs/CameraShakeConfig"
     }
   }
 }

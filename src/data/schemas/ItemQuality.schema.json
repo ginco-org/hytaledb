@@ -13,160 +13,62 @@
     "QualityValue": {
       "type": "integer",
       "description": "Define the value of the quality to order them, 0 being the lowest quality.",
-      "markdownDescription": "Define the value of the quality to order them, 0 being the lowest quality.",
-      "hytale": {
-        "type": "integer"
-      },
       "default": 0
     },
     "ItemTooltipTexture": {
       "type": "string",
       "description": "The path to the texture of the item tooltip. It has to be located in Common/Items/Qualities.",
-      "markdownDescription": "The path to the texture of the item tooltip. It has to be located in Common/Items/Qualities.",
-      "hytale": {
-        "type": "string"
-      },
       "pattern": "[^\\s]",
-      "minLength": 1,
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "UI/ItemQualities/"
-        ],
-        "requiredExtension": "png",
-        "isUIAsset": true
-      }
+      "minLength": 1
     },
     "ItemTooltipArrowTexture": {
       "type": "string",
       "description": "The path to the texture of the item tooltip arrow. It has to be located in Common/Items/Qualities.",
-      "markdownDescription": "The path to the texture of the item tooltip arrow. It has to be located in Common/Items/Qualities.",
-      "hytale": {
-        "type": "string"
-      },
       "pattern": "[^\\s]",
-      "minLength": 1,
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "UI/ItemQualities/"
-        ],
-        "requiredExtension": "png",
-        "isUIAsset": true
-      }
+      "minLength": 1
     },
     "SlotTexture": {
       "type": "string",
       "description": "The path to the texture of the item slot. It has to be located in Common/Items/Qualities.",
-      "markdownDescription": "The path to the texture of the item slot. It has to be located in Common/Items/Qualities.",
-      "hytale": {
-        "type": "string"
-      },
       "pattern": "[^\\s]",
-      "minLength": 1,
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "UI/ItemQualities/"
-        ],
-        "requiredExtension": "png",
-        "isUIAsset": true
-      }
+      "minLength": 1
     },
     "BlockSlotTexture": {
       "type": "string",
       "description": "The path to the texture of the item slot, if it has an associated block type. It has to be located in Common/Items/Qualities.",
-      "markdownDescription": "The path to the texture of the item slot, if it has an associated block type. It has to be located in Common/Items/Qualities.",
-      "hytale": {
-        "type": "string"
-      },
       "pattern": "[^\\s]",
-      "minLength": 1,
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "UI/ItemQualities/"
-        ],
-        "requiredExtension": "png",
-        "isUIAsset": true
-      }
+      "minLength": 1
     },
     "SpecialSlotTexture": {
       "type": "string",
       "description": "The path to the texture of the item slot used when RenderSpecialSlot is true and the item is consumable or usable. It has to be located in Common/Items/Qualities.",
-      "markdownDescription": "The path to the texture of the item slot used when RenderSpecialSlot is true and the item is consumable or usable. It has to be located in Common/Items/Qualities.",
-      "hytale": {
-        "type": "string"
-      },
       "pattern": "[^\\s]",
-      "minLength": 1,
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "UI/ItemQualities/"
-        ],
-        "requiredExtension": "png",
-        "isUIAsset": true
-      }
+      "minLength": 1
     },
     "TextColor": {
-      "title": "Color RGB",
-      "description": "The color that'll be used to display the text of the item in the inventory.",
-      "markdownDescription": "The color that'll be used to display the text of the item in the inventory.",
-      "anyOf": [
-        {
-          "type": "string",
-          "hytale": {
-            "type": "string"
-          },
-          "pattern": "^\\s*#([0-9a-fA-F]{3}){1,2}\\s*$"
-        },
-        {
-          "type": "string",
-          "hytale": {
-            "type": "string"
-          },
-          "pattern": "^\\s*rgb\\((\\s*[0-9]{1,3}\\s*,){2}\\s*[0-9]{1,3}\\s*\\)\\s*$"
-        }
-      ],
-      "hytale": {
-        "type": "Color"
-      }
+      "$ref": "base.schema.json#/$defs/ColorRGB"
     },
     "LocalizationKey": {
       "type": "string",
       "description": "The localization key for the item quality name.",
-      "markdownDescription": "The localization key for the item quality name.",
-      "hytale": {
-        "type": "string",
-        "uiEditorComponent": {
-          "component": "LocalizationKey",
-          "keyTemplate": "qualities.{assetId}",
-          "generateDefaultKey": true
-        }
-      },
       "pattern": "[^\\s]",
       "minLength": 1
     },
     "VisibleQualityLabel": {
       "type": "boolean",
       "description": "To specify the quality label should be displayed in the tooltip.",
-      "markdownDescription": "To specify the quality label should be displayed in the tooltip.",
-      "hytale": {
-        "type": "boolean"
-      },
       "default": false
     },
     "RenderSpecialSlot": {
       "type": "boolean",
       "description": "To specify if we display a special slot texture if the item is a consumable or usable.",
-      "markdownDescription": "To specify if we display a special slot texture if the item is a consumable or usable.",
-      "hytale": {
-        "type": "boolean"
-      },
       "default": false
     },
     "ItemEntityConfig": {
       "description": "Provides an ItemEntityConfig used for all items with their item quality set to this asset unless overridden by an ItemEntityConfig defined on the item itself.",
-      "markdownDescription": "Provides an ItemEntityConfig used for all items with their item quality set to this asset unless overridden by an ItemEntityConfig defined on the item itself.",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ItemEntityConfig"
+          "$ref": "common.schema.json#/$defs/ItemEntityConfig"
         },
         {
           "type": "null"
@@ -176,10 +78,6 @@
     "HideFromSearch": {
       "type": "boolean",
       "description": "Whether this item is hidden from typical public search, like the creative library",
-      "markdownDescription": "Whether this item is hidden from typical public search, like the creative library",
-      "hytale": {
-        "type": "boolean"
-      },
       "default": false
     }
   }

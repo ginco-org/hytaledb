@@ -13,27 +13,12 @@
     "WaterTint": {
       "anyOf": [
         {
-          "title": "Color RGB",
-          "anyOf": [
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^\\s*#([0-9a-fA-F]{3}){1,2}\\s*$"
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^\\s*rgb\\((\\s*[0-9]{1,3}\\s*,){2}\\s*[0-9]{1,3}\\s*\\)\\s*$"
-            }
-          ],
-          "hytale": {
-            "type": "Color",
-            "inheritsProperty": true
-          }
+          "type": "string",
+          "pattern": "^\\s*#([0-9a-fA-F]{3}){1,2}\\s*$"
+        },
+        {
+          "type": "string",
+          "pattern": "^\\s*rgb\\((\\s*[0-9]{1,3}\\s*,){2}\\s*[0-9]{1,3}\\s*\\)\\s*$"
         },
         {
           "type": "null"
@@ -46,63 +31,30 @@
         "null"
       ],
       "title": "Map",
-      "hytale": {
-        "type": "object",
-        "inheritsProperty": true
-      },
       "additionalProperties": {
-        "$ref": "common.json#/definitions/FluidParticle"
+        "$ref": "common.schema.json#/$defs/FluidParticle"
       },
-      "propertyNames": {
-        "hytaleAssetRef": "FluidFX",
-        "hytale": {
-          "type": "string"
-        }
-      }
+      "propertyNames": {}
     },
     "SpawnDensity": {
       "type": "number",
-      "hytale": {
-        "type": "number",
-        "inheritsProperty": true
-      },
       "default": 0
     },
     "BlockModificationAllowed": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": true
     },
     "WeatherForecasts": {
       "type": "object",
-      "hytale": {
-        "type": "object",
-        "inheritsProperty": true,
-        "uiEditorComponent": {
-          "component": "WeightedTimeline"
-        },
-        "uiSectionStart": "Weather",
-        "uiCollapsedByDefault": false
-      },
       "additionalProperties": {
         "type": "array",
         "title": "WeightedMap",
-        "hytale": {
-          "type": "array"
-        },
         "items": {
-          "$ref": "common.json#/definitions/WeatherForecast"
+          "$ref": "common.schema.json#/$defs/WeatherForecast"
         }
       },
       "propertyNames": {
         "description": "A string that contains any integer",
-        "markdownDescription": "A string that contains any integer",
-        "hytale": {
-          "type": "string"
-        },
         "pattern": "^[0-9]+$",
         "enum": [
           "0",

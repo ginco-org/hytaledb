@@ -16,13 +16,8 @@
         "null"
       ],
       "title": "WeightedMap",
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true,
-        "uiCollapsedByDefault": false
-      },
       "items": {
-        "$ref": "common.json#/definitions/BlockSpawnerEntry"
+        "$ref": "common.schema.json#/$defs/BlockSpawnerEntry"
       }
     }
   }

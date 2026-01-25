@@ -13,27 +13,17 @@
     "Animations": {
       "type": "object",
       "title": "Map",
-      "hytale": {
-        "type": "object",
-        "inheritsProperty": true
-      },
       "additionalProperties": {
-        "$ref": "common.json#/definitions/ItemAnimation"
+        "$ref": "common.schema.json#/$defs/ItemAnimation"
       }
     },
     "WiggleWeights": {
-      "$ref": "common.json#/definitions/WiggleWeights",
-      "hytale": {
-        "inheritsProperty": true
-      }
+      "$ref": "common.schema.json#/$defs/WiggleWeights"
     },
     "Camera": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/CameraSettings",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/CameraSettings"
         },
         {
           "type": "null"
@@ -42,13 +32,9 @@
     },
     "PullbackConfig": {
       "description": "Overrides the offset of first person arms when close to obstacles",
-      "markdownDescription": "Overrides the offset of first person arms when close to obstacles",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ItemPullbackConfig",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/ItemPullbackConfig"
         },
         {
           "type": "null"
@@ -58,11 +44,6 @@
     "UseFirstPersonOverrides": {
       "type": "boolean",
       "description": "Determines whether or not to use FirstPersonOverride animations within ItemAnimations",
-      "markdownDescription": "Determines whether or not to use FirstPersonOverride animations within ItemAnimations",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     }
   }

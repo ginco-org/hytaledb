@@ -13,18 +13,6 @@
     "Shape": {
       "type": "string",
       "title": "EmitShape",
-      "enumDescriptions": [
-        "",
-        ""
-      ],
-      "markdownEnumDescriptions": [
-        "",
-        ""
-      ],
-      "hytale": {
-        "type": "Enum",
-        "inheritsProperty": true
-      },
       "enum": [
         "Sphere",
         "Cube"
@@ -34,10 +22,7 @@
     "EmitOffset": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/RangeVector3f",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/RangeVector3f"
         },
         {
           "type": "null"
@@ -47,20 +32,12 @@
     "UseEmitDirection": {
       "type": "boolean",
       "description": "Use spawn position to determine direction. Overrides pitch/yaw in InitialVelocity.",
-      "markdownDescription": "Use spawn position to determine direction. Overrides pitch/yaw in InitialVelocity.",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "TotalParticles": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/Range",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/Range"
         },
         {
           "type": "null"
@@ -68,49 +45,16 @@
       ]
     },
     "LifeSpan": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number",
-            "inheritsProperty": true
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "MaxConcurrentParticles": {
       "type": "integer",
-      "hytale": {
-        "type": "integer",
-        "inheritsProperty": true
-      },
       "default": 0
     },
     "ParticleLifeSpan": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/Rangef",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/Rangef"
         },
         {
           "type": "null"
@@ -120,10 +64,7 @@
     "SpawnRate": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/Rangef",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/Rangef"
         },
         {
           "type": "null"
@@ -132,16 +73,12 @@
     },
     "SpawnBurst": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "WaveDelay": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/Rangef"
+          "$ref": "common.schema.json#/$defs/Rangef"
         },
         {
           "type": "null"
@@ -151,10 +88,7 @@
     "InitialVelocity": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/InitialVelocity",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/InitialVelocity"
         },
         {
           "type": "null"
@@ -164,25 +98,6 @@
     "ParticleRotationInfluence": {
       "type": "string",
       "title": "ParticleRotationInfluence",
-      "enumDescriptions": [
-        "",
-        "",
-        "",
-        "",
-        ""
-      ],
-      "markdownEnumDescriptions": [
-        "",
-        "",
-        "",
-        "",
-        ""
-      ],
-      "hytale": {
-        "type": "Enum",
-        "inheritsProperty": true,
-        "uiSectionStart": "Motion"
-      },
       "enum": [
         "None",
         "Billboard",
@@ -194,137 +109,29 @@
     },
     "ParticleRotateWithSpawner": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "TrailSpawnerPositionMultiplier": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "minimum": 0,
-              "maximum": 1,
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number",
-            "inheritsProperty": true
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "TrailSpawnerRotationMultiplier": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "minimum": 0,
-              "maximum": 1,
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number",
-            "inheritsProperty": true
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "VelocityStretchMultiplier": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number"
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "Attractors": {
       "type": [
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true,
-        "uiSectionStart": "Attractors",
-        "uiCollapsedByDefault": false
-      },
       "items": {
-        "$ref": "common.json#/definitions/ParticleAttractor"
+        "$ref": "common.schema.json#/$defs/ParticleAttractor"
       }
     },
     "RenderMode": {
       "type": "string",
       "title": "FXRenderMode",
-      "enumDescriptions": [
-        "",
-        "",
-        "",
-        ""
-      ],
-      "markdownEnumDescriptions": [
-        "",
-        "",
-        "",
-        ""
-      ],
-      "hytale": {
-        "type": "Enum",
-        "inheritsProperty": true,
-        "uiSectionStart": "Material"
-      },
       "enum": [
         "BlendLinear",
         "BlendAdd",
@@ -334,41 +141,12 @@
       "default": "BlendLinear"
     },
     "LightInfluence": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number",
-            "inheritsProperty": true
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "IntersectionHighlight": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/IntersectionHighlight",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/IntersectionHighlight"
         },
         {
           "type": "null"
@@ -377,19 +155,12 @@
     },
     "LinearFiltering": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "UVMotion": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/UVMotion",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/UVMotion"
         },
         {
           "type": "null"
@@ -397,44 +168,12 @@
       ]
     },
     "CameraOffset": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "minimum": -10,
-              "maximum": 10,
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number"
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "ParticleCollision": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ParticleCollision",
-          "hytale": {
-            "inheritsProperty": true,
-            "uiSectionStart": "Collision",
-            "uiCollapsedByDefault": false
-          }
+          "$ref": "common.schema.json#/$defs/ParticleCollision"
         },
         {
           "type": "null"
@@ -443,20 +182,10 @@
     },
     "IsLowRes": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true,
-        "uiSectionStart": "Optimization"
-      },
       "default": false
     },
     "Particle": {
-      "$ref": "common.json#/definitions/Particle",
-      "hytale": {
-        "inheritsProperty": true,
-        "uiSectionStart": "Particle",
-        "uiCollapsedByDefault": false
-      }
+      "$ref": "common.schema.json#/$defs/Particle"
     }
   }
 }

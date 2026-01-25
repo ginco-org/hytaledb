@@ -11,77 +11,16 @@
   ],
   "properties": {
     "InitialValue": {
-      "anyOf": [
-        {
-          "type": "number",
-          "hytale": {
-            "type": "number"
-          },
-          "default": 0
-        },
-        {
-          "type": "string",
-          "hytale": {
-            "type": "string"
-          },
-          "pattern": "^(-?Infinity|NaN)$"
-        }
-      ],
-      "hytale": {
-        "type": "Number",
-        "inheritsProperty": true
-      }
+      "$ref": "base.schema.json#/$defs/NumberOrSpecial"
     },
     "Min": {
-      "anyOf": [
-        {
-          "type": "number",
-          "hytale": {
-            "type": "number"
-          },
-          "default": 0
-        },
-        {
-          "type": "string",
-          "hytale": {
-            "type": "string"
-          },
-          "pattern": "^(-?Infinity|NaN)$"
-        }
-      ],
-      "hytale": {
-        "type": "Number",
-        "inheritsProperty": true
-      }
+      "$ref": "base.schema.json#/$defs/NumberOrSpecial"
     },
     "Max": {
-      "anyOf": [
-        {
-          "type": "number",
-          "hytale": {
-            "type": "number"
-          },
-          "default": 0
-        },
-        {
-          "type": "string",
-          "hytale": {
-            "type": "string"
-          },
-          "pattern": "^(-?Infinity|NaN)$"
-        }
-      ],
-      "hytale": {
-        "type": "Number",
-        "inheritsProperty": true
-      }
+      "$ref": "base.schema.json#/$defs/NumberOrSpecial"
     },
     "Shared": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "Regenerating": {
@@ -89,21 +28,14 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true
-      },
       "items": {
-        "$ref": "common.json#/definitions/Regenerating"
+        "$ref": "common.schema.json#/$defs/Regenerating"
       }
     },
     "MinValueEffects": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/EntityStatEffects",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/EntityStatEffects"
         },
         {
           "type": "null"
@@ -113,10 +45,7 @@
     "MaxValueEffects": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/EntityStatEffects",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/EntityStatEffects"
         },
         {
           "type": "null"
@@ -129,18 +58,6 @@
         "null"
       ],
       "title": "EntityStatResetBehavior",
-      "enumDescriptions": [
-        "",
-        ""
-      ],
-      "markdownEnumDescriptions": [
-        "",
-        ""
-      ],
-      "hytale": {
-        "type": "Enum",
-        "inheritsProperty": true
-      },
       "enum": [
         "InitialValue",
         "MaxValue"
@@ -149,10 +66,6 @@
     },
     "IgnoreInvulnerability": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     }
   }

@@ -17,7 +17,7 @@
             "Inclusive": true,
             "Materials": []
           },
-          "$ref": "common.json#/definitions/MaterialSetAsset"
+          "$ref": "common.schema.json#/$defs/MaterialSetAsset"
         },
         {
           "type": "null"
@@ -31,7 +31,7 @@
             "Inclusive": true,
             "Materials": []
           },
-          "$ref": "common.json#/definitions/MaterialSetAsset"
+          "$ref": "common.schema.json#/$defs/MaterialSetAsset"
         },
         {
           "type": "null"
@@ -43,11 +43,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "$ref": "common.json#/definitions/BlockMaskEntryAsset"
+        "$ref": "common.schema.json#/$defs/BlockMaskEntryAsset"
       }
     },
     "ExportAs": {
@@ -55,9 +52,6 @@
         "string",
         "null"
       ],
-      "hytale": {
-        "type": "string"
-      },
       "default": ""
     },
     "Import": {
@@ -65,9 +59,6 @@
         "string",
         "null"
       ],
-      "hytale": {
-        "type": "string"
-      },
       "default": ""
     }
   }

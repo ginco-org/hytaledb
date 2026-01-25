@@ -14,19 +14,6 @@
       "type": "string",
       "title": "CollisionType",
       "description": "The type of collision, possible values are: Hard, Soft",
-      "markdownDescription": "The type of collision, possible values are: Hard, Soft",
-      "enumDescriptions": [
-        "",
-        ""
-      ],
-      "markdownEnumDescriptions": [
-        "",
-        ""
-      ],
-      "hytale": {
-        "type": "Enum",
-        "inheritsProperty": true
-      },
       "enum": [
         "Hard",
         "Soft"
@@ -34,34 +21,7 @@
     },
     "SoftCollisionOffsetRatio": {
       "description": "The ratio for how much of the client move offset should be applied when going through a Soft HitboxCollision",
-      "markdownDescription": "The ratio for how much of the client move offset should be applied when going through a Soft HitboxCollision",
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "default": 1
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number",
-            "inheritsProperty": true
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     }
   }
 }

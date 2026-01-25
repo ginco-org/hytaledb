@@ -14,58 +14,31 @@
       "title": "Type Selector",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/SetupObjective"
+          "$ref": "common.schema.json#/$defs/SetupObjective"
         },
         {
-          "$ref": "common.json#/definitions/SetupObjectiveLine"
+          "$ref": "common.schema.json#/$defs/SetupObjectiveLine"
         }
-      ],
-      "hytaleSchemaTypeField": {
-        "property": "Type",
-        "values": [
-          "Objective",
-          "ObjectiveLine"
-        ]
-      },
-      "hytale": {
-        "mergesProperties": true
-      }
+      ]
     },
     "Area": {
       "title": "Type Selector",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ObjectiveLocationAreaBox"
+          "$ref": "common.schema.json#/$defs/ObjectiveLocationAreaBox"
         },
         {
-          "$ref": "common.json#/definitions/ObjectiveLocationAreaRadius"
+          "$ref": "common.schema.json#/$defs/ObjectiveLocationAreaRadius"
         }
-      ],
-      "hytaleSchemaTypeField": {
-        "property": "Type",
-        "values": [
-          "Box",
-          "Radius"
-        ]
-      },
-      "hytale": {
-        "mergesProperties": true
-      }
+      ]
     },
     "EnvironmentIds": {
       "type": [
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytaleAssetRef": "Environment",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "TriggerConditions": {
@@ -73,29 +46,16 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
         "title": "Type Selector",
         "anyOf": [
           {
-            "$ref": "common.json#/definitions/HourRangeTriggerCondition"
+            "$ref": "common.schema.json#/$defs/HourRangeTriggerCondition"
           },
           {
-            "$ref": "common.json#/definitions/WeatherTriggerCondition"
+            "$ref": "common.schema.json#/$defs/WeatherTriggerCondition"
           }
-        ],
-        "hytaleSchemaTypeField": {
-          "property": "Type",
-          "values": [
-            "HourRange",
-            "Weather"
-          ]
-        },
-        "hytale": {
-          "mergesProperties": true
-        }
+        ]
       }
     }
   }

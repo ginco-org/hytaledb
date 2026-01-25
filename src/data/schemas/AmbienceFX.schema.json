@@ -13,12 +13,7 @@
     "Conditions": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/AmbienceFXConditions",
-          "hytale": {
-            "inheritsProperty": true,
-            "uiSectionStart": "Conditions",
-            "uiCollapsedByDefault": false
-          }
+          "$ref": "common.schema.json#/$defs/AmbienceFXConditions"
         },
         {
           "type": "null"
@@ -30,22 +25,14 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true,
-        "uiSectionStart": "Audio"
-      },
       "items": {
-        "$ref": "common.json#/definitions/AmbienceFXSound"
+        "$ref": "common.schema.json#/$defs/AmbienceFXSound"
       }
     },
     "Music": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/AmbienceFXMusic",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/AmbienceFXMusic"
         },
         {
           "type": "null"
@@ -55,10 +42,7 @@
     "AmbientBed": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/AmbienceFXAmbientBed",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/AmbienceFXAmbientBed"
         },
         {
           "type": "null"
@@ -68,10 +52,7 @@
     "SoundEffect": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/AmbienceFXSoundEffect",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/AmbienceFXSoundEffect"
         },
         {
           "type": "null"
@@ -81,11 +62,6 @@
     "Priority": {
       "type": "integer",
       "description": "Priority for this AmbienceFX. Only applies to music and sound effect. Higher number means higher priority.",
-      "markdownDescription": "Priority for this AmbienceFX. Only applies to music and sound effect. Higher number means higher priority.",
-      "hytale": {
-        "type": "integer",
-        "inheritsProperty": true
-      },
       "minimum": 0,
       "default": 0
     },
@@ -94,16 +70,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true
-      },
       "items": {
-        "type": "string",
-        "hytaleAssetRef": "AmbienceFX",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "AudioCategory": {
@@ -111,13 +79,7 @@
         "string",
         "null"
       ],
-      "description": "Audio category to assign this ambienceFX to for additional property routing. Only affects ambient bed and music, not emitters.",
-      "markdownDescription": "Audio category to assign this ambienceFX to for additional property routing. Only affects ambient bed and music, not emitters.",
-      "hytaleAssetRef": "AudioCategory",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      }
+      "description": "Audio category to assign this ambienceFX to for additional property routing. Only affects ambient bed and music, not emitters."
     }
   }
 }

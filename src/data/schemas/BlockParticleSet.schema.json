@@ -12,30 +12,14 @@
   "properties": {
     "Color": {
       "description": "The colour used if none was specified in the particle settings.",
-      "markdownDescription": "The colour used if none was specified in the particle settings.",
       "anyOf": [
         {
-          "title": "Color RGB",
-          "anyOf": [
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^\\s*#([0-9a-fA-F]{3}){1,2}\\s*$"
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^\\s*rgb\\((\\s*[0-9]{1,3}\\s*,){2}\\s*[0-9]{1,3}\\s*\\)\\s*$"
-            }
-          ],
-          "hytale": {
-            "type": "Color",
-            "inheritsProperty": true
-          }
+          "type": "string",
+          "pattern": "^\\s*#([0-9a-fA-F]{3}){1,2}\\s*$"
+        },
+        {
+          "type": "string",
+          "pattern": "^\\s*rgb\\((\\s*[0-9]{1,3}\\s*,){2}\\s*[0-9]{1,3}\\s*\\)\\s*$"
         },
         {
           "type": "null"
@@ -44,44 +28,13 @@
     },
     "Scale": {
       "description": "The scale of the particle system.",
-      "markdownDescription": "The scale of the particle system.",
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "default": 1
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number",
-            "inheritsProperty": true
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "PositionOffset": {
       "description": "The position offset from the spawn position.",
-      "markdownDescription": "The position offset from the spawn position.",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/Vector3f",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/Vector3f"
         },
         {
           "type": "null"
@@ -90,13 +43,9 @@
     },
     "RotationOffset": {
       "description": "The rotation offset from the spawn rotation.",
-      "markdownDescription": "The rotation offset from the spawn rotation.",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/Direction",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/Direction"
         },
         {
           "type": "null"
@@ -106,94 +55,42 @@
     "Particles": {
       "type": "object",
       "title": "Map of BlockParticleEvent",
-      "hytale": {
-        "type": "EnumMap",
-        "inheritsProperty": true,
-        "uiCollapsedByDefault": false
-      },
       "properties": {
         "Walk": {
-          "type": "string",
-          "hytaleAssetRef": "ParticleSystem",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         },
         "Run": {
-          "type": "string",
-          "hytaleAssetRef": "ParticleSystem",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         },
         "Sprint": {
-          "type": "string",
-          "hytaleAssetRef": "ParticleSystem",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         },
         "SoftLand": {
-          "type": "string",
-          "hytaleAssetRef": "ParticleSystem",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         },
         "HardLand": {
-          "type": "string",
-          "hytaleAssetRef": "ParticleSystem",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         },
         "MoveOut": {
-          "type": "string",
-          "hytaleAssetRef": "ParticleSystem",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         },
         "Hit": {
-          "type": "string",
-          "hytaleAssetRef": "ParticleSystem",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         },
         "Break": {
-          "type": "string",
-          "hytaleAssetRef": "ParticleSystem",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         },
         "Build": {
-          "type": "string",
-          "hytaleAssetRef": "ParticleSystem",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         },
         "Physics": {
-          "type": "string",
-          "hytaleAssetRef": "ParticleSystem",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         }
       },
       "additionalProperties": {
-        "type": "string",
-        "hytaleAssetRef": "ParticleSystem",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       },
       "propertyNames": {
-        "hytale": {
-          "type": "string"
-        },
         "enum": [
           "Walk",
           "Run",

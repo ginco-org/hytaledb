@@ -19,5 +19,33 @@
         }
       }
     }
+  },
+  "$defs": {
+    "NumberOrSpecial": {
+      "title": "Number or Special Value",
+      "description": "A number that can also be Infinity or NaN",
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string", "pattern": "^(-?Infinity|NaN)$" }
+      ]
+    },
+    "NullableNumberOrSpecial": {
+      "title": "Nullable Number or Special Value",
+      "description": "A number that can be Infinity, NaN, or null",
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string", "pattern": "^(-?Infinity|NaN)$" },
+        { "type": "null" }
+      ]
+    },
+    "ColorRGB": {
+      "title": "Color RGB",
+      "description": "A color in hex (#RGB or #RRGGBB) or rgb() format",
+      "type": "string",
+      "anyOf": [
+        { "pattern": "^\\s*#([0-9a-fA-F]{3}){1,2}\\s*$" },
+        { "pattern": "^\\s*rgb\\((\\s*[0-9]{1,3}\\s*,){2}\\s*[0-9]{1,3}\\s*\\)\\s*$" }
+      ]
+    }
   }
 }

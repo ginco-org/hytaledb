@@ -16,14 +16,8 @@
         "null"
       ],
       "title": "Map",
-      "hytale": {
-        "type": "object"
-      },
       "additionalProperties": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "NameMigrations": {
@@ -32,14 +26,8 @@
         "null"
       ],
       "title": "Map",
-      "hytale": {
-        "type": "object"
-      },
       "additionalProperties": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     }
   }

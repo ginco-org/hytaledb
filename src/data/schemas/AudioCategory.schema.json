@@ -12,40 +12,7 @@
   "properties": {
     "Volume": {
       "description": "Volume adjustment for the audio category in decibels.",
-      "markdownDescription": "Volume adjustment for the audio category in decibels.",
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "minimum": -100,
-              "maximum": 10,
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number",
-            "inheritsProperty": true,
-            "uiEditorComponent": {
-              "component": "Number",
-              "suffix": " dB"
-            }
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     }
   }
 }

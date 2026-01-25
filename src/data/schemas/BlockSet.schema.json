@@ -12,9 +12,6 @@
   "properties": {
     "IncludeAll": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean"
-      },
       "default": false
     },
     "IncludeBlockTypes": {
@@ -22,14 +19,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "ExcludeBlockTypes": {
@@ -37,14 +28,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "IncludeBlockGroups": {
@@ -52,14 +37,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "ExcludeBlockGroups": {
@@ -67,14 +46,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "IncludeHitboxTypes": {
@@ -82,14 +55,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "ExcludeHitboxTypes": {
@@ -97,14 +64,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "IncludeCategories": {
@@ -112,19 +73,10 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
         "type": "array",
-        "hytale": {
-          "type": "array"
-        },
         "items": {
-          "type": "string",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         }
       }
     },
@@ -133,19 +85,10 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
         "type": "array",
-        "hytale": {
-          "type": "array"
-        },
         "items": {
-          "type": "string",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         }
       }
     }

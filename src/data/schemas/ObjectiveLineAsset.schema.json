@@ -14,24 +14,12 @@
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      }
+      ]
     },
     "ObjectiveIds": {
       "type": "array",
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true
-      },
       "items": {
-        "type": "string",
-        "hytaleAssetRef": "ObjectiveAsset",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -41,15 +29,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       },
       "uniqueItems": true
     },
@@ -57,31 +38,13 @@
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true,
-        "uiEditorComponent": {
-          "component": "LocalizationKey",
-          "keyTemplate": "objectivelines.{assetId}.title",
-          "generateDefaultKey": true
-        }
-      }
+      ]
     },
     "DescriptionId": {
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true,
-        "uiEditorComponent": {
-          "component": "LocalizationKey",
-          "keyTemplate": "objectivelines.{assetId}.desc",
-          "generateDefaultKey": true
-        }
-      }
+      ]
     }
   }
 }

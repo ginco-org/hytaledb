@@ -15,21 +15,12 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "InitialReputationValue": {
       "type": "integer",
-      "hytale": {
-        "type": "integer"
-      },
       "default": 0
     }
   }

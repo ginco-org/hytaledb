@@ -11,43 +11,20 @@
   ],
   "properties": {
     "TexturePath": {
-      "type": "string",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      },
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "Trails/"
-        ],
-        "requiredExtension": "png",
-        "isUIAsset": false
-      }
+      "type": "string"
     },
     "LifeSpan": {
       "type": "integer",
-      "hytale": {
-        "type": "integer",
-        "inheritsProperty": true
-      },
       "default": 0
     },
     "Roll": {
       "type": "number",
-      "hytale": {
-        "type": "number",
-        "inheritsProperty": true
-      },
       "default": 0
     },
     "Start": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/Edge",
-          "hytale": {
-            "inheritsProperty": true,
-            "uiCollapsedByDefault": false
-          }
+          "$ref": "common.schema.json#/$defs/Edge"
         },
         {
           "type": "null"
@@ -57,11 +34,7 @@
     "End": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/Edge",
-          "hytale": {
-            "inheritsProperty": true,
-            "uiCollapsedByDefault": false
-          }
+          "$ref": "common.schema.json#/$defs/Edge"
         },
         {
           "type": "null"
@@ -70,10 +43,6 @@
     },
     "LightInfluence": {
       "type": "number",
-      "hytale": {
-        "type": "number",
-        "inheritsProperty": true
-      },
       "minimum": 0,
       "maximum": 1,
       "default": 0
@@ -81,22 +50,6 @@
     "RenderMode": {
       "type": "string",
       "title": "FXRenderMode",
-      "enumDescriptions": [
-        "",
-        "",
-        "",
-        ""
-      ],
-      "markdownEnumDescriptions": [
-        "",
-        "",
-        "",
-        ""
-      ],
-      "hytale": {
-        "type": "Enum",
-        "inheritsProperty": true
-      },
       "enum": [
         "BlendLinear",
         "BlendAdd",
@@ -108,10 +61,7 @@
     "IntersectionHighlight": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/IntersectionHighlight",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/IntersectionHighlight"
         },
         {
           "type": "null"
@@ -120,19 +70,12 @@
     },
     "Smooth": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "Animation": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/Animation@1",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/Animation@1"
         },
         {
           "type": "null"

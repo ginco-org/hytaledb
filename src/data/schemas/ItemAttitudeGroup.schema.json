@@ -17,88 +17,45 @@
       ],
       "title": "Map of Sentiment",
       "description": "A map of attitudes to item tags.",
-      "markdownDescription": "A map of attitudes to item tags.",
-      "hytale": {
-        "type": "EnumMap"
-      },
       "properties": {
         "Ignore": {
           "type": "array",
-          "hytale": {
-            "type": "array"
-          },
           "items": {
-            "type": "string",
-            "hytale": {
-              "type": "string"
-            }
+            "type": "string"
           }
         },
         "Dislike": {
           "type": "array",
-          "hytale": {
-            "type": "array"
-          },
           "items": {
-            "type": "string",
-            "hytale": {
-              "type": "string"
-            }
+            "type": "string"
           }
         },
         "Neutral": {
           "type": "array",
-          "hytale": {
-            "type": "array"
-          },
           "items": {
-            "type": "string",
-            "hytale": {
-              "type": "string"
-            }
+            "type": "string"
           }
         },
         "Like": {
           "type": "array",
-          "hytale": {
-            "type": "array"
-          },
           "items": {
-            "type": "string",
-            "hytale": {
-              "type": "string"
-            }
+            "type": "string"
           }
         },
         "Love": {
           "type": "array",
-          "hytale": {
-            "type": "array"
-          },
           "items": {
-            "type": "string",
-            "hytale": {
-              "type": "string"
-            }
+            "type": "string"
           }
         }
       },
       "additionalProperties": {
         "type": "array",
-        "hytale": {
-          "type": "array"
-        },
         "items": {
-          "type": "string",
-          "hytale": {
-            "type": "string"
-          }
+          "type": "string"
         }
       },
       "propertyNames": {
-        "hytale": {
-          "type": "string"
-        },
         "enum": [
           "Ignore",
           "Dislike",

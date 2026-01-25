@@ -15,14 +15,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     }
   }

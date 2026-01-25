@@ -1,0 +1,30 @@
+---
+/**
+ * JsonSchemaViewer - Astro component wrapper for the React JSON Schema viewer
+ *
+ * Usage in Astro:
+ * ```astro
+ * ---
+ * import JsonSchemaViewer from '@/components/JsonSchemaViewer.astro'
+ *
+ * const schema = {
+ *   title: "User",
+ *   type: "object",
+ *   properties: { ... }
+ * }
+ * ---
+ *
+ * <JsonSchemaViewer schema={schema} />
+ * ```
+ *
+ * The component uses client:load to hydrate immediately for interactive features
+ * like collapsing/expanding properties and switching between tree/raw views.
+ */
+import { JsonSchemaViewerReact } from "./json-schema-viewer"
+
+const { schema, class: className } = Astro.props
+---
+
+<div class="not-content">
+  <JsonSchemaViewerReact client:load schema={schema} className={className} />
+</div>

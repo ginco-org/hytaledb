@@ -14,45 +14,30 @@
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string"
-      }
+      ]
     },
     "Aliases": {
       "type": [
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "Description": {
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string"
-      }
+      ]
     },
     "Parameters": {
       "type": [
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "$ref": "common.json#/definitions/MacroCommandParameter"
+        "$ref": "common.schema.json#/$defs/MacroCommandParameter"
       }
     },
     "Commands": {
@@ -60,14 +45,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     }
   }

@@ -14,52 +14,23 @@
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string"
-      }
+      ]
     },
     "Name": {
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string"
-      }
+      ]
     },
     "Icon": {
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string"
-      },
-      "hytaleCommonAsset": {
-        "requiredRoots": [
-          "Icons/ItemCategories/"
-        ],
-        "requiredExtension": "png",
-        "isUIAsset": false
-      }
+      ]
     },
     "InfoDisplayMode": {
       "type": "string",
       "title": "ItemGridInfoDisplayMode",
-      "enumDescriptions": [
-        "",
-        "",
-        ""
-      ],
-      "markdownEnumDescriptions": [
-        "",
-        "",
-        ""
-      ],
-      "hytale": {
-        "type": "Enum"
-      },
       "enum": [
         "Tooltip",
         "Adjacent",
@@ -69,9 +40,6 @@
     },
     "Order": {
       "type": "integer",
-      "hytale": {
-        "type": "integer"
-      },
       "default": 0
     },
     "Children": {
@@ -79,9 +47,6 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
         "$ref": "ItemCategory.json#"
       }

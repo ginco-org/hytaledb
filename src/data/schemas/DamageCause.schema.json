@@ -14,49 +14,31 @@
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string"
-      }
+      ]
     },
     "DurabilityLoss": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean"
-      },
       "default": false
     },
     "StaminaLoss": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean"
-      },
       "default": false
     },
     "BypassResistances": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean"
-      },
       "default": false
     },
     "DamageTextColor": {
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string"
-      }
+      ]
     },
     "AnimationId": {
       "type": [
         "string",
         "null"
       ],
-      "hytale": {
-        "type": "string"
-      },
       "default": "Hurt"
     },
     "DeathAnimationId": {
@@ -64,9 +46,6 @@
         "string",
         "null"
       ],
-      "hytale": {
-        "type": "string"
-      },
       "default": "Death"
     }
   }

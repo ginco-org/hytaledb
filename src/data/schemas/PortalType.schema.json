@@ -15,18 +15,13 @@
         "string",
         "null"
       ],
-      "description": "The instance id (folder name in Assets/Server/Instances) that this instance loads.",
-      "markdownDescription": "The instance id (folder name in Assets/Server/Instances) that this instance loads.",
-      "hytale": {
-        "type": "string"
-      }
+      "description": "The instance id (folder name in Assets/Server/Instances) that this instance loads."
     },
     "Description": {
       "description": "The qualitative description of the portal.",
-      "markdownDescription": "The qualitative description of the portal.",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/PortalDescription"
+          "$ref": "common.schema.json#/$defs/PortalDescription"
         },
         {
           "type": "null"
@@ -35,10 +30,9 @@
     },
     "PlayerSpawn": {
       "description": "If set, overrides the Instance's SpawnProvider with the portal's spawning system.",
-      "markdownDescription": "If set, overrides the Instance's SpawnProvider with the portal's spawning system.",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/PortalSpawn"
+          "$ref": "common.schema.json#/$defs/PortalSpawn"
         },
         {
           "type": "null"
@@ -51,24 +45,13 @@
         "null"
       ],
       "description": "Which item drops are cursed when spawned in this portal.",
-      "markdownDescription": "Which item drops are cursed when spawned in this portal.",
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "VoidInvasionEnabled": {
       "type": "boolean",
       "description": "Whether the void invasion is enabled for this portal.",
-      "markdownDescription": "Whether the void invasion is enabled for this portal.",
-      "hytale": {
-        "type": "boolean"
-      },
       "default": false
     },
     "GameplayConfig": {
@@ -77,10 +60,6 @@
         "null"
       ],
       "description": "The ID of the GameplayConfig asset for worlds spawned with this portal type.",
-      "markdownDescription": "The ID of the GameplayConfig asset for worlds spawned with this portal type.",
-      "hytale": {
-        "type": "string"
-      },
       "default": "Portal"
     }
   }

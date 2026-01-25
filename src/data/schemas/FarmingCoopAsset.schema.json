@@ -12,10 +12,6 @@
   "properties": {
     "MaxResidents": {
       "type": "integer",
-      "hytale": {
-        "type": "integer",
-        "inheritsProperty": true
-      },
       "default": 0
     },
     "ProduceDrops": {
@@ -24,23 +20,16 @@
         "null"
       ],
       "title": "Map",
-      "hytale": {
-        "type": "object"
-      },
       "additionalProperties": {
         "anyOf": [
           {
             "type": "string",
-            "title": "Reference to ItemDropList",
-            "hytale": {
-              "type": "string"
-            }
+            "title": "Reference to ItemDropList"
           },
           {
             "$ref": "ItemDropList.json#"
           }
-        ],
-        "hytaleAssetRef": "ItemDropList"
+        ]
       }
     },
     "ResidentSpawnOffset": {
@@ -49,7 +38,7 @@
         "Y": 0,
         "Z": 0
       },
-      "$ref": "common.json#/definitions/Vector3d"
+      "$ref": "common.schema.json#/$defs/Vector3d"
     },
     "ResidentRoamTime": {
       "type": [
@@ -57,21 +46,12 @@
         "null"
       ],
       "title": "IntRange",
-      "hytale": {
-        "type": "array"
-      },
       "items": [
         {
-          "type": "integer",
-          "hytale": {
-            "type": "integer"
-          }
+          "type": "integer"
         },
         {
-          "type": "integer",
-          "hytale": {
-            "type": "integer"
-          }
+          "type": "integer"
         }
       ],
       "minItems": 2,
@@ -79,62 +59,26 @@
     },
     "CaptureWildNPCsInRange": {
       "type": "boolean",
-      "hytale": {
-        "type": "boolean"
-      },
       "default": false
     },
     "WildCaptureRadius": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number"
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "AcceptedNpcGroups": {
       "type": [
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array",
-        "inheritsProperty": true
-      },
       "items": {
         "anyOf": [
           {
             "type": "string",
-            "title": "Reference to NPCGroup",
-            "hytale": {
-              "type": "string"
-            }
+            "title": "Reference to NPCGroup"
           },
           {
             "$ref": "NPCGroup.json#"
           }
-        ],
-        "hytaleAssetRef": "NPCGroup"
+        ]
       }
     }
   }

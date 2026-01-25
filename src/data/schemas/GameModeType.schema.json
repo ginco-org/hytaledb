@@ -15,32 +15,18 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        }
+        "type": "string"
       }
     },
     "InteractionsOnEnter": {
       "anyOf": [
         {
-          "anyOf": [
-            {
-              "type": "string",
-              "title": "Reference to RootInteraction",
-              "hytale": {
-                "type": "string"
-              }
-            },
-            {
-              "$ref": "RootInteraction.json#"
-            }
-          ],
-          "hytaleAssetRef": "RootInteraction"
+          "type": "string",
+          "title": "Reference to RootInteraction"
+        },
+        {
+          "$ref": "RootInteraction.json#"
         },
         {
           "type": "null"

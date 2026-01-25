@@ -15,20 +15,12 @@
         "string",
         "null"
       ],
-      "description": "The name of this entity effect that will be displayed in the UI. This must be a localization key.",
-      "markdownDescription": "The name of this entity effect that will be displayed in the UI. This must be a localization key.",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      }
+      "description": "The name of this entity effect that will be displayed in the UI. This must be a localization key."
     },
     "ApplicationEffects": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ApplicationEffects",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/ApplicationEffects"
         },
         {
           "type": "null"
@@ -39,31 +31,18 @@
       "type": [
         "string",
         "null"
-      ],
-      "hytaleAssetRef": "SoundEvent",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      }
+      ]
     },
     "LocalRemovalSoundEventId": {
       "type": [
         "string",
         "null"
-      ],
-      "hytaleAssetRef": "SoundEvent",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      }
+      ]
     },
     "DamageCalculator": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/DamageCalculator",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/DamageCalculator"
         },
         {
           "type": "null"
@@ -71,42 +50,12 @@
       ]
     },
     "DamageCalculatorCooldown": {
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "minimum": 0,
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number",
-            "inheritsProperty": true
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "DamageEffects": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/DamageEffects",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/DamageEffects"
         },
         {
           "type": "null"
@@ -115,13 +64,9 @@
     },
     "StatModifierEffects": {
       "description": "Effects to play when stat modifiers are applied and updated.",
-      "markdownDescription": "Effects to play when stat modifiers are applied and updated.",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/DamageEffects",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/DamageEffects"
         },
         {
           "type": "null"
@@ -131,10 +76,7 @@
     "ModelOverride": {
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/ModelOverride",
-          "hytale": {
-            "inheritsProperty": true
-          }
+          "$ref": "common.schema.json#/$defs/ModelOverride"
         },
         {
           "type": "null"
@@ -146,13 +88,7 @@
         "string",
         "null"
       ],
-      "description": "A model to change the affected entity's appearance to.",
-      "markdownDescription": "A model to change the affected entity's appearance to.",
-      "hytaleAssetRef": "ModelAsset",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      }
+      "description": "A model to change the affected entity's appearance to."
     },
     "RawStatModifiers": {
       "type": [
@@ -160,24 +96,13 @@
         "null"
       ],
       "title": "Map",
-      "hytale": {
-        "type": "object"
-      },
       "additionalProperties": {
         "type": "array",
-        "hytale": {
-          "type": "array"
-        },
         "items": {
-          "$ref": "common.json#/definitions/StaticModifier"
+          "$ref": "common.schema.json#/$defs/StaticModifier"
         }
       },
-      "propertyNames": {
-        "hytaleAssetRef": "EntityStatType",
-        "hytale": {
-          "type": "string"
-        }
-      }
+      "propertyNames": {}
     },
     "StatModifiers": {
       "type": [
@@ -186,41 +111,15 @@
       ],
       "title": "Map of string to float",
       "description": "Modifiers to apply to EntityStats.",
-      "markdownDescription": "Modifiers to apply to EntityStats.",
-      "hytale": {
-        "type": "object",
-        "inheritsProperty": true
-      },
       "additionalProperties": {
-        "type": "number",
-        "hytale": {
-          "type": "number"
-        }
+        "type": "number"
       },
-      "propertyNames": {
-        "hytaleAssetRef": "EntityStatType",
-        "hytale": {
-          "type": "string"
-        }
-      }
+      "propertyNames": {}
     },
     "ValueType": {
       "type": "string",
       "title": "ValueType",
       "description": "Enum to specify if the StatModifiers must be considered as absolute values or percent. Default value is Absolute. When using ValueType.Absolute, '100' matches the max value.",
-      "markdownDescription": "Enum to specify if the StatModifiers must be considered as absolute values or percent. Default value is Absolute. When using ValueType.Absolute, '100' matches the max value.",
-      "enumDescriptions": [
-        "",
-        ""
-      ],
-      "markdownEnumDescriptions": [
-        "",
-        ""
-      ],
-      "hytale": {
-        "type": "Enum",
-        "inheritsProperty": true
-      },
       "enum": [
         "Percent",
         "Absolute"
@@ -229,34 +128,7 @@
     },
     "Duration": {
       "description": "Value used by default unless specified otherwise in the method's call.",
-      "markdownDescription": "Value used by default unless specified otherwise in the method's call.",
-      "anyOf": [
-        {
-          "anyOf": [
-            {
-              "type": "number",
-              "hytale": {
-                "type": "number"
-              },
-              "default": 0
-            },
-            {
-              "type": "string",
-              "hytale": {
-                "type": "string"
-              },
-              "pattern": "^(-?Infinity|NaN)$"
-            }
-          ],
-          "hytale": {
-            "type": "Number",
-            "inheritsProperty": true
-          }
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "$ref": "base.schema.json#/$defs/NullableNumberOrSpecial"
     },
     "OverlapBehavior": {
       "type": [
@@ -265,21 +137,6 @@
       ],
       "title": "OverlapBehavior",
       "description": "Value used by default unless specified otherwise in the method's call.",
-      "markdownDescription": "Value used by default unless specified otherwise in the method's call.",
-      "enumDescriptions": [
-        "",
-        "",
-        ""
-      ],
-      "markdownEnumDescriptions": [
-        "",
-        "",
-        ""
-      ],
-      "hytale": {
-        "type": "Enum",
-        "inheritsProperty": true
-      },
       "enum": [
         "Extend",
         "Overwrite",
@@ -290,21 +147,11 @@
     "Infinite": {
       "type": "boolean",
       "description": "Value used by default unless specified otherwise in the method's call.",
-      "markdownDescription": "Value used by default unless specified otherwise in the method's call.",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "Debuff": {
       "type": "boolean",
       "description": "Value used by default unless specified otherwise in the method's call.",
-      "markdownDescription": "Value used by default unless specified otherwise in the method's call.",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "Locale": {
@@ -312,24 +159,14 @@
         "string",
         "null"
       ],
-      "description": "An optional translation key, used to display the damage cause upon death.",
-      "markdownDescription": "An optional translation key, used to display the damage cause upon death.",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      }
+      "description": "An optional translation key, used to display the damage cause upon death."
     },
     "StatusEffectIcon": {
       "type": [
         "string",
         "null"
       ],
-      "description": "Value used by default unless specified otherwise in the method's call.",
-      "markdownDescription": "Value used by default unless specified otherwise in the method's call.",
-      "hytale": {
-        "type": "string",
-        "inheritsProperty": true
-      }
+      "description": "Value used by default unless specified otherwise in the method's call."
     },
     "RemovalBehavior": {
       "type": [
@@ -338,21 +175,6 @@
       ],
       "title": "RemovalBehavior",
       "description": "Value used by default unless specified otherwise in the method's call.",
-      "markdownDescription": "Value used by default unless specified otherwise in the method's call.",
-      "enumDescriptions": [
-        "",
-        "",
-        ""
-      ],
-      "markdownEnumDescriptions": [
-        "",
-        "",
-        ""
-      ],
-      "hytale": {
-        "type": "Enum",
-        "inheritsProperty": true
-      },
       "enum": [
         "Complete",
         "Infinite",
@@ -363,11 +185,6 @@
     "Invulnerable": {
       "type": "boolean",
       "description": "Determines whether this effect applies the invulnerable component to the entity whilst active.",
-      "markdownDescription": "Determines whether this effect applies the invulnerable component to the entity whilst active.",
-      "hytale": {
-        "type": "boolean",
-        "inheritsProperty": true
-      },
       "default": false
     },
     "DamageResistance": {
@@ -376,25 +193,13 @@
         "null"
       ],
       "title": "Map",
-      "hytale": {
-        "type": "object",
-        "inheritsProperty": true
-      },
       "additionalProperties": {
         "type": "array",
-        "hytale": {
-          "type": "array"
-        },
         "items": {
-          "$ref": "common.json#/definitions/StaticModifier"
+          "$ref": "common.schema.json#/$defs/StaticModifier"
         }
       },
-      "propertyNames": {
-        "hytaleAssetRef": "DamageCause",
-        "hytale": {
-          "type": "string"
-        }
-      }
+      "propertyNames": {}
     }
   }
 }

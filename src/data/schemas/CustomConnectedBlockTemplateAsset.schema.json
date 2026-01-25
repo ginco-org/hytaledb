@@ -13,29 +13,18 @@
     "DontUpdateAfterInitialPlacement": {
       "type": "boolean",
       "description": "Default to false. When true, will not update the connected block after initial placement. Neighboring block updates won't affect this block when true.",
-      "markdownDescription": "Default to false. When true, will not update the connected block after initial placement. Neighboring block updates won't affect this block when true.",
-      "hytale": {
-        "type": "boolean"
-      },
       "default": false
     },
     "ConnectsToOtherMaterials": {
       "type": "boolean",
       "description": "Defaults to true. If true, the material will connect to other materials of different block type sets, if false, the material will only connect to its own block types within the material",
-      "markdownDescription": "Defaults to true. If true, the material will connect to other materials of different block type sets, if false, the material will only connect to its own block types within the material",
-      "hytale": {
-        "type": "boolean"
-      },
       "default": true
     },
     "DefaultShape": {
       "type": [
         "string",
         "null"
-      ],
-      "hytale": {
-        "type": "string"
-      }
+      ]
     },
     "Shapes": {
       "type": [
@@ -43,11 +32,8 @@
         "null"
       ],
       "title": "Map",
-      "hytale": {
-        "type": "object"
-      },
       "additionalProperties": {
-        "$ref": "common.json#/definitions/ConnectedBlockShape"
+        "$ref": "common.schema.json#/$defs/ConnectedBlockShape"
       }
     }
   }

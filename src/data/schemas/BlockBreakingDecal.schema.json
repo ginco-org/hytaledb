@@ -15,26 +15,8 @@
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "type": "string",
-        "hytale": {
-          "type": "string"
-        },
-        "hytaleCommonAsset": {
-          "requiredRoots": [
-            "Blocks/",
-            "BlockTextures/",
-            "Items/",
-            "NPC/",
-            "Resources/",
-            "VFX/"
-          ],
-          "requiredExtension": "png",
-          "isUIAsset": false
-        }
+        "type": "string"
       }
     }
   }

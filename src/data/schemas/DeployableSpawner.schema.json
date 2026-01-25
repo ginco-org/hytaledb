@@ -14,41 +14,26 @@
       "title": "Type Selector",
       "anyOf": [
         {
-          "$ref": "common.json#/definitions/DeployableAoeConfig"
+          "$ref": "common.schema.json#/$defs/DeployableAoeConfig"
         },
         {
-          "$ref": "common.json#/definitions/DeployableTrapConfig"
+          "$ref": "common.schema.json#/$defs/DeployableTrapConfig"
         },
         {
-          "$ref": "common.json#/definitions/DeployableTrapSpawnerConfig"
+          "$ref": "common.schema.json#/$defs/DeployableTrapSpawnerConfig"
         },
         {
-          "$ref": "common.json#/definitions/DeployableTurretConfig"
+          "$ref": "common.schema.json#/$defs/DeployableTurretConfig"
         }
-      ],
-      "hytaleSchemaTypeField": {
-        "property": "Type",
-        "values": [
-          "Aoe",
-          "Trap",
-          "TrapSpawner",
-          "Turret"
-        ]
-      },
-      "hytale": {
-        "mergesProperties": true
-      }
+      ]
     },
     "PositionOffsets": {
       "type": [
         "array",
         "null"
       ],
-      "hytale": {
-        "type": "array"
-      },
       "items": {
-        "$ref": "common.json#/definitions/Vector3d"
+        "$ref": "common.schema.json#/$defs/Vector3d"
       }
     }
   }
