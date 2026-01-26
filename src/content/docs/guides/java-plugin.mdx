@@ -59,10 +59,6 @@ A Hytale plugin follows standard Gradle/Java conventions. The only addition is a
 
    <Code code={gradleProperties} lang="properties" title="gradle.properties" />
 
-   <Aside>
-   The `maven_group` property is a namespace identifier used for Maven publishing and should be unique to your organization. If you own a domain (e.g., `example.com`), use the reverse domain as your group (e.g., `com.example`). If you don't have a domain, use a unique identifier like your GitHub username or organization name (e.g., `io.github.yourusername` or `com.yourname`). This is **not** the same as the `Group` field in `manifest.json`.
-   </Aside>
-
 4. **Set up `build.gradle`** — this is the core of the build system. It adds the Hytale server JAR to your classpath, auto-updates your manifest, and provides a `runServer` task for local development.
 
    <Code code={buildGradle} lang="groovy" title="build.gradle" />
