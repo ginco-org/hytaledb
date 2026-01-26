@@ -1,0 +1,153 @@
+---
+title: Creating a Java Plugin
+description: A step-by-step guide to setting up, building, and running a minimal Hytale Java plugin using Gradle.
+---
+
+import { Code, FileTree, Aside, Steps } from '@astrojs/starlight/components';
+
+import buildGradle from '/src/snippets/java-plugin/build.gradle?raw';
+import gradleProperties from '/src/snippets/java-plugin/gradle.min.properties?raw';
+import settingsGradle from '/src/snippets/java-plugin/settings.min.gradle?raw';
+import manifestJson from '/src/snippets/java-plugin/manifest.min.json?raw';
+import gitignore from '/src/snippets/java-plugin/.gitignore?raw';
+import MyPlugin from '/src/snippets/java-plugin/MyPlugin.java?raw';
+
+This guide walks you through creating a minimal Java plugin for Hytale using Gradle. By the end you will have a plugin that loads on the server and logs a message on startup.
+
+## Requirements
+
+1. **Java 25 JDK** installed. The game is built on Java 21 but runs on Java 25.
+2. A **code editor** of your choice.
+3. If your IDE doesnt include gradle project generation, install the **Gradle** CLI tool to create a gradle wrapper.
+4. **Hytale** installed via the official launcher (only needed to run a local dev server, not to build).
+
+## Project Structure
+
+A Hytale plugin follows standard Gradle/Java conventions. The only addition is a `manifest.json` that describes your plugin to the game.
+
+<FileTree>
+- build.gradle
+- settings.gradle
+- gradle.properties
+- gradlew / gradlew.bat
+- .gitignore
+- gradle/
+  - wrapper/
+    - gradle-wrapper.jar
+    - gradle-wrapper.properties
+- src/
+  - main/
+    - java/
+      - com/example/myplugin/
+        - **MyPlugin.java** plugin entry point
+    - resources/
+      - **manifest.json** plugin metadata
+- run/ server working directory (gitignored)
+</FileTree>
+
+## Setting Up the Project
+
+<Steps>
+
+1. **Create a new Gradle project** or clone an existing template. The Gradle wrapper is included so you don't need Gradle installed globally — just run `./gradlew` from the project root.
+
+2. **Configure `settings.gradle`** — set your project name. This becomes the base name for JAR files produced by Gradle.
+
+   <Code code={settingsGradle} lang="groovy" title="settings.gradle" />
+
+3. **Configure `gradle.properties`** — define your version, Maven group, Java version, and build flags. Every property here is referenced by `build.gradle`.
+
+   <Code code={gradleProperties} lang="properties" title="gradle.properties" />
+
+   <Aside>
+   The `maven_group` property is a namespace identifier used for Maven publishing and should be unique to your organization. If you own a domain (e.g., `example.com`), use the reverse domain as your group (e.g., `com.example`). If you don't have a domain, use a unique identifier like your GitHub username or organization name (e.g., `io.github.yourusername` or `com.yourname`). This is **not** the same as the `Group` field in `manifest.json`.
+   </Aside>
+
+4. **Set up `build.gradle`** — this is the core of the build system. It adds the Hytale server JAR to your classpath, auto-updates your manifest, and provides a `runServer` task for local development.
+
+   <Code code={buildGradle} lang="groovy" title="build.gradle" />
+
+   Key things this does:
+   - Pulls the Hytale server JAR from the [official Maven repository](https://maven.hytale.com) as a compile dependency.
+   - Defines an `updatePluginManifest` task that syncs `Version` and `IncludesAssetPack` from your Gradle properties into `manifest.json` every build.
+   - Defines a `runServer` task that launches a local Hytale server with your plugin loaded.
+
+5. **Create `manifest.json`** — this tells Hytale about your plugin. The `Main` field must point to your plugin's entry class.
+
+   <Code code={manifestJson} lang="json" title="src/main/resources/manifest.json" />
+
+   | Field | Description |
+   |---|---|
+   | `Group` | Your organization or team name — displayed to players as the plugin's author group |
+   | `Name` | Plugin display name |
+   | `Version` | Semantic version (auto-updated by Gradle) |
+   | `Main` | Fully qualified class name of your [`JavaPlugin`](https://hysrc.ginco.gg/#1/local/com/hypixel/hytale/server/core/plugin/JavaPlugin) subclass |
+   | `IncludesAssetPack` | Set `true` if your plugin bundles game assets |
+   | `ServerVersion` | Server version constraint (`*` for any) |
+
+6. **Add a `.gitignore`** to exclude build artifacts and the server runtime directory.
+
+   <Code code={gitignore} lang="sh" title=".gitignore" />
+
+</Steps>
+
+## Writing the Plugin
+
+Every plugin needs a main class that extends [`JavaPlugin`](https://hysrc.ginco.gg/#1/local/com/hypixel/hytale/server/core/plugin/JavaPlugin). This is the class referenced by `Main` in your manifest. The constructor runs when the plugin is loaded, and `setup()` is called when the server is ready for you to register functionality like commands and event listeners.
+
+<Code code={MyPlugin} lang="java" title="src/main/java/com/example/myplugin/MyPlugin.java" />
+
+That's it — this plugin will log two messages to the server console when it loads.
+
+## Running the Server
+
+<Steps>
+
+1. **Start the server** using the `runServer` Gradle task:
+
+   ```sh
+   ./gradlew runServer
+   ```
+
+2. **Authenticate the server.** You must do this before any client can connect. In the server terminal, run:
+
+   ```
+   auth login device
+   ```
+
+   This prints a URL — open it in your browser and sign in with your Hytale account. Then persist the session so you don't have to re-authenticate every time:
+
+   ```
+   auth persistence Encrypted
+   ```
+
+   <Aside type="danger">
+   Never share your encrypted auth file with anyone.
+   </Aside>
+
+   If you cannot type into the server terminal, you can trigger authentication from code temporarily:
+
+   ```java
+   @Override
+   protected void start() {
+       CommandManager.get().handleCommand(ConsoleSender.INSTANCE, "auth login device");
+   }
+   ```
+
+   Remove this code after your server is authenticated.
+
+3. **Connect from the Hytale client.** Open the game and connect to `Local Server`. If it doesn't appear automatically, add `127.0.0.1` manually.
+
+4. **Verify the plugin.** Check the server console for your plugin's log messages.
+
+</Steps>
+
+## Building for Distribution
+
+To build a shareable JAR file, run:
+
+```sh
+./gradlew build
+```
+
+The output JAR is written to `build/libs/`. Players can install your plugin by placing the JAR in their `%APPDATA%/Hytale/UserData/Mods` folder.

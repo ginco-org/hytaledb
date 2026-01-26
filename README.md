@@ -24,7 +24,7 @@ HytaleDB is a website dedicated to providing detailed information and resources 
 > But assets should also be able to have manually written additions and corrections.
 
 
-## Things i know about but need documentation for
+## Things to document
 - https://maven.hytale.com (https://maven.hytale.com/release/com/hypixel/hytale/Server/maven-metadata.xml)
 - how does the client get downloaded?
 - how does the launcher work?
@@ -33,3 +33,7 @@ HytaleDB is a website dedicated to providing detailed information and resources 
 - .ui file format
 - main systems a mod interacts with
   - events, registries, etc
+
+## Things to write guides about
+- running a server
+- creating a asset pack
