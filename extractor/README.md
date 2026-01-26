@@ -15,6 +15,8 @@ The script performs the following cleanup on generated schemas:
 - Removes editor metadata properties: `$Title`, `$Comment`, `$Author`, `$TODO`, `$Position`, etc.
 - Removes empty `enumDescriptions` and `markdownEnumDescriptions` arrays
 - Removes duplicate `markdownDescription` when identical to `description`
+- Removes generic unhelpful titles (e.g., `"title": "Map"`)
+- Removes empty `propertyNames: {}` objects
 
 **Pattern Simplification:**
 - Simplifies nested `anyOf` patterns for nullable types
@@ -32,8 +34,8 @@ The script performs the following cleanup on generated schemas:
 - `ColorRGB` - A color in hex (#RGB or #RRGGBB) or rgb() format
 
 
-## TODO
+## Notes
 
-- Consider converting `hytaleSchemaTypeField` discriminators to standard JSON Schema `if-then-else` patterns
-- Investigate what `hytale.inheritsProperty` does at runtime (inheritance behavior)
-- simplify common.json
+**`hytaleSchemaTypeField`**: This is a discriminator for polymorphic types (e.g., `{ property: "Type", values: ["And", "BlockSet", ...] }`). Converting to JSON Schema `if-then-else` patterns would be complex. Currently removed since the schema still validates structure.
+
+**`hytale.inheritsProperty`**: Hytale-specific runtime inheritance behavior. Removed as it's not relevant for schema validation.

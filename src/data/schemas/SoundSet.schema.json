@@ -12,7 +12,6 @@
   "properties": {
     "SoundEvents": {
       "type": "object",
-      "title": "Map",
       "additionalProperties": {
         "type": "string"
       }

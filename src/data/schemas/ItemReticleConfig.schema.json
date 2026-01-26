@@ -23,7 +23,6 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "description": "A map of reticle configurations for server-side events.",
       "additionalProperties": {
         "$ref": "common.schema.json#/$defs/ItemReticleWithDuration"

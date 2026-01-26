@@ -327,7 +327,6 @@
         "object",
         "null"
       ],
-      "title": "Map of InteractionType",
       "properties": {
         "Primary": {
           "anyOf": [
@@ -654,7 +653,6 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "additionalProperties": {
         "anyOf": [
           {
@@ -672,15 +670,13 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "description": "Define per EntityStat an array of ItemAppearanceCondition. Only a single condition will be applied to the item at the same time.",
       "additionalProperties": {
         "type": "array",
         "items": {
           "$ref": "common.schema.json#/$defs/ItemAppearanceCondition"
         }
-      },
-      "propertyNames": {}
+      }
     },
     "DisplayEntityStatsHUD": {
       "type": [
@@ -720,7 +716,6 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "additionalProperties": {
         "anyOf": [
           {

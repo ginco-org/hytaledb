@@ -26,3 +26,10 @@ HytaleDB is a website dedicated to providing detailed information and resources 
 
 ## Things i know about but need documentation for
 - https://maven.hytale.com (https://maven.hytale.com/release/com/hypixel/hytale/Server/maven-metadata.xml)
+- how does the client get downloaded?
+- how does the launcher work?
+- how do client and server talk to each other?
+- list of commands
+- .ui file format
+- main systems a mod interacts with
+  - events, registries, etc

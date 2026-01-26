@@ -12,7 +12,6 @@
   "properties": {
     "Animations": {
       "type": "object",
-      "title": "Map",
       "additionalProperties": {
         "$ref": "common.schema.json#/$defs/ItemAnimation"
       }

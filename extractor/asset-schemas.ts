@@ -55,6 +55,36 @@ function isEmptyStringArray(arr: any[]): boolean {
     return arr.every(item => item === "");
 }
 
+// Remove empty objects and arrays from schema (post-processing cleanup)
+function removeEmptyValues(obj: any): any {
+    if (obj === null || obj === undefined) {
+        return obj;
+    }
+
+    if (Array.isArray(obj)) {
+        return obj.map(item => removeEmptyValues(item));
+    }
+
+    if (typeof obj !== "object") {
+        return obj;
+    }
+
+    const result: Record<string, any> = {};
+
+    for (const [key, value] of Object.entries(obj)) {
+        // Skip empty propertyNames
+        if (key === "propertyNames" && typeof value === "object" && value !== null &&
+            !Array.isArray(value) && Object.keys(value).length === 0) {
+            continue;
+        }
+
+        const cleanedValue = removeEmptyValues(value);
+        result[key] = cleanedValue;
+    }
+
+    return result;
+}
+
 // Deep clean a schema object recursively
 function deepClean(obj: any, isInsideProperties: boolean = false): any {
     if (obj === null || obj === undefined) {
@@ -90,6 +120,11 @@ function deepClean(obj: any, isInsideProperties: boolean = false): any {
 
         // Remove markdownDescription if it equals description
         if (key === "markdownDescription" && obj.description === value) {
+            continue;
+        }
+
+        // Remove generic unhelpful titles
+        if (key === "title" && (value === "Map" || value === "Map of InteractionType")) {
             continue;
         }
 
@@ -389,6 +424,7 @@ function cleanSchema(schema: JsonSchema): JsonSchema {
                 let cleanedProp = deepClean(convertCommonRefs(prop));
                 cleanedProp = replaceColorPatterns(cleanedProp);
                 cleanedProp = replaceNumberOrSpecialPatterns(cleanedProp);
+                cleanedProp = removeEmptyValues(cleanedProp);
                 assetProperties[key] = cleanedProp;
             }
         }
@@ -403,6 +439,7 @@ function cleanSchema(schema: JsonSchema): JsonSchema {
         let cleanedDefs = deepClean(convertCommonRefs(schema.$defs));
         cleanedDefs = replaceColorPatterns(cleanedDefs);
         cleanedDefs = replaceNumberOrSpecialPatterns(cleanedDefs);
+        cleanedDefs = removeEmptyValues(cleanedDefs);
         cleaned.$defs = cleanedDefs;
     }
 
@@ -426,6 +463,7 @@ function cleanCommonSchema(schema: JsonSchema): JsonSchema {
             let cleanedDef = deepClean(convertCommonRefs(def));
             cleanedDef = replaceColorPatterns(cleanedDef);
             cleanedDef = replaceNumberOrSpecialPatterns(cleanedDef);
+            cleanedDef = removeEmptyValues(cleanedDef);
             cleaned.$defs[key] = cleanedDef;
         }
     }

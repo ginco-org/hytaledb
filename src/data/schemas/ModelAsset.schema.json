@@ -95,7 +95,6 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "additionalProperties": {
         "type": "array",
         "items": {
@@ -131,10 +130,8 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "additionalProperties": {
         "type": "object",
-        "title": "Map",
         "additionalProperties": {
           "$ref": "common.schema.json#/$defs/ModelAttachment"
         }
@@ -145,7 +142,6 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "additionalProperties": {
         "$ref": "common.schema.json#/$defs/AnimationSet"
       }

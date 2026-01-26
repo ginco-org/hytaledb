@@ -30,11 +30,9 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "additionalProperties": {
         "$ref": "common.schema.json#/$defs/FluidParticle"
-      },
-      "propertyNames": {}
+      }
     },
     "SpawnDensity": {
       "type": "number",

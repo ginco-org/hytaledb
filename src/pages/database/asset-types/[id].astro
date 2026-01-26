@@ -18,6 +18,10 @@ export async function getStaticPaths() {
 
 const { asset } = Astro.props;
 
+// Build set of known asset type IDs for $ref linking
+const allAssetTypes = await getCollection("assetTypes");
+const knownAssetIds = new Set(allAssetTypes.map((a) => a.data.id));
+
 // Find schema file for this asset type
 const schemaKey = Object.keys(schemaFiles).find((key) =>
   key.endsWith(`/${asset.data.id}.schema.json`)
@@ -55,7 +59,7 @@ const schemaUrl = `https://hytaledb.ginco.gg/schemas/${asset.data.id}.schema.jso
   <h2>Schema</h2>
 
   {assetSchema ? (
-    <JsonSchemaViewer schema={assetSchema} />
+    <JsonSchemaViewer schema={assetSchema} knownAssetIds={knownAssetIds} />
   ) : (
     <p><em>Schema not yet documented.</em></p>
   )}

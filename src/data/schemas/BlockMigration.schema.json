@@ -15,7 +15,6 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "additionalProperties": {
         "type": "string"
       }
@@ -25,7 +24,6 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "additionalProperties": {
         "type": "string"
       }

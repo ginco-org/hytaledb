@@ -31,7 +31,6 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "additionalProperties": {
         "$ref": "common.schema.json#/$defs/ConnectedBlockShape"
       }

@@ -15,7 +15,6 @@
         "object",
         "null"
       ],
-      "title": "Map of InteractionType",
       "properties": {
         "Primary": {
           "anyOf": [

@@ -1,7 +1,4 @@
-@tailwind components;
-@tailwind utilities;
-
-/* Component-specific resets for the JSON Schema Viewer */
+/* Prevent Starlight content styles from leaking into custom components */
 .not-content button {
   background: transparent;
   border: none;

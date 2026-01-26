@@ -1,19 +1,15 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
 import starlightThemeRapide from 'starlight-theme-rapide';
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
-		react(),
-		tailwind({ applyBaseStyles: false }),
 		starlight({
 			title: 'HytaleDB',
 			plugins: [starlightThemeRapide()],
-			customCss: ['./src/styles/tailwind.css'],
+			customCss: ['./src/styles/custom.css'],
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/ginco-org/hytaledb' }],
 			tableOfContents: false,
 			sidebar: [

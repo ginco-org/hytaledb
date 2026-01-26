@@ -95,14 +95,12 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "additionalProperties": {
         "type": "array",
         "items": {
           "$ref": "common.schema.json#/$defs/StaticModifier"
         }
-      },
-      "propertyNames": {}
+      }
     },
     "StatModifiers": {
       "type": [
@@ -113,8 +111,7 @@
       "description": "Modifiers to apply to EntityStats.",
       "additionalProperties": {
         "type": "number"
-      },
-      "propertyNames": {}
+      }
     },
     "ValueType": {
       "type": "string",
@@ -192,14 +189,12 @@
         "object",
         "null"
       ],
-      "title": "Map",
       "additionalProperties": {
         "type": "array",
         "items": {
           "$ref": "common.schema.json#/$defs/StaticModifier"
         }
-      },
-      "propertyNames": {}
+      }
     }
   }
 }

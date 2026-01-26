@@ -201,8 +201,7 @@
       "description": "Sets the plugins that are required to be enabled for this world to function.",
       "additionalProperties": {
         "type": "string"
-      },
-      "propertyNames": {}
+      }
     },
     "GameMode": {
       "type": [

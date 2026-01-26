@@ -208,7 +208,6 @@
                 "object",
                 "null"
               ],
-              "title": "Map",
               "additionalProperties": {
                 "type": "string"
               }

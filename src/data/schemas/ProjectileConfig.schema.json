@@ -45,7 +45,6 @@
     },
     "Interactions": {
       "type": "object",
-      "title": "Map of InteractionType",
       "properties": {
         "Primary": {
           "anyOf": [
