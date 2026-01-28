@@ -5,7 +5,7 @@ import { createHash } from "crypto";
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { getTokens, getDownloadUrl } from "./hytale";
+import { getJarUrl, fetchAllVersions } from "./hytale";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const VERSIONS_PATH = join(__dirname, "../src/data/versions.json");
@@ -22,17 +22,14 @@ interface Version {
 }
 
 async function downloadAndHash(
-  version: Version,
-  accessToken: string
+  version: Version
 ): Promise<{ size: number; sha256: string } | null> {
-  const downloadPath = `builds/${version.patchline}/${version.version}.zip`;
+  const jarUrl = getJarUrl(version.version);
 
   try {
-    const signedUrl = await getDownloadUrl(downloadPath, accessToken);
-
     console.log(`  Downloading ${version.version}...`);
 
-    const response = await fetch(signedUrl);
+    const response = await fetch(jarUrl);
     if (!response.ok) {
       console.log(`  Failed to download: ${response.status}`);
       return null;
@@ -46,7 +43,7 @@ async function downloadAndHash(
     if (!existsSync(DOWNLOADS_PATH)) {
       mkdirSync(DOWNLOADS_PATH, { recursive: true });
     }
-    const filePath = join(DOWNLOADS_PATH, `${version.patchline}-${version.version}.zip`);
+    const filePath = join(DOWNLOADS_PATH, `${version.patchline}-${version.version}.jar`);
     writeFileSync(filePath, data);
     console.log(`  Saved to ${filePath}`);
 
@@ -58,15 +55,12 @@ async function downloadAndHash(
 }
 
 async function verifyVersion(
-  version: Version,
-  accessToken: string
+  version: Version
 ): Promise<{ exists: boolean; size?: number }> {
-  const downloadPath = `builds/${version.patchline}/${version.version}.zip`;
+  const jarUrl = getJarUrl(version.version);
 
   try {
-    const signedUrl = await getDownloadUrl(downloadPath, accessToken);
-
-    const response = await fetch(signedUrl, {
+    const response = await fetch(jarUrl, {
       method: "GET",
       headers: { Range: "bytes=0-0" },
     });
@@ -87,8 +81,8 @@ async function main() {
   const versions: Version[] = JSON.parse(readFileSync(VERSIONS_PATH, "utf-8"));
   console.log(`Loaded ${versions.length} versions from versions.json\n`);
 
-  const tokens = await getTokens();
-  console.log("Authenticated!\n");
+  const mavenVersions = await fetchAllVersions();
+  console.log(`Found ${mavenVersions.length} versions on Maven\n`);
 
   const needsHash = versions.filter((v) => !v.sha256);
   console.log(`Versions with hash: ${versions.length - needsHash.length}`);
@@ -98,7 +92,7 @@ async function main() {
   console.log("=== Verifying versions ===\n");
   for (const version of versions) {
     process.stdout.write(`${version.patchline}/${version.version}: `);
-    const result = await verifyVersion(version, tokens.access_token);
+    const result = await verifyVersion(version);
 
     if (result.exists) {
       console.log(`OK (${((result.size || 0) / 1024 / 1024).toFixed(2)} MB)`);
@@ -118,7 +112,7 @@ async function main() {
 
     for (const version of needsHash) {
       console.log(`${version.patchline}/${version.version}:`);
-      const result = await downloadAndHash(version, tokens.access_token);
+      const result = await downloadAndHash(version);
 
       if (result) {
         version.size = result.size;

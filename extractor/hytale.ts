@@ -1,6 +1,6 @@
-// Script to download a Hytale server release
+// Script to download a Hytale server release from Maven
 
-import { existsSync, readFileSync, writeFileSync, mkdirSync, rmSync } from "fs";
+import { existsSync, mkdirSync, rmSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { createWriteStream } from "fs";
@@ -12,376 +12,121 @@ declare global {
   }
 }
 
-const OAUTH_BASE_URL = "https://oauth.accounts.hytale.com/oauth2";
-const GAME_ASSETS_URL = "https://account-data.hytale.com/game-assets";
-const CLIENT_ID = "hytale-downloader";
+const MAVEN_BASE_URL = "https://maven.hytale.com/release/com/hypixel/hytale/Server";
 
-// Token cache file path (in the same directory as this script)
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const TOKEN_CACHE_PATH = join(__dirname, ".token-cache.json");
 
-interface CachedToken {
-  refresh_token: string;
-  cached_at: number;
-}
-
-function loadCachedToken(): string | null {
-  try {
-    if (existsSync(TOKEN_CACHE_PATH)) {
-      const data = JSON.parse(readFileSync(TOKEN_CACHE_PATH, "utf-8")) as CachedToken;
-      console.log("Found cached refresh token");
-      return data.refresh_token;
-    }
-  } catch (e) {
-    console.log("Failed to load cached token:", e instanceof Error ? e.message : e);
-  }
-  return null;
-}
-
-function saveCachedToken(refreshToken: string): void {
-  try {
-    const data: CachedToken = {
-      refresh_token: refreshToken,
-      cached_at: Date.now(),
-    };
-    writeFileSync(TOKEN_CACHE_PATH, JSON.stringify(data, null, 2));
-    console.log("Saved refresh token to cache");
-  } catch (e) {
-    console.log("Failed to save token cache:", e instanceof Error ? e.message : e);
-  }
-}
-
-interface DeviceAuthResponse {
-  device_code: string;
-  user_code: string;
-  verification_uri: string;
-  verification_uri_complete: string;
-  expires_in: number;
-  interval: number;
-}
-
-interface TokenResponse {
-  access_token: string;
-  refresh_token: string;
-  token_type: string;
-  expires_in: number;
-}
-
-interface TokenErrorResponse {
-  error: string;
-  error_description?: string;
-}
-
-interface VersionInfo {
+export interface VersionInfo {
   version: string;
-  download_url: string;
-  sha256: string;
   [key: string]: unknown;
 }
 
-interface DownloadUrlResponse {
-  url: string;
-}
-
-async function requestDeviceAuth(): Promise<DeviceAuthResponse> {
-  const response = await fetch(`${OAUTH_BASE_URL}/device/auth`, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      client_id: CLIENT_ID,
-      scope: "offline auth:downloader",
-    }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Device auth failed: ${response.status}`);
-  }
-
-  return response.json();
-}
-
-async function pollForToken(
-  deviceCode: string,
-  interval: number,
-  expiresIn: number
-): Promise<TokenResponse> {
-  const startTime = Date.now();
-  const expiresAt = startTime + expiresIn * 1000;
-
-  while (Date.now() < expiresAt) {
-    await new Promise((resolve) => setTimeout(resolve, interval * 1000));
-
-    const response = await fetch(`${OAUTH_BASE_URL}/token`, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        client_id: CLIENT_ID,
-        grant_type: "urn:ietf:params:oauth:grant-type:device_code",
-        device_code: deviceCode,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      return data as TokenResponse;
-    }
-
-    const error = data as TokenErrorResponse;
-    if (error.error === "authorization_pending") {
-      continue;
-    } else if (error.error === "slow_down") {
-      interval += 5;
-      continue;
-    } else {
-      throw new Error(`Token request failed: ${error.error}`);
-    }
-  }
-
-  throw new Error("Device authorization expired");
-}
-
-async function refreshAccessToken(refreshToken: string): Promise<TokenResponse> {
-  const response = await fetch(`${OAUTH_BASE_URL}/token`, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      client_id: CLIENT_ID,
-      grant_type: "refresh_token",
-      refresh_token: refreshToken,
-    }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Token refresh failed: ${response.status}`);
-  }
-
-  return response.json();
-}
-
-interface SignedUrlResponse {
-  url: string;
-}
-
-async function getSignedUrl(
-  path: string,
-  accessToken: string
-): Promise<string> {
-  const response = await fetch(`${GAME_ASSETS_URL}/${path}`, {
-    headers: { Authorization: `Bearer ${accessToken}` },
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to get signed URL for ${path}: ${response.status}`);
-  }
-
-  const data: SignedUrlResponse = await response.json();
-  return data.url;
-}
-
-async function getVersionInfo(
-  patchline: string,
-  accessToken: string
-): Promise<VersionInfo> {
-  // First get the signed URL from the API
-  const signedUrl = await getSignedUrl(`version/${patchline}.json`, accessToken);
-
-  // Then fetch the actual version info from the signed URL
-  const response = await fetch(signedUrl);
-
-  if (!response.ok) {
-    throw new Error(`Failed to get version info from signed URL: ${response.status}`);
-  }
-
-  return response.json();
-}
-
-async function getDownloadUrl(
-  downloadPath: string,
-  accessToken: string
-): Promise<string> {
-  const response = await fetch(`${GAME_ASSETS_URL}/${downloadPath}`, {
-    headers: { Authorization: `Bearer ${accessToken}` },
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to get download URL: ${response.status}`);
-  }
-
-  const data: DownloadUrlResponse = await response.json();
-  return data.url;
-}
-
-export interface HytaleServerDownloadOptions {
-  patchline: string;
-  refreshToken?: string;
-  onDeviceAuth?: (auth: DeviceAuthResponse) => void;
-}
-
-export interface HytaleServerDownloadResult {
-  versionInfo: VersionInfo;
-  downloadUrl: string;
-  tokens: TokenResponse;
-}
-
-export async function getHytaleServer(
-  options: HytaleServerDownloadOptions
-): Promise<HytaleServerDownloadResult> {
-  let tokens: TokenResponse;
-
-  if (options.refreshToken) {
-    tokens = await refreshAccessToken(options.refreshToken);
-  } else {
-    const deviceAuth = await requestDeviceAuth();
-
-    if (options.onDeviceAuth) {
-      options.onDeviceAuth(deviceAuth);
-    } else {
-      console.log(`Please visit: ${deviceAuth.verification_uri_complete}`);
-      console.log(`Or go to ${deviceAuth.verification_uri} and enter code: ${deviceAuth.user_code}`);
-    }
-
-    tokens = await pollForToken(
-      deviceAuth.device_code,
-      deviceAuth.interval,
-      deviceAuth.expires_in
-    );
-  }
-
-  const versionInfo = await getVersionInfo(options.patchline, tokens.access_token);
-  const downloadUrl = await getDownloadUrl(versionInfo.download_url, tokens.access_token);
-
-  return {
-    versionInfo,
-    downloadUrl,
-    tokens,
-  };
-}
-
 /**
- * Get authenticated tokens, using cached refresh token if available.
- * Falls back to device auth flow if no cached token or if refresh fails.
+ * Fetches the latest release version from Maven metadata.
  */
-export async function getTokens(): Promise<TokenResponse> {
-  const cachedRefreshToken = loadCachedToken();
-
-  if (cachedRefreshToken) {
-    try {
-      const tokens = await refreshAccessToken(cachedRefreshToken);
-      saveCachedToken(tokens.refresh_token);
-      return tokens;
-    } catch {
-      // Fall through to device auth
-    }
+export async function fetchLatestVersion(): Promise<string> {
+  const response = await fetch(`${MAVEN_BASE_URL}/maven-metadata.xml`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch Maven metadata: ${response.status}`);
   }
 
-  const deviceAuth = await requestDeviceAuth();
-  console.log(`\nVisit: ${deviceAuth.verification_uri_complete}`);
-  console.log(`Or enter code: ${deviceAuth.user_code}\n`);
+  const text = await response.text();
+  const releaseMatch = text.match(/<release>([^<]+)<\/release>/);
+  const latestMatch = text.match(/<latest>([^<]+)<\/latest>/);
+  const version = releaseMatch?.[1] ?? latestMatch?.[1];
 
-  const tokens = await pollForToken(
-    deviceAuth.device_code,
-    deviceAuth.interval,
-    deviceAuth.expires_in
-  );
-  saveCachedToken(tokens.refresh_token);
-  return tokens;
+  if (!version) {
+    throw new Error("Could not determine latest version from Maven metadata");
+  }
+
+  return version;
 }
 
 /**
- * Downloads a Hytale server release ZIP or returns cached path.
- * @param patchline - The patchline to download ("release", "pre-release", etc)
- * @param version - Optional specific version to download. If not specified, uses latest for patchline
- * @returns Path to the downloaded/cached server ZIP file
+ * Fetches all available versions from Maven metadata.
+ */
+export async function fetchAllVersions(): Promise<string[]> {
+  const response = await fetch(`${MAVEN_BASE_URL}/maven-metadata.xml`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch Maven metadata: ${response.status}`);
+  }
+
+  const text = await response.text();
+  const versions: string[] = [];
+  const versionRegex = /<version>([^<]+)<\/version>/g;
+  let match;
+  while ((match = versionRegex.exec(text)) !== null) {
+    versions.push(match[1]);
+  }
+  return versions;
+}
+
+/**
+ * Returns the Maven URL for a specific server version JAR.
+ */
+export function getJarUrl(version: string): string {
+  return `${MAVEN_BASE_URL}/${version}/Server-${version}.jar`;
+}
+
+/**
+ * Downloads a Hytale server JAR or returns cached path.
+ * @param patchline - Label for caching (e.g. "release")
+ * @param version - Specific version to download. If not specified, uses latest.
+ * @returns Path to the downloaded/cached server JAR file
  */
 export async function getServer(patchline: string, version?: string): Promise<string> {
   const cacheDir = join(__dirname, "downloads");
-  
-  // Create cache directory if it doesn't exist
+
   if (!existsSync(cacheDir)) {
     mkdirSync(cacheDir, { recursive: true });
   }
 
-  // Get tokens
-  const tokens = await getTokens();
+  const selectedVersion = version || await fetchLatestVersion();
+  const serverJarPath = join(cacheDir, `${patchline}-${selectedVersion}.jar`);
 
-  // Get version info for the patchline
-  const versionInfo = await getVersionInfo(patchline, tokens.access_token);
-  const selectedVersion = version || versionInfo.version;
-
-  // Cache path for this version's zip
-  const serverZipPath = join(cacheDir, `${patchline}-${selectedVersion}.zip`);
-
-  // Check if already cached
-  if (existsSync(serverZipPath)) {
-    console.log(`✓ Using cached server ZIP: ${serverZipPath}`);
-    return serverZipPath;
+  if (existsSync(serverJarPath)) {
+    console.log(`Using cached server JAR: ${serverJarPath}`);
+    return serverJarPath;
   }
 
-  // Download the server
-  console.log(`\n⬇ Downloading HytaleServer ${patchline}@${selectedVersion}...`);
-  const downloadUrl = await getDownloadUrl(versionInfo.download_url, tokens.access_token);
+  console.log(`\nDownloading HytaleServer ${patchline}@${selectedVersion}...`);
+  const jarUrl = getJarUrl(selectedVersion);
 
   try {
-    // Download the zip file
-    const response = await fetch(downloadUrl);
+    const response = await fetch(jarUrl);
     if (!response.ok) {
       throw new Error(`Download failed: ${response.status}`);
     }
 
-    // Stream download to file
-    const fileStream = createWriteStream(serverZipPath);
-    
     if (!response.body) {
       throw new Error("No response body");
     }
 
-    await pipeline(
-      response.body,
-      fileStream
-    );
+    const fileStream = createWriteStream(serverJarPath);
+    await pipeline(response.body, fileStream);
 
-    console.log(`✓ Downloaded to: ${serverZipPath}\n`);
-    return serverZipPath;
+    console.log(`Downloaded to: ${serverJarPath}\n`);
+    return serverJarPath;
   } catch (error) {
-    // Clean up on error
-    if (existsSync(serverZipPath)) {
-      rmSync(serverZipPath, { force: true });
+    if (existsSync(serverJarPath)) {
+      rmSync(serverJarPath, { force: true });
     }
     throw error;
   }
 }
 
-export {
-  requestDeviceAuth,
-  pollForToken,
-  refreshAccessToken,
-  getVersionInfo,
-  getDownloadUrl,
-  getSignedUrl,
-  loadCachedToken,
-  saveCachedToken,
-};
-
-export type { TokenResponse, VersionInfo, DeviceAuthResponse };
-
-// Run directly to test authentication and get current versions
+// Run directly to list available versions
 if (import.meta.main) {
   async function main() {
-    console.log("Testing Hytale API connection...\n");
+    console.log("Fetching Hytale server versions from Maven...\n");
 
-    const tokens = await getTokens();
-    console.log("Authenticated!\n");
+    const latest = await fetchLatestVersion();
+    console.log(`Latest version: ${latest}\n`);
 
-    for (const patchline of ["release", "pre-release"]) {
-      try {
-        const info = await getVersionInfo(patchline, tokens.access_token);
-        console.log(`${patchline}: ${info.version}`);
-        console.log(`  download_url: ${info.download_url}`);
-        console.log(`  sha256: ${info.sha256}\n`);
-      } catch (e) {
-        console.log(`${patchline}: ${e instanceof Error ? e.message : e}\n`);
-      }
+    const versions = await fetchAllVersions();
+    console.log(`All versions (${versions.length}):`);
+    for (const v of versions) {
+      console.log(`  ${v}`);
     }
   }
 

@@ -338,22 +338,6 @@ function convertCommonRefs(obj: any): any {
     return result;
 }
 
-async function extractZip(zipPath: string, targetDir: string): Promise<void> {
-    console.log(`Extracting ZIP to: ${targetDir}`);
-    mkdirSync(targetDir, { recursive: true });
-
-    // if on windows, use powershell, otherwise exit the program
-    const isWindows = process.platform === "win32";
-    if (isWindows) {
-        const cmd = `powershell -Command "Expand-Archive -Path '${zipPath}' -DestinationPath '${targetDir}' -Force"`;
-        console.log(`Executing: ${cmd}\n`);
-        execSync(cmd, { stdio: "inherit" });
-    } else {
-        throw new Error("ZIP extraction is only implemented for Windows in this script.");
-    }
-
-    console.log(`Extraction complete`);
-}
 
 async function createMinimalManifest(assetsDir: string): Promise<void> {
     const manifest = {
@@ -363,18 +347,16 @@ async function createMinimalManifest(assetsDir: string): Promise<void> {
     await Bun.write(join(assetsDir, "manifest.json"), JSON.stringify(manifest, null, 2));
 }
 
-async function generateSchemas(workDir: string, assetsDir: string): Promise<void> {
-    const serverJar = join(workDir, "HytaleServer", "Server", "HytaleServer.jar");
-
-    if (!existsSync(serverJar)) {
-        throw new Error(`Server JAR not found at: ${serverJar}`);
+async function generateSchemas(serverJarPath: string, assetsDir: string): Promise<void> {
+    if (!existsSync(serverJarPath)) {
+        throw new Error(`Server JAR not found at: ${serverJarPath}`);
     }
 
     console.log(`\nRunning schema generation...`);
 
     try {
         // Run the server with schema generation flag
-        const cmd = `java -jar "${serverJar}" --generate-schema --bare --assets "${assetsDir}"`;
+        const cmd = `java -jar "${serverJarPath}" --generate-schema --bare --assets "${assetsDir}"`;
         console.log(`Executing: ${cmd}\n`);
         execSync(cmd, { stdio: "inherit" });
     } catch (error) {
@@ -587,23 +569,19 @@ async function main() {
     try {
         // Step 1: Download server
         console.log("Downloading Hytale server...");
-        const serverZipPath = await getServer("release");
-        console.log(`Server ready at: ${serverZipPath}`);
+        const serverJarPath = await getServer("release");
+        console.log(`Server ready at: ${serverJarPath}`);
 
-        // Step 2: Extract server
-        const serverDir = join(tempDir, "HytaleServer");
-        await extractZip(serverZipPath, serverDir);
-
-        // Step 3: Create assets directory with manifest
+        // Step 2: Create assets directory with manifest
         const assetsDir = join(tempDir, "assets");
         mkdirSync(assetsDir, { recursive: true });
         await createMinimalManifest(assetsDir);
         console.log(`Created minimal asset pack at: ${assetsDir}`);
 
-        // Step 4: Run schema generation
-        await generateSchemas(tempDir, assetsDir);
+        // Step 3: Run schema generation
+        await generateSchemas(serverJarPath, assetsDir);
 
-        // Step 5: Process and clean schemas
+        // Step 4: Process and clean schemas
         await processGeneratedSchemas(assetsDir);
 
         const duration = ((Date.now() - startTime) / 1000).toFixed(2);

@@ -20,6 +20,5 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# extractor token cache and downloads
-extractor/.token-cache.json
+# extractor downloads
 extractor/downloads/
