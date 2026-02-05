@@ -5,9 +5,9 @@ description: A step-by-step guide to setting up, building, and running a minimal
 
 import { Code, FileTree, Aside, Steps } from '@astrojs/starlight/components';
 
-import buildGradle from '/src/snippets/java-plugin/build.gradle?raw';
+import buildGradle from '/src/snippets/java-plugin/build.gradle.kts?raw';
 import gradleProperties from '/src/snippets/java-plugin/gradle.min.properties?raw';
-import settingsGradle from '/src/snippets/java-plugin/settings.min.gradle?raw';
+import settingsGradle from '/src/snippets/java-plugin/settings.gradle.kts?raw';
 import manifestJson from '/src/snippets/java-plugin/manifest.min.json?raw';
 import gitignore from '/src/snippets/java-plugin/.gitignore?raw';
 import MyPlugin from '/src/snippets/java-plugin/MyPlugin.java?raw';
@@ -26,8 +26,8 @@ This guide walks you through creating a minimal Java plugin for Hytale using Gra
 A Hytale plugin follows standard Gradle/Java conventions. The only addition is a `manifest.json` that describes your plugin to the game.
 
 <FileTree>
-- build.gradle
-- settings.gradle
+- build.gradle.kts
+- settings.gradle.kts
 - gradle.properties
 - gradlew / gradlew.bat
 - .gitignore
@@ -51,22 +51,23 @@ A Hytale plugin follows standard Gradle/Java conventions. The only addition is a
 
 1. **Create a new Gradle project** or clone an existing template. The Gradle wrapper is included so you don't need Gradle installed globally — just run `./gradlew` from the project root.
 
-2. **Configure `settings.gradle`** — set your project name. This becomes the base name for JAR files produced by Gradle.
+2. **Configure `settings.gradle.kts`** — set your project name. This becomes the base name for JAR files produced by Gradle.
 
-   <Code code={settingsGradle} lang="groovy" title="settings.gradle" />
+   <Code code={settingsGradle} lang="kotlin" title="settings.gradle.kts" />
 
-3. **Configure `gradle.properties`** — define your version, Maven group, Java version, and build flags. Every property here is referenced by `build.gradle`.
+3. **Configure `gradle.properties`** — define your project version and build settings. These properties are referenced by `build.gradle.kts`.
 
    <Code code={gradleProperties} lang="properties" title="gradle.properties" />
 
-4. **Set up `build.gradle`** — this is the core of the build system. It adds the Hytale server JAR to your classpath, auto-updates your manifest, and provides a `runServer` task for local development.
+4. **Set up `build.gradle.kts`** — this is the core of the build system. It adds the Hytale server JAR to your classpath, auto-updates your manifest, and provides tasks for development.
 
-   <Code code={buildGradle} lang="groovy" title="build.gradle" />
+   <Code code={buildGradle} lang="kotlin" title="build.gradle.kts" />
 
    Key things this does:
    - Pulls the Hytale server JAR from the [official Maven repository](https://maven.hytale.com) as a compile dependency.
-   - Defines an `updatePluginManifest` task that syncs `Version` and `IncludesAssetPack` from your Gradle properties into `manifest.json` every build.
+   - Defines an `updatePluginManifest` task that syncs `Version` from your Gradle properties into `manifest.json` every build.
    - Defines a `runServer` task that launches a local Hytale server with your plugin loaded.
+   - Defines `genSources` and `genSourcesJar` tasks that use [Vineflower](https://vineflower.org/) to decompile the Hytale server for easier code exploration.
 
 5. **Create `manifest.json`** — this tells Hytale about your plugin. The `Main` field must point to your plugin's entry class.
 
@@ -147,3 +148,25 @@ To build a shareable JAR file, run:
 ```
 
 The output JAR is written to `build/libs/`. Players can install your plugin by placing the JAR in their `%APPDATA%/Hytale/UserData/Mods` folder.
+
+## Generating Decompiled Sources
+
+The build script includes tasks to decompile the Hytale server JAR using [Vineflower](https://vineflower.org/), making it easier to explore the game's code.
+
+<Aside type="caution">
+Vineflower decompilation can take a long time (10+ minutes) and benefits significantly from plenty of RAM. The task is configured to use 12GB heap. For best results, run it from a standalone terminal rather than your IDE's built-in terminal, which may be slower due to output buffering.
+</Aside>
+
+To generate decompiled sources:
+
+```sh
+./gradlew genSources
+```
+
+The decompiled Java files are written to `build/generated/sources/vineflower/`. You can also package them as a sources JAR for IDE integration:
+
+```sh
+./gradlew genSourcesJar
+```
+
+This creates a `*-sources.jar` in `build/libs/` that your IDE can attach to the server dependency for inline source viewing.
